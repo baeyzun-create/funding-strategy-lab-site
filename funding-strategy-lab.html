@@ -216,6 +216,7 @@
 
     .em-growth {
       color: var(--ibm-blue);
+      font-weight: 600;
     }
 
     .em-notice {
@@ -256,6 +257,7 @@
       border-radius: 16px;
       padding: 20px;
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+      scroll-margin-top: 96px;
     }
 
     .panel-topbar {
@@ -450,6 +452,12 @@
       line-height: 1.45;
     }
 
+    .problem-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
     .services-section {
       color: var(--linear-ink);
       background: var(--linear-canvas);
@@ -554,6 +562,12 @@
       color: var(--linear-lavender);
       font-size: 14px;
       font-weight: 500;
+    }
+
+    .services-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
     }
 
     .strategy-section {
@@ -961,9 +975,9 @@
         <span>더이로운기업</span>
       </a>
       <nav class="nav-menu" aria-label="주요 메뉴">
-        <a href="./funding-strategy-planning.html">자금 확보 기획</a>
+        <a href="./funding-strategy-planning.html">로드맵</a>
         <a href="./funding-notice-matching.html">공고 매칭</a>
-        <a href="./funding-proposal-writing.html">사업계획서 작성</a>
+        <a href="./funding-proposal-writing.html">시업계획서</a>
         <a href="./funding-submission-management.html">접수 관리</a>
       </nav>
       <a href="#contact" class="btn btn-primary">상담 신청</a>
@@ -986,7 +1000,7 @@
           <p class="hero-note">기업명, 업종, 자금 목적만 남기면 1차 가능성을 검토해드립니다.</p>
         </div>
 
-        <aside class="product-panel" aria-label="자금전략 제품 UI 미리보기">
+        <aside id="roadmap" class="product-panel" aria-label="자금전략 제품 UI 미리보기">
           <div class="panel-topbar">
             <span class="panel-dot"></span>
             <span class="panel-dot"></span>
@@ -995,8 +1009,8 @@
           </div>
           <div class="panel-hero">
             <small>Current diagnosis</small>
-            <h2>우리 기업에 맞는 자금은 무엇인가?</h2>
-            <p>무상자금, 유상자금, R&D, 정책자금, 투자유치 중 먼저 준비해야 할 방향을 진단합니다.</p>
+            <h2>우리 기업에 맞는 자금 로드맵은?</h2>
+            <p>TIPS부터 10억 이하 자금 로드맵을 AI 자동화 매칭합니다.</p>
           </div>
           <div class="funding-table">
             <div class="funding-row">
@@ -1069,27 +1083,30 @@
             <p>증빙서류, 온라인 입력, 마감일, 발표평가까지 관리하지 않으면 제출 자체가 어려워질 수 있습니다.</p>
           </article>
         </div>
+        <div class="problem-actions">
+          <a href="./funding-strategy-planning.html" class="btn btn-primary">10억 선정 로드맵 바로가기</a>
+        </div>
       </div>
     </section>
 
     <section id="services" class="services-section">
       <div class="container">
         <div class="section-head">
-          <span class="section-label">02 서비스 UI</span>
+          <span class="section-label">02. 스마트 매칭</span>
           <div>
-            <h2>자금 확보 업무를 실행 보드로 관리합니다.</h2>
-            <p>각 서비스는 독립된 카드가 아니라 기업 분석에서 접수까지 이어지는 하나의 작업 흐름으로 연결됩니다.</p>
+            <h2>10만건 공고 분석 기반 기업 맞춤형 공고를 매칭합니다.</h2>
+            <p>각 서비스는 오프라인 컨시어지가 접수까지 이어지는 하나의 작업 흐름으로 연결 관리합니다.</p>
           </div>
         </div>
 
         <div class="service-board">
           <aside class="board-sidebar">
-            <h3>Funding workflow</h3>
+            <h3>공고 현황</h3>
             <div class="board-filter">
-              <span>Now <strong>2</strong></span>
-              <span>Next <strong>4</strong></span>
-              <span>Risk <strong>1</strong></span>
-              <span>Done <strong>0</strong></span>
+              <span>공고 기관수 <strong>2</strong></span>
+              <span>공고 수집 건수(6월) <strong>350</strong></span>
+              <span>매칭 기업 <strong>65</strong></span>
+              <span>매칭율 <strong>95%</strong></span>
             </div>
           </aside>
           <div class="service-cards">
@@ -1099,7 +1116,7 @@
               <p>기업 단계와 자금 목적에 맞춰 정부지원금, R&D, 정책자금, 투자유치의 우선순위를 설계합니다.</p>
               <span class="service-link">자세히 보기 →</span>
             </a>
-            <a href="./funding-notice-matching.html" class="service-card">
+            <a href="./funding-notice-matching.html" class="service-card" aria-label="공고 매칭 페이지로 이동">
               <div class="service-meta"><span>FND-02</span><span class="status active">Matching</span></div>
               <h3>공고 매칭 자동화</h3>
               <p>업종, 업력, 매출, 기술 분야, 지역, 가점 조건을 기준으로 기업에 맞는 공고를 선별합니다.</p>
@@ -1119,34 +1136,37 @@
             </a>
           </div>
         </div>
+        <div class="services-actions">
+          <a href="./funding-smart-matching-login.html" class="btn btn-primary">스마트 매칭 바로가기</a>
+        </div>
       </div>
     </section>
 
     <section class="strategy-section">
       <div class="container">
         <div class="section-head">
-          <span class="section-label">03 자금 전략</span>
+          <span class="section-label">03. 사업계획서</span>
           <div>
-            <h2>기업 단계, 자금 목적, 실행 가능성을 기준으로 정렬합니다.</h2>
-            <p>판단 기준을 명확히 분리해 상담 전에도 현재 상태를 이해할 수 있게 만듭니다.</p>
+            <h2>AI가 95% 사업계획서 작성 가능한 시기에 선정 데이터 기반 5% 기획력이 핵심입니다.</h2>
+            <p>아이템 설명을 나열하지 않고 문제 정의, 차별성, 실행계획, 사업화 성과를 심사 기준에 맞춰 하나의 논리로 연결합니다.</p>
           </div>
         </div>
         <div class="strategy-grid">
           <article class="strategy-card">
-            <h3>기업 단계 분석</h3>
-            <p>예비창업, 초기창업, 성장기업, 수출기업 등 현재 단계와 다음 성장 단계에 필요한 자금 구조를 구분합니다.</p>
+            <h3>평가항목 역산 설계</h3>
+            <p>공고의 평가표와 배점을 먼저 분해하고 기술성, 시장성, 사업성, 수행역량에 맞춰 목차와 핵심 메시지를 정렬합니다.</p>
           </article>
           <article class="strategy-card">
-            <h3>자금 목적 정의</h3>
-            <p>시제품, 연구개발, 양산, 마케팅, 수출, 운전자금, 투자유치 등 자금 사용 목적을 명확히 정리합니다.</p>
+            <h3>문제·해결 논리 구성</h3>
+            <p>고객 문제, 기존 방식의 한계, 우리 솔루션의 차별성을 한 흐름으로 연결해 사업의 필요성과 시급성을 보여줍니다.</p>
           </article>
           <article class="strategy-card">
-            <h3>무상·유상 자금 구분</h3>
-            <p>상환 부담이 낮은 자금과 회수 구조가 있는 자금을 구분해 실행 순서를 정합니다.</p>
+            <h3>정량 목표와 실행계획</h3>
+            <p>개발 목표, 성능지표, 추진 일정, 예산 사용계획을 숫자와 근거로 제시해 실제 수행 가능성을 높입니다.</p>
           </article>
           <article class="strategy-card">
-            <h3>실행 로드맵</h3>
-            <p>지금 바로 지원할 사업과 3개월~12개월 내 준비해야 할 사업을 나누어 관리합니다.</p>
+            <h3>사업화·성과 전략</h3>
+            <p>매출모델, 판로, 고용, 투자, 후속자금 계획까지 연결해 지원 이후의 성장 가능성과 기대효과를 증명합니다.</p>
           </article>
         </div>
       </div>
@@ -1158,7 +1178,7 @@
           <span class="section-label">04 접수 관리</span>
           <div>
             <h2>마감 전 리스크를 제품 UI처럼 추적합니다.</h2>
-            <p>사업계획서 작성 이후에도 서류, 온라인 입력, 일정, 발표 준비를 하나의 진행판에서 관리합니다.</p>
+            <p>사업계획서 작성 이후에도 서류, 온라인 입력, 일정, 발표 준비를 하나의 사이클로 관리합니다.</p>
           </div>
         </div>
         <div class="submission-ui">
@@ -1214,33 +1234,33 @@
     <section id="contact" class="consult-section">
       <div class="container">
         <div class="section-head">
-          <span class="section-label">05 상담 전환</span>
+          <span class="section-label">05 문의 게시판</span>
           <div>
-            <h2>대화형 상담 흐름으로 빠르게 진단합니다.</h2>
-            <p>바로 긴 양식을 작성하기보다, 필요한 자금 목적과 준비 상태를 먼저 확인하고 상담으로 연결합니다.</p>
+            <h2>기본 정보와 최소한의 기업정보만 첨부하면 로드맵을 보내드립니다.</h2>
+            <p>기업 소개자료, 재무·매출 자료, 기존 사업계획서, 준비 중인 공고 정보를 남기면 검토 후 자금 로드맵과 예상 견적을 안내합니다.</p>
           </div>
         </div>
         <div class="consult-grid">
           <aside class="chat-card">
-            <h3>무료 1차 자금진단</h3>
-            <p>상담 전 확인할 핵심 질문을 대화형 흐름으로 정리했습니다.</p>
+            <h3>자료 기반 상담 흐름</h3>
+            <p>문의 게시판에 자료를 첨부하면 오프라인 컨시어지가 로드맵과 견적 검토 흐름으로 연결합니다.</p>
             <div class="chat-flow">
-              <div class="bubble">현재 필요한 자금 목적은 무엇인가요?</div>
-              <div class="bubble answer">R&D 과제와 정책자금을 함께 검토하고 싶어요.</div>
-              <div class="bubble">사업계획서나 증빙자료는 어느 정도 준비되어 있나요?</div>
-              <div class="bubble answer">기존 자료는 있지만 평가항목에 맞게 다시 정리해야 합니다.</div>
+              <div class="bubble">기업의 정성 자료와 정량 자료를 첨부해주세요.</div>
+              <div class="bubble answer">소개서, 매출자료, 기존 사업계획서를 함께 올릴게요.</div>
+              <div class="bubble">검토 후 무엇을 받을 수 있나요?</div>
+              <div class="bubble answer">지원 가능 공고, 10억 이하 자금 로드맵, 예상 견적을 안내드립니다.</div>
             </div>
             <div class="quick-options">
-              <span>정부지원사업</span>
-              <span>R&D 과제</span>
-              <span>정책자금</span>
-              <span>투자유치</span>
+              <span>기업 소개서</span>
+              <span>재무·매출 자료</span>
+              <span>기존 사업계획서</span>
+              <span>준비 공고</span>
             </div>
           </aside>
 
           <form class="form-box" onsubmit="handleSubmit(event)">
-            <h3>상담 문의 남기기</h3>
-            <p class="form-desc">아래 정보를 남겨주시면 지원 가능성과 준비자료를 검토해 연락드립니다.</p>
+            <h3>로드맵·견적 문의 남기기</h3>
+            <p class="form-desc">기업 자료를 첨부해주시면 지원 가능성, 로드맵, 예상 견적을 검토해 연락드립니다.</p>
             <div class="form-grid">
               <div class="field">
                 <label for="company">기업명</label>
@@ -1255,22 +1275,26 @@
                 <input id="phone" name="phone" type="tel" placeholder="예: 010-0000-0000" required />
               </div>
               <div class="field">
-                <label for="business">관심 분야</label>
+                <label for="business">상담 요청 항목</label>
                 <select id="business" name="business" required>
                   <option value="">선택해주세요</option>
-                  <option>정부지원사업</option>
-                  <option>R&D 과제</option>
-                  <option>정책자금</option>
-                  <option>투자유치</option>
-                  <option>아직 모름 / 상담 필요</option>
+                  <option>10억 이하 자금 로드맵</option>
+                  <option>정부지원사업·R&D 매칭</option>
+                  <option>사업계획서 작성 견적</option>
+                  <option>정책자금·투자유치 검토</option>
+                  <option>자료 검토 후 상담 필요</option>
                 </select>
               </div>
               <div class="field full">
-                <label for="message">상담 내용</label>
-                <textarea id="message" name="message" placeholder="기업 업종, 필요한 자금 목적, 준비 중인 공고가 있다면 적어주세요."></textarea>
+                <label for="attachments">정성·정량 자료 첨부</label>
+                <input id="attachments" name="attachments" type="file" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.zip" />
+              </div>
+              <div class="field full">
+                <label for="message">문의 내용</label>
+                <textarea id="message" name="message" placeholder="기업 업종, 필요한 자금 목적, 첨부자료 설명, 희망 로드맵 또는 견적 범위를 적어주세요."></textarea>
               </div>
             </div>
-            <button class="btn btn-dark submit-btn" type="submit">상담 문의 남기기</button>
+            <button class="btn btn-dark submit-btn" type="submit">로드맵·견적 문의 남기기</button>
           </form>
         </div>
       </div>
@@ -1295,17 +1319,19 @@
       const phone = form.phone.value.trim();
       const business = form.business.value;
       const message = form.message.value.trim();
+      const attachments = Array.from(form.attachments.files).map((file) => file.name);
 
       const text = [
-        "[상담 신청 정보]",
+        "[로드맵·견적 문의 정보]",
         "기업명: " + company,
         "담당자명: " + name,
         "연락처: " + phone,
-        "관심 분야: " + business,
-        "상담 내용: " + (message || "미입력")
+        "상담 요청 항목: " + business,
+        "첨부 자료: " + (attachments.length ? attachments.join(", ") : "미첨부"),
+        "문의 내용: " + (message || "미입력")
       ].join("\n");
 
-      alert("상담 신청 정보가 입력되었습니다.\n\n실제 사이트에서는 이 내용을 이메일, DB, 카카오톡, CRM 등으로 전송하도록 연결하면 됩니다.");
+      alert("로드맵·견적 문의 정보가 입력되었습니다.\n\n실제 사이트에서는 첨부자료와 문의 내용을 게시판, 이메일, DB, CRM 등으로 전송하도록 연결하면 됩니다.");
       console.log(text);
       form.reset();
     }

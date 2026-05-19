@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>스마트 매칭 로그인 | 더이로운기업</title>
+  <meta name="description" content="기업과 영업인을 위한 스마트 매칭 시스템 로그인 화면입니다." />
+  <style>
+    :root {
+      --canvas: #f4f4f4;
+      --ink: #161616;
+      --ink-muted: #525252;
+      --hairline: #d9d9d9;
+      --blue: #0f62fe;
+      --blue-hover: #0353e9;
+      --dark: #010102;
+      --surface: #18191d;
+      --surface-2: #202228;
+      --lavender: #5e6ad2;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--canvas);
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .nav-link {
+      color: var(--ink-muted);
+      font-size: 14px;
+    }
+
+    .login-hero {
+      padding: 76px 0 96px;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 246, 223, 0.9) 0, transparent 26%),
+        radial-gradient(circle at 78% 0%, rgba(94, 106, 210, 0.22) 0, transparent 30%),
+        var(--canvas);
+    }
+
+    .hero-head {
+      display: grid;
+      grid-template-columns: 0.36fr 0.64fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 14px;
+      letter-spacing: 0.16px;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(42px, 5.6vw, 72px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      max-width: 720px;
+      color: var(--ink-muted);
+      font-size: 18px;
+    }
+
+    .login-shell {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding: 16px;
+      background: var(--dark);
+      border: 1px solid #292b34;
+      border-radius: 18px;
+    }
+
+    .login-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 520px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid #2f323c;
+      border-radius: 14px;
+      color: #f7f8f8;
+    }
+
+    .login-card.sales {
+      background: linear-gradient(180deg, #1a1b22 0%, #111216 100%);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 6px 10px;
+      color: #d9ddff;
+      background: rgba(94, 106, 210, 0.18);
+      border: 1px solid rgba(94, 106, 210, 0.34);
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .status {
+      color: #9ca3af;
+      font-size: 12px;
+    }
+
+    .login-card h2 {
+      font-size: 32px;
+      line-height: 1.14;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
+    }
+
+    .login-card p {
+      color: #a8adb8;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      color: #c7cad4;
+      font-size: 13px;
+    }
+
+    input {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      color: #f7f8f8;
+      background: var(--surface-2);
+      border: 1px solid #343741;
+      border-radius: 8px;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--lavender);
+      box-shadow: 0 0 0 3px rgba(94, 106, 210, 0.22);
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #a8adb8;
+      font-size: 13px;
+      margin: 2px 0 24px;
+    }
+
+    .form-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #a8adb8;
+    }
+
+    .form-row input {
+      width: auto;
+      min-height: auto;
+      accent-color: var(--blue);
+    }
+
+    .login-button {
+      width: 100%;
+      min-height: 50px;
+      border: 0;
+      border-radius: 0;
+      color: var(--white);
+      background: var(--blue);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .login-button:hover {
+      background: var(--blue-hover);
+    }
+
+    .helper {
+      margin-top: auto;
+      padding-top: 26px;
+      color: #7e8492;
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 28px 0;
+      color: #6f6f6f;
+      background: #fff;
+      border-top: 1px solid var(--hairline);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-head,
+      .login-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .login-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .login-hero {
+        padding: 52px 0 72px;
+      }
+
+      .login-shell {
+        padding: 10px;
+      }
+
+      .login-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="./funding-strategy-lab.html" class="brand" aria-label="메인으로 이동">
+        <span class="brand-mark">더</span>
+        <span>더이로운기업</span>
+      </a>
+      <a href="./funding-strategy-lab.html#services" class="nav-link">스마트 매칭으로 돌아가기</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="login-hero">
+      <div class="container">
+        <div class="hero-head">
+          <span class="section-label">스마트 매칭 로그인</span>
+          <div>
+            <h1>멥버쉽 기업 및 협업 영업인 전용 페이지 입니다.</h1>
+            <p class="lead">준비 중</p>
+          </div>
+        </div>
+
+        <div class="login-shell">
+          <form class="login-card" onsubmit="handleLogin(event, '기업')">
+            <div class="card-top">
+              <span class="role-badge">Company</span>
+              <span class="status">기업 계정</span>
+            </div>
+            <h2>기업 로그인</h2>
+            <p>기업 담당자가 자금 로드맵, 공고 매칭 결과, 준비자료 현황을 확인하는 영역입니다.</p>
+            <div class="field">
+              <label for="company-id">기업 아이디</label>
+              <input id="company-id" type="text" placeholder="기업 이메일 또는 아이디" autocomplete="username" />
+            </div>
+            <div class="field">
+              <label for="company-password">비밀번호</label>
+              <input id="company-password" type="password" placeholder="비밀번호" autocomplete="current-password" />
+            </div>
+            <div class="form-row">
+              <label><input type="checkbox" /> 로그인 유지</label>
+              <a href="#" onclick="showPending(event, '기업 비밀번호 찾기')">비밀번호 찾기</a>
+            </div>
+            <button class="login-button" type="submit">기업 로그인</button>
+            <div class="helper">기업용 실제 시스템 URL이 준비되면 이 버튼에 연결하면 됩니다.</div>
+          </form>
+
+          <form class="login-card sales" onsubmit="handleLogin(event, '영업인')">
+            <div class="card-top">
+              <span class="role-badge">Partner</span>
+              <span class="status">영업인 계정</span>
+            </div>
+            <h2>영업인 로그인</h2>
+            <p>영업인이 고객 기업의 매칭 진행, 상담 상태, 접수 관리 현황을 확인하는 영역입니다.</p>
+            <div class="field">
+              <label for="sales-id">영업인 아이디</label>
+              <input id="sales-id" type="text" placeholder="영업인 이메일 또는 아이디" autocomplete="username" />
+            </div>
+            <div class="field">
+              <label for="sales-password">비밀번호</label>
+              <input id="sales-password" type="password" placeholder="비밀번호" autocomplete="current-password" />
+            </div>
+            <div class="form-row">
+              <label><input type="checkbox" /> 로그인 유지</label>
+              <a href="#" onclick="showPending(event, '영업인 비밀번호 찾기')">비밀번호 찾기</a>
+            </div>
+            <button class="login-button" type="submit">영업인 로그인</button>
+            <div class="helper">영업인용 실제 시스템 URL이 준비되면 이 버튼에 연결하면 됩니다.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 더이로운기업 · 스마트 매칭 로그인</div>
+  </footer>
+
+  <script>
+    function handleLogin(event, role) {
+      event.preventDefault();
+      alert(role + " 로그인은 추후 실제 시스템 링크로 연결됩니다.");
+    }
+
+    function showPending(event, label) {
+      event.preventDefault();
+      alert(label + " 기능은 추후 연결됩니다.");
+    }
+  </script>
+</body>
+</html>
