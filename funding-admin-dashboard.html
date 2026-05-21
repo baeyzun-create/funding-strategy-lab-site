@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>관리자 대시보드 | 더이로운기업</title>
   <meta name="description" content="더이로운기업 문의 접수, 자료 첨부, AI 로드맵, 컨시어지 배정 현황을 관리하는 관리자 대시보드입니다." />
   <style>
@@ -38,6 +38,14 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    [id] {
+      scroll-margin-top: 84px;
     }
 
     .container {
@@ -89,6 +97,158 @@
 
     .dashboard {
       padding: 54px 0 86px;
+    }
+
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 244px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .dashboard-content {
+      min-width: 0;
+    }
+
+    .quick-nav {
+      position: sticky;
+      top: 82px;
+      display: grid;
+      gap: 14px;
+      min-height: calc(100vh - 104px);
+      padding: 14px;
+      color: #f7f8f8;
+      background: var(--dark);
+      border: 1px solid #292b34;
+      border-radius: 16px;
+    }
+
+    .quick-nav-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .quick-nav-title {
+      display: grid;
+      gap: 2px;
+    }
+
+    .quick-nav-title strong {
+      font-size: 16px;
+    }
+
+    .quick-nav-title span {
+      color: #a8adb8;
+      font-size: 12px;
+    }
+
+    .quick-nav-toggle {
+      min-width: 44px;
+      min-height: 36px;
+      padding: 0 12px;
+      color: #f7f8f8;
+      background: var(--surface);
+      border: 1px solid #343741;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quick-nav-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .quick-nav-link {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      min-height: 42px;
+      padding: 6px 8px;
+      color: #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .quick-nav-link:hover,
+    .quick-nav-link:focus-visible {
+      color: #fff;
+      background: var(--surface);
+      outline: none;
+    }
+
+    .quick-nav-link.is-active {
+      color: #fff;
+      background: #0f62fe;
+    }
+
+    .quick-nav-index {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: #d9ddff;
+      background: var(--surface-2);
+      border: 1px solid #343741;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .quick-nav-label {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .quick-nav-caption {
+      margin-top: auto;
+      padding-top: 12px;
+      color: #7e8492;
+      border-top: 1px solid #292b34;
+      font-size: 12px;
+    }
+
+    body.quick-nav-collapsed .admin-layout {
+      grid-template-columns: 68px minmax(0, 1fr);
+    }
+
+    body.quick-nav-collapsed .quick-nav {
+      min-height: auto;
+      padding: 10px;
+    }
+
+    body.quick-nav-collapsed .quick-nav-head {
+      justify-content: center;
+    }
+
+    body.quick-nav-collapsed .quick-nav-title,
+    body.quick-nav-collapsed .quick-nav-label,
+    body.quick-nav-collapsed .quick-nav-caption {
+      display: none;
+    }
+
+    body.quick-nav-collapsed .quick-nav-toggle {
+      min-width: 40px;
+      padding: 0;
+    }
+
+    body.quick-nav-collapsed .quick-nav-link {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      padding: 6px;
+    }
+
+    .dashboard-unit[hidden],
+    #inquiryAndPipeline[hidden],
+    #matchingWorkbench[hidden],
+    .admin-managed-section[hidden] {
+      display: none !important;
     }
 
     .dashboard-head {
@@ -151,6 +311,10 @@
       display: grid;
       grid-template-columns: 1fr 360px;
       gap: 18px;
+    }
+
+    .admin-grid.is-single-view {
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .panel {
@@ -296,6 +460,141 @@
       font-size: 14px;
     }
 
+    .matching-workbench {
+      margin-top: 18px;
+    }
+
+    .workbench-body {
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+    }
+
+    .drive-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) 1.25fr;
+      gap: 12px;
+    }
+
+    .drive-folder {
+      padding: 18px;
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+    }
+
+    .drive-folder strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin: 10px 0 8px;
+    }
+
+    .drive-folder span,
+    .drive-folder p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .drive-folder.sync {
+      background: #ecfeff;
+      border-color: #a5f3fc;
+    }
+
+    .matching-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 18px;
+    }
+
+    .sub-panel {
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .sub-panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .sub-panel-head h3 {
+      font-size: 20px;
+    }
+
+    .sub-panel-head p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .score {
+      display: inline-flex;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    .reason-list {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .reason-list strong {
+      color: var(--ink);
+    }
+
+    .action-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .action-button {
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .action-button.approve {
+      color: #166534;
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .action-button.hold {
+      color: #9a3412;
+      border-color: #fed7aa;
+      background: #fff7ed;
+    }
+
+    .action-button.exclude {
+      color: #991b1b;
+      border-color: #fecaca;
+      background: #fef2f2;
+    }
+
     .footer {
       padding: 36px 0;
       border-top: 1px solid var(--hairline);
@@ -305,11 +604,24 @@
 
     @media (max-width: 980px) {
       .dashboard-head,
-      .admin-grid {
+      .admin-grid,
+      .matching-layout {
         grid-template-columns: 1fr;
       }
 
+      .admin-layout {
+        grid-template-columns: 68px minmax(0, 1fr);
+      }
+
+      body:not(.quick-nav-collapsed) .admin-layout {
+        grid-template-columns: minmax(190px, 0.42fr) minmax(0, 1fr);
+      }
+
       .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .drive-board {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -319,11 +631,16 @@
         grid-template-columns: 1fr;
       }
 
+      .drive-board {
+        grid-template-columns: 1fr;
+      }
+
       table {
         min-width: 720px;
       }
 
-      .panel {
+      .panel,
+      .sub-panel {
         overflow-x: auto;
       }
     }
@@ -336,24 +653,70 @@
         <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
       </a>
       <div class="nav-actions">
-        <span class="admin-role" id="adminRole">총괄 관리자</span>
+        <span class="admin-role" id="adminRole">관리자</span>
         <a href="./funding-admin-login.html" onclick="clearAdminSession()">로그아웃</a>
-        <a href="./funding-strategy-lab.html">사이트로 돌아가기</a>
+        <a href="./funding-strategy-lab.html">메인화면</a>
       </div>
     </div>
   </header>
 
   <main class="dashboard">
     <div class="container">
-      <div class="dashboard-head">
-        <span class="label">Admin Dashboard · 총괄 관리자</span>
+      <div class="admin-layout">
+        <aside class="quick-nav" aria-label="관리자 바로가기 메뉴">
+          <div class="quick-nav-head">
+            <div class="quick-nav-title">
+              <strong>바로가기</strong>
+              <span>관리 섹션 이동</span>
+            </div>
+            <button class="quick-nav-toggle" type="button" aria-expanded="true" aria-controls="adminQuickNavList" onclick="toggleQuickNav()">접기</button>
+          </div>
+          <nav class="quick-nav-list" id="adminQuickNavList">
+            <a class="quick-nav-link" href="#dashboard" data-view="dashboard">
+              <span class="quick-nav-index">01</span>
+              <span class="quick-nav-label">대시보드</span>
+            </a>
+            <a class="quick-nav-link" href="#inquiries" data-view="inquiries">
+              <span class="quick-nav-index">02</span>
+              <span class="quick-nav-label">문의 게시판</span>
+            </a>
+            <a class="quick-nav-link" href="#pipeline" data-view="pipeline">
+              <span class="quick-nav-index">03</span>
+              <span class="quick-nav-label">업체 진행 사이클</span>
+            </a>
+            <a class="quick-nav-link" href="#noticeCollection" data-view="noticeCollection">
+              <span class="quick-nav-index">04</span>
+              <span class="quick-nav-label">공고 수집 현황</span>
+            </a>
+            <a class="quick-nav-link" href="#companyMatching" data-view="companyMatching">
+              <span class="quick-nav-index">05</span>
+              <span class="quick-nav-label">기업 공고 매칭</span>
+            </a>
+            <a class="quick-nav-link" href="#analysisQueue" data-view="analysisQueue">
+              <span class="quick-nav-index">06</span>
+              <span class="quick-nav-label">문서 분석 큐</span>
+            </a>
+            <a class="quick-nav-link" href="#marketingStatus" data-view="marketingStatus">
+              <span class="quick-nav-index">07</span>
+              <span class="quick-nav-label">마케팅 현황</span>
+            </a>
+            <a class="quick-nav-link" href="#contractStatus" data-view="contractStatus">
+              <span class="quick-nav-index">08</span>
+              <span class="quick-nav-label">계약 현황</span>
+            </a>
+          </nav>
+          <p class="quick-nav-caption">좁은 화면에서는 접힌 메뉴로 시작합니다.</p>
+        </aside>
+
+        <div class="dashboard-content">
+      <div class="dashboard-head dashboard-unit" id="dashboardTop">
+        <span class="label">총괄 관리자</span>
         <div>
-          <h1>문의 접수부터 로드맵 발송까지 관리합니다.</h1>
-          <p class="lead">자료첨부 필수 문의를 기준으로 AI 분석, 담당 컨시어지 검토, 견적 발송 상태를 추적합니다.</p>
+          <h1>대시보드</h1>
         </div>
       </div>
 
-      <section class="metrics" aria-label="관리자 주요 지표">
+      <section class="metrics dashboard-unit" id="summaryMetrics" aria-label="관리자 주요 지표">
         <article class="metric">
           <span>신규 문의</span>
           <strong>12</strong>
@@ -372,8 +735,8 @@
         </article>
       </section>
 
-      <div class="admin-grid">
-        <section class="panel">
+      <div class="admin-grid" id="inquiryAndPipeline">
+        <section class="panel" id="inquiryBoard">
           <div class="panel-head">
             <div>
               <h2>문의 게시판</h2>
@@ -424,8 +787,8 @@
           </table>
         </section>
 
-        <aside class="side">
-          <section class="dark-panel">
+        <aside class="side" id="pipelineSide">
+          <section class="dark-panel" id="pipelinePanel">
             <h2>진행 사이클</h2>
             <div class="pipeline">
               <div class="pipeline-row">
@@ -462,6 +825,264 @@
           </section>
         </aside>
       </div>
+
+      <section class="matching-workbench" id="matchingWorkbench" aria-label="공고와 기업 매칭 관리">
+        <div class="workbench-body">
+          <div class="drive-board admin-managed-section" id="driveFolders" aria-label="Google Drive 공고 폴더 상태">
+            <article class="drive-folder">
+              <span>Google Drive / 신규 공고</span>
+              <strong>18</strong>
+              <p>텍스트 추출 대기 12건 · OCR 필요 6건</p>
+            </article>
+            <article class="drive-folder">
+              <span>Google Drive / 분석 완료</span>
+              <strong>11</strong>
+              <p>요건 구조화 완료 · 담당자 검토 대기</p>
+            </article>
+            <article class="drive-folder">
+              <span>Google Drive / 매칭 완료</span>
+              <strong>6</strong>
+              <p>추천 기업 목록 생성 · 승인 대기</p>
+            </article>
+            <article class="drive-folder sync">
+              <span>자동 감지 설정</span>
+              <strong>ON</strong>
+              <p>Drive API Webhook 연결 후 신규 문서가 들어오면 분석 큐에 등록됩니다.</p>
+            </article>
+          </div>
+
+          <section class="sub-panel admin-managed-section" id="analysisQueue">
+            <div class="sub-panel-head">
+              <div>
+                <h3>공고 문서 분석 큐</h3>
+                <p>텍스트 추출, OCR, 요건 구조화 상태를 관리합니다.</p>
+              </div>
+              <span class="badge orange">OCR 6건</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>공고 문서</th>
+                  <th>추출 항목</th>
+                  <th>분석 상태</th>
+                  <th>주의 조건</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>스마트제조 고도화 R&D.pdf</strong>중기부 · PDF</td>
+                  <td>업종, 지역, 예산, 기술요건, 마감일</td>
+                  <td><span class="badge green">구조화 완료</span></td>
+                  <td>최근 3년 매출 실적 필수</td>
+                </tr>
+                <tr>
+                  <td><strong>수출바우처 참여기업.hwp</strong>KOTRA · HWP</td>
+                  <td>지원대상, 수행기관, 수출실적, 제외업종</td>
+                  <td><span class="badge orange">OCR 검토</span></td>
+                  <td>동일 사업 중복지원 제외</td>
+                </tr>
+                <tr>
+                  <td><strong>지역특화 과제 목록.xlsx</strong>지자체 · Excel</td>
+                  <td>지역, 지원규모, 접수기간, 평가방식</td>
+                  <td><span class="badge green">분석 완료</span></td>
+                  <td>본사 또는 공장 소재지 제한</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <div class="matching-layout admin-managed-section" id="matchingTables">
+            <section class="sub-panel" id="noticeRecommendations">
+              <div class="sub-panel-head">
+                <div>
+                  <h3>공고별 추천 기업 목록</h3>
+                  <p>공고 요건을 기준으로 추천 기업과 매칭 근거를 확인합니다.</p>
+                </div>
+                <span class="badge green">추천 생성</span>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>공고</th>
+                    <th>추천 기업</th>
+                    <th>점수</th>
+                    <th>근거</th>
+                    <th>처리</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>스마트제조 고도화 R&D</strong>마감 D-18</td>
+                    <td>원컨덕터</td>
+                    <td><span class="score">92</span></td>
+                    <td>
+                      <div class="reason-list">
+                        <span><strong>기술 적합도 높음</strong> · 제조 자동화 PoC 보유</span>
+                        <span>최근 3년 실적 조건 충족</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="action-stack">
+                        <button class="action-button approve" type="button">승인</button>
+                        <button class="action-button hold" type="button">보류</button>
+                        <button class="action-button exclude" type="button">제외</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>수출바우처 참여기업</strong>상·하반기</td>
+                    <td>혜성식품</td>
+                    <td><span class="score">78</span></td>
+                    <td>
+                      <div class="reason-list">
+                        <span><strong>업종·수출 의지 적합</strong></span>
+                        <span>전년도 수출실적 증빙 보완 필요</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="action-stack">
+                        <button class="action-button approve" type="button">승인</button>
+                        <button class="action-button hold" type="button">보류</button>
+                        <button class="action-button exclude" type="button">제외</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="sub-panel" id="companyRecommendations">
+              <div class="sub-panel-head">
+                <div>
+                  <h3>기업별 추천 공고 목록</h3>
+                  <p>기업 프로필과 첨부 문서를 기준으로 지원 우선순위를 확인합니다.</p>
+                </div>
+                <span class="badge">AI + Rule</span>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>기업</th>
+                    <th>추천 공고</th>
+                    <th>적합도</th>
+                    <th>보완 필요</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>우리엘소프트</strong>AI SaaS · 서울</td>
+                    <td>초격차 스타트업 패키지</td>
+                    <td><span class="badge green">높음</span></td>
+                    <td>특허 출원번호, 매출 성장률 자료</td>
+                  </tr>
+                  <tr>
+                    <td><strong>비플컨설팅</strong>기술서비스 · 경기</td>
+                    <td>서비스 R&D 사업화 지원</td>
+                    <td><span class="badge orange">검토</span></td>
+                    <td>고용 인원 증빙, 유사 과제 중복 여부</td>
+                  </tr>
+                  <tr>
+                    <td><strong>원컨덕터</strong>제조 · 인천</td>
+                    <td>스마트공장 구축 지원</td>
+                    <td><span class="badge green">높음</span></td>
+                    <td>공장등록증, 설비 견적서</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <section class="sub-panel admin-managed-section" id="marketingStatus">
+            <div class="sub-panel-head">
+              <div>
+                <h3>마케팅 현황</h3>
+                <p>회원가입, 메일링, 상담 신청, 리마케팅 캠페인의 상태를 확인합니다.</p>
+              </div>
+              <span class="badge green">캠페인 운영</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>채널</th>
+                  <th>대상</th>
+                  <th>진행 상태</th>
+                  <th>성과</th>
+                  <th>다음 액션</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>회원가입 메일링</strong>신규 회원</td>
+                  <td>기업회원 142명</td>
+                  <td><span class="badge green">발송 중</span></td>
+                  <td>오픈율 38%</td>
+                  <td>공고 추천 자동 발송</td>
+                </tr>
+                <tr>
+                  <td><strong>로드맵 상담 리마인드</strong>자료 미첨부 기업</td>
+                  <td>23개 기업</td>
+                  <td><span class="badge orange">보완 유도</span></td>
+                  <td>자료 회수 7건</td>
+                  <td>3일 후 2차 안내</td>
+                </tr>
+                <tr>
+                  <td><strong>공고 마감 알림</strong>추천 매칭 기업</td>
+                  <td>58개 기업</td>
+                  <td><span class="badge green">예약 완료</span></td>
+                  <td>상담 전환 12건</td>
+                  <td>마감 D-7 재발송</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="sub-panel admin-managed-section" id="contractStatus">
+            <div class="sub-panel-head">
+              <div>
+                <h3>계약 현황</h3>
+                <p>상담 이후 견적, 계약, 착수, 정산 단계를 관리합니다.</p>
+              </div>
+              <span class="badge">계약 관리</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>기업</th>
+                  <th>계약 유형</th>
+                  <th>금액</th>
+                  <th>상태</th>
+                  <th>담당</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>원컨덕터</strong>R&D 로드맵</td>
+                  <td>사업계획서 + 접수 관리</td>
+                  <td>8,800,000원</td>
+                  <td><span class="badge green">착수</span></td>
+                  <td>김 컨시어지</td>
+                </tr>
+                <tr>
+                  <td><strong>비플컨설팅</strong>사업계획서</td>
+                  <td>작성 고도화</td>
+                  <td>3,300,000원</td>
+                  <td><span class="badge orange">계약서 검토</span></td>
+                  <td>박 컨시어지</td>
+                </tr>
+                <tr>
+                  <td><strong>우리엘소프트</strong>정책자금</td>
+                  <td>매칭 + 접수 지원</td>
+                  <td>5,500,000원</td>
+                  <td><span class="badge">견적 발송</span></td>
+                  <td>이 컨시어지</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </section>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -470,11 +1091,101 @@
   </footer>
 
   <script>
+    const quickNavToggle = document.querySelector(".quick-nav-toggle");
+    const compactNavQuery = window.matchMedia("(max-width: 980px)");
+
+    function setQuickNavCollapsed(collapsed) {
+      document.body.classList.toggle("quick-nav-collapsed", collapsed);
+      if (quickNavToggle) {
+        quickNavToggle.textContent = collapsed ? "열기" : "접기";
+        quickNavToggle.setAttribute("aria-expanded", String(!collapsed));
+      }
+    }
+
+    function toggleQuickNav() {
+      setQuickNavCollapsed(!document.body.classList.contains("quick-nav-collapsed"));
+    }
+
+    function setHidden(id, hidden) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.hidden = hidden;
+      }
+    }
+
+    function setManagedSections(visibleIds) {
+      document.querySelectorAll(".admin-managed-section").forEach((section) => {
+        section.hidden = !visibleIds.includes(section.id);
+      });
+    }
+
+    function showAdminView(viewName, updateHash = true) {
+      const view = [
+        "dashboard",
+        "inquiries",
+        "pipeline",
+        "noticeCollection",
+        "companyMatching",
+        "analysisQueue",
+        "marketingStatus",
+        "contractStatus"
+      ].includes(viewName) ? viewName : "dashboard";
+
+      setHidden("dashboardTop", view !== "dashboard");
+      setHidden("summaryMetrics", view !== "dashboard");
+      setHidden("inquiryAndPipeline", !["inquiries", "pipeline"].includes(view));
+      setHidden("inquiryBoard", view !== "inquiries");
+      setHidden("pipelineSide", view !== "pipeline");
+      setHidden("matchingWorkbench", !["noticeCollection", "companyMatching", "analysisQueue", "marketingStatus", "contractStatus"].includes(view));
+      document.getElementById("inquiryAndPipeline")?.classList.toggle("is-single-view", ["inquiries", "pipeline"].includes(view));
+
+      if (view === "noticeCollection") {
+        setManagedSections(["driveFolders"]);
+      } else if (view === "companyMatching") {
+        setManagedSections(["matchingTables"]);
+      } else if (view === "analysisQueue") {
+        setManagedSections(["analysisQueue"]);
+      } else if (view === "marketingStatus") {
+        setManagedSections(["marketingStatus"]);
+      } else if (view === "contractStatus") {
+        setManagedSections(["contractStatus"]);
+      } else {
+        setManagedSections([]);
+      }
+
+      document.querySelectorAll(".quick-nav-link").forEach((link) => {
+        const isActive = link.dataset.view === view;
+        link.classList.toggle("is-active", isActive);
+        link.toggleAttribute("aria-current", isActive);
+      });
+
+      if (updateHash) {
+        history.replaceState(null, "", "#" + view);
+      }
+    }
+
+    if (compactNavQuery.matches) {
+      setQuickNavCollapsed(true);
+    }
+
+    document.querySelectorAll(".quick-nav-link").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        showAdminView(link.dataset.view || "dashboard");
+        if (compactNavQuery.matches) {
+          setQuickNavCollapsed(true);
+        }
+      });
+    });
+
+    showAdminView("dashboard");
+
     if (sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
       window.location.replace("./funding-admin-login.html");
     }
 
-    document.getElementById("adminRole").textContent = sessionStorage.getItem("fundingAdminRole") || "총괄 관리자";
+    const adminRoleText = sessionStorage.getItem("fundingAdminRole") || "관리자";
+    document.getElementById("adminRole").textContent = adminRoleText === "총괄 관리자" ? "관리자" : adminRoleText;
 
     function clearAdminSession() {
       sessionStorage.removeItem("fundingAdminLoggedIn");
@@ -482,5 +1193,6 @@
       sessionStorage.removeItem("fundingAdminRole");
     }
   </script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>

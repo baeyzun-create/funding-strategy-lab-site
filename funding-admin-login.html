@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>관리자 로그인 | 더이로운기업</title>
   <meta name="description" content="더이로운기업 문의 접수와 로드맵 진행 현황을 관리하는 관리자 로그인 화면입니다." />
   <style>
@@ -300,7 +300,7 @@
     function setAdminDemoSession() {
       sessionStorage.setItem("fundingAdminLoggedIn", "true");
       sessionStorage.setItem("fundingAdminId", "baeyzun@naver.com");
-      sessionStorage.setItem("fundingAdminRole", "총괄 관리자");
+      sessionStorage.setItem("fundingAdminRole", "관리자");
     }
 
     function handleAdminLogin(event) {
@@ -311,5 +311,6 @@
       window.location.href = "./funding-admin-dashboard.html";
     }
   </script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>

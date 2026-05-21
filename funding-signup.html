@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>회원가입 | 더이로운기업 스마트 매칭</title>
+  <meta name="description" content="더이로운기업 스마트 매칭 기업회원과 영업인 파트너 회원가입 화면입니다." />
+  <style>
+    :root {
+      --canvas: #f4f4f4;
+      --ink: #161616;
+      --ink-muted: #525252;
+      --hairline: #d9d9d9;
+      --blue: #0f62fe;
+      --blue-hover: #0353e9;
+      --dark: #010102;
+      --surface: #18191d;
+      --surface-2: #202228;
+      --lavender: #5e6ad2;
+      --white: #ffffff;
+      --success: #0e8f55;
+      --warning: #b7791f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--canvas);
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: clamp(142px, 16vw, 190px);
+      height: auto;
+      display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--ink-muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-actions a.current {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .signup-hero {
+      padding: 72px 0 96px;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 246, 223, 0.9) 0, transparent 26%),
+        radial-gradient(circle at 78% 0%, rgba(94, 106, 210, 0.22) 0, transparent 30%),
+        var(--canvas);
+    }
+
+    .hero-head {
+      display: grid;
+      grid-template-columns: 0.34fr 0.66fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 36px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.16px;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.4px;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      max-width: 720px;
+      color: var(--ink-muted);
+      font-size: 18px;
+    }
+
+    .signup-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 760px);
+      justify-content: center;
+      max-width: 820px;
+      padding: 16px;
+      margin: 0 auto;
+      background: var(--dark);
+      border: 1px solid #292b34;
+      border-radius: 18px;
+    }
+
+    .signup-card {
+      border-radius: 14px;
+    }
+
+    .signup-card {
+      padding: 30px;
+      background: #fff;
+      border: 1px solid var(--hairline);
+    }
+
+    .form-section {
+      padding-bottom: 26px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid #eceff3;
+    }
+
+    .form-section:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2,
+    .section-title h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      color: var(--ink-muted);
+      background: #f4f6fa;
+      border: 1px solid #e4e8f0;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .status-pill.is-active {
+      color: #fff;
+      background: var(--success);
+      border-color: var(--success);
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .role-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .role-option span {
+      display: flex;
+      min-height: 94px;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      border: 1px solid #dce1ea;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .role-option strong {
+      display: block;
+      margin-bottom: 0;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .role-option small {
+      color: var(--ink-muted);
+      font-size: 14px;
+    }
+
+    .role-option input:checked + span {
+      background: #f5f9ff;
+      border-color: var(--blue);
+      box-shadow: inset 0 0 0 1px var(--blue);
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .social-button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #dce1ea;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .social-mark {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .social-button.naver .social-mark {
+      color: #fff;
+      background: #03c75a;
+    }
+
+    .social-button.kakao {
+      background: #fee500;
+      border-color: #fee500;
+    }
+
+    .social-button.kakao .social-mark {
+      color: #fee500;
+      background: #191600;
+    }
+
+    .social-button.google .social-mark {
+      color: var(--blue);
+      background: #eef4ff;
+      border: 1px solid #dce8ff;
+    }
+
+    .manual-signup-entry {
+      display: grid;
+      gap: 10px;
+    }
+
+    .manual-signup-button {
+      width: 100%;
+      min-height: 54px;
+      color: #fff;
+      background: var(--ink);
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.18s ease;
+    }
+
+    .manual-signup-button:hover {
+      background: #303030;
+    }
+
+    .manual-signup-panel {
+      display: grid;
+      gap: 0;
+      padding-top: 26px;
+      border-top: 1px solid #eceff3;
+    }
+
+    .manual-signup-panel[hidden] {
+      display: none;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    .field-label {
+      color: var(--ink-muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #dce1ea;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.14);
+    }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+
+    .inline-button {
+      min-height: 48px;
+      padding: 0 18px;
+      color: #fff;
+      background: var(--blue);
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .inline-button:hover {
+      background: var(--blue-hover);
+    }
+
+    .inline-button.secondary {
+      color: var(--blue);
+      background: #eef4ff;
+      border: 1px solid #c9ddff;
+    }
+
+    .verify-status {
+      min-height: 22px;
+      color: var(--ink-muted);
+      font-size: 13px;
+    }
+
+    .verify-status.success {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .verify-status.warning {
+      color: var(--warning);
+      font-weight: 600;
+    }
+
+    .agreement-list {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      background: #f7f9fc;
+      border: 1px solid #e6ebf2;
+      border-radius: 12px;
+    }
+
+    .agreement-list label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    .agreement-list input {
+      width: 18px;
+      min-height: 18px;
+      margin-top: 2px;
+      accent-color: var(--blue);
+    }
+
+    .submit-row {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 54px;
+      color: #fff;
+      background: var(--blue);
+      border: 0;
+      border-radius: 0;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .submit-button:hover {
+      background: var(--blue-hover);
+    }
+
+    .form-note {
+      color: var(--ink-muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 28px 0;
+      color: #6f6f6f;
+      background: #fff;
+      border-top: 1px solid var(--hairline);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-head,
+      .signup-shell {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .nav-actions {
+        flex-wrap: wrap;
+        gap: 12px;
+        white-space: normal;
+      }
+
+      .signup-hero {
+        padding: 52px 0 72px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 12vw, 46px);
+      }
+
+      .signup-shell {
+        padding: 10px;
+      }
+
+      .signup-card {
+        padding: 22px;
+      }
+
+      .role-grid,
+      .social-grid,
+      .field-grid,
+      .phone-row {
+        grid-template-columns: 1fr;
+      }
+
+      .role-option span {
+        min-height: 76px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="./funding-strategy-lab.html" class="brand" aria-label="메인으로 이동">
+        <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
+      </a>
+      <div class="nav-actions">
+        <a href="./funding-smart-matching-login.html">로그인</a>
+        <a href="./funding-signup.html" class="current" aria-current="page">회원가입</a>
+        <a href="./funding-strategy-lab.html#services">메인화면</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="signup-hero">
+      <div class="container">
+        <div class="hero-head">
+          <span class="section-label">회원가입</span>
+          <div>
+            <h1>다양한 정보 및 메일링 서비스를 제공해 드립니다.</h1>
+            <p class="lead">기업회원과 영업인 파트너가 자금 로드맵, 공고 매칭, 사업계획서, 접수 관리 흐름을 확인할 수 있는 계정을 만듭니다.</p>
+          </div>
+        </div>
+
+        <div class="signup-shell">
+          <form class="signup-card" onsubmit="submitSignup(event)">
+            <section class="form-section" aria-label="가입 유형">
+              <div class="role-grid">
+                <label class="role-option">
+                  <input type="radio" name="role" value="기업회원" checked />
+                  <span>
+                    <strong>기업회원</strong>
+                  </span>
+                </label>
+                <label class="role-option">
+                  <input type="radio" name="role" value="영업인 파트너" />
+                  <span>
+                    <strong>영업인 파트너</strong>
+                  </span>
+                </label>
+              </div>
+            </section>
+
+            <section id="phoneVerificationSection" class="form-section" aria-labelledby="phone-title" hidden>
+              <div class="section-title">
+                <h3 id="phone-title">휴대폰 본인 인증</h3>
+                <span id="phoneBadge" class="status-pill">인증 대기</span>
+              </div>
+              <div class="field-grid">
+                <div class="field full">
+                  <label for="phone">휴대폰 번호</label>
+                  <div class="phone-row">
+                    <input id="phone" type="tel" inputmode="numeric" placeholder="01012345678" autocomplete="tel" required />
+                    <button class="inline-button" type="button" onclick="requestPhoneVerification()">본인 인증 요청</button>
+                  </div>
+                </div>
+                <div class="field full">
+                  <label for="verifyCode">인증번호</label>
+                  <div class="phone-row">
+                    <input id="verifyCode" type="text" inputmode="numeric" placeholder="인증번호 6자리" autocomplete="one-time-code" />
+                    <button class="inline-button secondary" type="button" onclick="confirmPhoneVerification()">인증 확인</button>
+                  </div>
+                  <p id="verifyStatus" class="verify-status">휴대폰 번호 입력 후 본인 인증을 요청해주세요.</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="socialSignupSection" class="form-section" aria-label="소셜 계정 가입">
+              <div class="social-grid">
+                <button class="social-button naver" type="button" onclick="connectSocial('네이버')">
+                  <span class="social-mark">N</span>
+                  네이버
+                </button>
+                <button class="social-button kakao" type="button" onclick="connectSocial('카카오')">
+                  <span class="social-mark">K</span>
+                  카카오
+                </button>
+                <button class="social-button google" type="button" onclick="connectSocial('구글')">
+                  <span class="social-mark">G</span>
+                  구글
+                </button>
+              </div>
+            </section>
+
+            <div id="manualSignupEntry" class="manual-signup-entry">
+              <button id="manualSignupToggle" class="manual-signup-button" type="button" aria-expanded="false" aria-controls="manualSignupPanel" onclick="showManualSignup()">일반 회원가입</button>
+            </div>
+
+            <div id="manualSignupPanel" class="manual-signup-panel" hidden>
+            <section class="form-section" aria-labelledby="profile-title">
+              <div class="section-title">
+                <h3 id="profile-title">기본 정보</h3>
+                <span class="status-pill">필수 입력</span>
+              </div>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="managerName">담당자명</label>
+                  <input id="managerName" type="text" placeholder="홍길동" autocomplete="name" required />
+                </div>
+                <div class="field">
+                  <label for="email">이메일</label>
+                  <input id="email" type="email" placeholder="company@example.com" autocomplete="email" required />
+                </div>
+                <div class="field">
+                  <label for="companyName">기업명</label>
+                  <input id="companyName" type="text" placeholder="더이로운기업" autocomplete="organization" required />
+                </div>
+                <div class="field">
+                  <label for="businessType">기업 유형</label>
+                  <select id="businessType" required>
+                    <option value="">선택</option>
+                    <option>예비창업</option>
+                    <option>초기창업 1~3년</option>
+                    <option>도약기업 3~7년</option>
+                    <option>7년 이상 성장기업</option>
+                    <option>영업인 파트너</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="password">비밀번호</label>
+                  <input id="password" type="password" placeholder="8자 이상" autocomplete="new-password" minlength="8" required />
+                </div>
+                <div class="field">
+                  <label for="passwordConfirm">비밀번호 확인</label>
+                  <input id="passwordConfirm" type="password" placeholder="비밀번호 재입력" autocomplete="new-password" minlength="8" required />
+                </div>
+              </div>
+            </section>
+
+            <section class="form-section" aria-labelledby="terms-title">
+              <div class="section-title">
+                <h3 id="terms-title">약관 동의</h3>
+                <span class="status-pill">필수</span>
+              </div>
+              <div class="agreement-list">
+                <label>
+                  <input id="agreeService" type="checkbox" required />
+                  <span>서비스 이용약관에 동의합니다.</span>
+                </label>
+                <label>
+                  <input id="agreePrivacy" type="checkbox" required />
+                  <span>개인정보 수집 및 이용에 동의합니다.</span>
+                </label>
+                <label>
+                  <input id="agreeMarketing" type="checkbox" />
+                  <span>공고 매칭 및 상담 안내 수신에 동의합니다.</span>
+                </label>
+              </div>
+            </section>
+
+            <div class="submit-row">
+              <button class="submit-button" type="submit">회원가입 완료</button>
+              <p class="form-note">가입 완료 후 관리자 승인 또는 실제 시스템 연결 상태에 따라 로그인 권한이 부여됩니다.</p>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 더이로운기업 · 스마트 매칭 회원가입</div>
+  </footer>
+
+  <script>
+    let phoneVerified = false;
+    let verificationTimer = null;
+    let remainingSeconds = 0;
+
+    function formatTime(totalSeconds) {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = String(totalSeconds % 60).padStart(2, "0");
+      return minutes + ":" + seconds;
+    }
+
+    function setVerificationStatus(message, type) {
+      const status = document.getElementById("verifyStatus");
+      status.textContent = message;
+      status.className = "verify-status" + (type ? " " + type : "");
+    }
+
+    function setPhoneBadge(label, verified) {
+      const badge = document.getElementById("phoneBadge");
+      badge.textContent = label;
+      badge.classList.toggle("is-active", verified);
+    }
+
+    function selectedRole() {
+      return document.querySelector("input[name='role']:checked").value;
+    }
+
+    function isPartnerSignup() {
+      return selectedRole() === "영업인 파트너";
+    }
+
+    function resetManualSignup() {
+      const panel = document.getElementById("manualSignupPanel");
+      const toggle = document.getElementById("manualSignupToggle");
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.textContent = "일반 회원가입";
+    }
+
+    function updateSignupFlow() {
+      const partner = isPartnerSignup();
+      const phoneSection = document.getElementById("phoneVerificationSection");
+      const socialSection = document.getElementById("socialSignupSection");
+      const manualEntry = document.getElementById("manualSignupEntry");
+      const manualPanel = document.getElementById("manualSignupPanel");
+
+      if (partner) {
+        phoneSection.hidden = false;
+        socialSection.hidden = !phoneVerified;
+        manualEntry.hidden = !phoneVerified;
+        if (!phoneVerified) {
+          resetManualSignup();
+          setVerificationStatus("영업인 파트너는 휴대폰 본인 인증 후 가입 방식을 선택할 수 있습니다.", "");
+        }
+        return;
+      }
+
+      socialSection.hidden = false;
+      manualEntry.hidden = false;
+      if (manualPanel.hidden) {
+        phoneSection.hidden = true;
+      }
+    }
+
+    function requestPhoneVerification() {
+      const phone = document.getElementById("phone").value.replace(/\D/g, "");
+      if (phone.length < 10) {
+        setVerificationStatus("휴대폰 번호를 다시 확인해주세요.", "warning");
+        return;
+      }
+
+      phoneVerified = false;
+      updateSignupFlow();
+      setPhoneBadge("인증 진행", false);
+      remainingSeconds = 180;
+      clearInterval(verificationTimer);
+      setVerificationStatus("인증번호를 전송했습니다. 남은 시간 " + formatTime(remainingSeconds), "");
+      verificationTimer = setInterval(function () {
+        remainingSeconds -= 1;
+        if (remainingSeconds <= 0) {
+          clearInterval(verificationTimer);
+          setVerificationStatus("인증 시간이 만료되었습니다. 다시 요청해주세요.", "warning");
+          setPhoneBadge("인증 대기", false);
+          return;
+        }
+        setVerificationStatus("인증번호를 입력해주세요. 남은 시간 " + formatTime(remainingSeconds), "");
+      }, 1000);
+    }
+
+    function confirmPhoneVerification() {
+      const code = document.getElementById("verifyCode").value.trim();
+      if (code.length < 4) {
+        setVerificationStatus("인증번호를 입력해주세요.", "warning");
+        return;
+      }
+
+      clearInterval(verificationTimer);
+      phoneVerified = true;
+      setPhoneBadge("본인 인증 완료", true);
+      setVerificationStatus("휴대폰 본인 인증이 완료되었습니다.", "success");
+      updateSignupFlow();
+    }
+
+    function connectSocial(provider) {
+      if (isPartnerSignup() && !phoneVerified) {
+        document.getElementById("phoneVerificationSection").hidden = false;
+        setVerificationStatus("영업인 파트너는 휴대폰 본인 인증 후 소셜 로그인이 가능합니다.", "warning");
+        document.getElementById("phone").focus();
+        return;
+      }
+
+      alert(provider + " 소셜 로그인은 실제 OAuth 키 연결 후 활성화됩니다.");
+    }
+
+    function showManualSignup() {
+      const panel = document.getElementById("manualSignupPanel");
+      const toggle = document.getElementById("manualSignupToggle");
+      const phoneSection = document.getElementById("phoneVerificationSection");
+
+      if (isPartnerSignup() && !phoneVerified) {
+        phoneSection.hidden = false;
+        setVerificationStatus("영업인 파트너는 휴대폰 본인 인증 후 일반 회원가입을 진행할 수 있습니다.", "warning");
+        document.getElementById("phone").focus();
+        return;
+      }
+
+      phoneSection.hidden = false;
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.textContent = "일반 회원가입 정보 입력";
+      document.getElementById(phoneVerified ? "managerName" : "phone").focus();
+    }
+
+    function submitSignup(event) {
+      event.preventDefault();
+
+      if (document.getElementById("manualSignupPanel").hidden) {
+        showManualSignup();
+        return;
+      }
+
+      if (!phoneVerified) {
+        setVerificationStatus("회원가입 전 휴대폰 본인 인증을 완료해주세요.", "warning");
+        document.getElementById("phone").focus();
+        return;
+      }
+
+      const password = document.getElementById("password").value;
+      const passwordConfirm = document.getElementById("passwordConfirm").value;
+      if (password !== passwordConfirm) {
+        alert("비밀번호가 일치하지 않습니다.");
+        document.getElementById("passwordConfirm").focus();
+        return;
+      }
+
+      if (!document.getElementById("agreeService").checked || !document.getElementById("agreePrivacy").checked) {
+        alert("필수 약관에 동의해주세요.");
+        return;
+      }
+
+      const role = document.querySelector("input[name='role']:checked").value;
+      alert(role + " 회원가입 정보가 준비되었습니다. 실제 가입 API 연결 후 저장됩니다.");
+    }
+
+    document.querySelectorAll("input[name='role']").forEach(function (input) {
+      input.addEventListener("change", function () {
+        phoneVerified = false;
+        clearInterval(verificationTimer);
+        setPhoneBadge("인증 대기", false);
+        setVerificationStatus("휴대폰 번호 입력 후 본인 인증을 요청해주세요.", "");
+        resetManualSignup();
+        updateSignupFlow();
+      });
+    });
+
+    updateSignupFlow();
+  </script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
+</body>
+</html>

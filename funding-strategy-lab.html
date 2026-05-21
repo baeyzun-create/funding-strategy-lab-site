@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>기업 성장자금 확보 컨설팅 | 더이로운기업</title>
   <meta name="description" content="정부지원사업, R&D 과제, 정책자금, 투자유치까지 기업 분석 기반 자금 확보 전략과 사업계획서 작성, 접수 관리를 지원합니다." />
   <style>
@@ -584,6 +584,8 @@
 
     .services-actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       justify-content: center;
       margin-top: 32px;
     }
@@ -865,20 +867,32 @@
     }
 
     .footer {
-      background: var(--ink);
-      color: #c6c6c6;
-      padding: 56px 0;
+      background: #082438;
+      color: #f4f7fb;
+      padding: 34px 0;
       font-size: 14px;
     }
 
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
+      display: grid;
+      gap: 13px;
     }
 
     .footer strong {
       color: #fff;
+    }
+
+    .footer-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      align-items: center;
+      line-height: 1.55;
+    }
+
+    .business-check {
+      color: #fff;
+      white-space: nowrap;
     }
 
     .floating-cta {
@@ -1060,6 +1074,7 @@
     <div class="container utility-inner">
       <span>더이로운기업 성장자금 컨설팅</span>
       <div class="utility-links">
+        <a href="./funding-signup.html">회원가입</a>
         <a href="./funding-admin-login.html">관리자 로그인</a>
       </div>
     </div>
@@ -1190,6 +1205,7 @@
         </div>
         <div class="services-actions">
           <a href="./funding-smart-matching-login.html" class="btn btn-primary">스마트 매칭 바로가기</a>
+          <a href="./funding-signup.html" class="btn btn-secondary">회원가입</a>
         </div>
       </div>
     </section>
@@ -1366,8 +1382,23 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p><strong>더이로운기업</strong> · 기업 성장자금 확보 컨설팅</p>
-      <p>© 2026. All rights reserved.</p>
+      <p class="footer-line">
+        <span><strong>상호명</strong> 주식회사 더이로운기업</span>
+        <span><strong>대표자명</strong> 배용준</span>
+      </p>
+      <p class="footer-line">
+        <span><strong>사업장 주소</strong> 서울특별시 강남구 테헤란로82길 15, 1613호 (대치동)</span>
+      </p>
+      <p class="footer-line">
+        <span><strong>대표전화</strong> 0507-1330-6770</span>
+        <span><strong>문의 이메일</strong> jey@thebenefitcompany.co.kr</span>
+      </p>
+      <p class="footer-line">
+        <span><strong>사업자등록번호</strong> 266-81-03528 <span class="business-check">[사업자정보확인]</span></span>
+      </p>
+      <p class="footer-line">
+        <span><strong>통신판매업 신고번호</strong> 제2024-서울강남-02549호</span>
+      </p>
     </div>
   </footer>
 
@@ -1424,5 +1455,6 @@
       form.reset();
     }
   </script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>

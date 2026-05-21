@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>스마트 매칭 로그인 | 더이로운기업</title>
   <meta name="description" content="기업과 영업인을 위한 스마트 매칭 시스템 로그인 화면입니다." />
   <style>
@@ -77,6 +77,15 @@
     .nav-link {
       color: var(--ink-muted);
       font-size: 14px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--ink-muted);
+      font-size: 14px;
+      white-space: nowrap;
     }
 
     .login-hero {
@@ -252,6 +261,13 @@
       font-size: 13px;
     }
 
+    .signup-link {
+      margin-top: 14px;
+      color: #d9ddff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
     .footer {
       padding: 28px 0;
       color: #6f6f6f;
@@ -282,6 +298,12 @@
         padding: 16px 0;
       }
 
+      .nav-actions {
+        flex-wrap: wrap;
+        gap: 12px;
+        white-space: normal;
+      }
+
       .login-hero {
         padding: 52px 0 72px;
       }
@@ -302,7 +324,10 @@
       <a href="./funding-strategy-lab.html" class="brand" aria-label="메인으로 이동">
         <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
       </a>
-      <a href="./funding-strategy-lab.html#services" class="nav-link">스마트 매칭으로 돌아가기</a>
+      <div class="nav-actions">
+        <a href="./funding-signup.html">회원가입</a>
+        <a href="./funding-strategy-lab.html#services" class="nav-link">스마트 매칭으로 돌아가기</a>
+      </div>
     </div>
   </header>
 
@@ -338,6 +363,7 @@
               <a href="#" onclick="showPending(event, '기업 비밀번호 찾기')">비밀번호 찾기</a>
             </div>
             <button class="login-button" type="submit">기업 로그인</button>
+            <a href="./funding-signup.html" class="signup-link">기업회원 가입하기</a>
             <div class="helper">기업용 실제 시스템 URL이 준비되면 이 버튼에 연결하면 됩니다.</div>
           </form>
 
@@ -361,6 +387,7 @@
               <a href="#" onclick="showPending(event, '영업인 비밀번호 찾기')">비밀번호 찾기</a>
             </div>
             <button class="login-button" type="submit">영업인 로그인</button>
+            <a href="./funding-signup.html" class="signup-link">영업인 파트너 가입하기</a>
             <div class="helper">영업인용 실제 시스템 URL이 준비되면 이 버튼에 연결하면 됩니다.</div>
           </form>
         </div>
@@ -383,5 +410,6 @@
       alert(label + " 기능은 추후 연결됩니다.");
     }
   </script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>
