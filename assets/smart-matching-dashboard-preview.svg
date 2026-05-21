@@ -1,0 +1,140 @@
+<svg width="920" height="680" viewBox="0 0 920 680" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Smart Matching Index dashboard preview</title>
+  <desc id="desc">기업별 정부지원사업 매칭 현황과 추천 공고를 보여주는 스마트 매칭 대시보드 목업</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="920" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eef5ff"/>
+      <stop offset="0.58" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#edf4ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0f62fe"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20" y="-18" width="960" height="736" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#003770" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#003770" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .font { font-family: "IBM Plex Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .title { font-size: 28px; font-weight: 700; fill: #0f172a; }
+      .body { font-size: 14px; font-weight: 500; fill: #475569; }
+      .small { font-size: 12px; font-weight: 600; fill: #64748b; }
+      .label { font-size: 11px; font-weight: 700; letter-spacing: .02em; fill: #94a3b8; }
+      .chip { font-size: 11px; font-weight: 700; fill: #14532d; }
+      .white { fill: #fff; }
+      .blueText { fill: #0f62fe; }
+    </style>
+  </defs>
+
+  <rect width="920" height="680" rx="28" fill="#05070c"/>
+  <g filter="url(#shadow)">
+    <rect x="28" y="28" width="864" height="624" rx="22" fill="url(#bg)"/>
+  </g>
+
+  <rect x="28" y="28" width="864" height="54" rx="22" fill="#ffffff"/>
+  <rect x="28" y="60" width="864" height="22" fill="#ffffff"/>
+  <rect x="54" y="43" width="28" height="28" rx="8" fill="url(#blue)"/>
+  <path d="M63 58.8h4.4l2.1-7.8 4.8 16 2.2-8.2h4.9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="96" y="55" class="font title" font-size="17" font-weight="700" fill="#111827">Smart Matching Index</text>
+  <text x="96" y="72" class="font small">Business support matching</text>
+  <rect x="724" y="44" width="110" height="24" rx="12" fill="#eff6ff"/>
+  <text x="744" y="61" class="font small blueText">testing mode</text>
+  <circle cx="858" cy="56" r="18" fill="#dbeafe"/>
+  <text x="852" y="62" class="font" font-size="14" font-weight="700" fill="#2563eb">T</text>
+
+  <rect x="28" y="82" width="166" height="570" fill="#f8fafc"/>
+  <g class="font">
+    <text x="54" y="124" class="body" fill="#334155">Dashboard</text>
+    <line x1="44" y1="146" x2="176" y2="146" stroke="#e2e8f0"/>
+    <text x="54" y="186" class="label">BROWSE</text>
+    <text x="54" y="220" class="body" fill="#334155">Browse Programs</text>
+    <line x1="44" y1="244" x2="176" y2="244" stroke="#e2e8f0"/>
+    <text x="54" y="284" class="label">MY COMPANIES</text>
+  </g>
+  <g class="font">
+    <rect x="44" y="304" width="132" height="34" rx="9" fill="#eaf2ff"/>
+    <text x="58" y="326" class="body" fill="#1d4ed8">Test Company</text>
+    <circle cx="166" cy="321" r="4" fill="#22c55e"/>
+    <text x="58" y="366" class="body">(주)무진</text>
+    <text x="58" y="406" class="body">원컨덕터</text>
+    <circle cx="166" cy="401" r="4" fill="#22c55e"/>
+    <text x="58" y="446" class="body">비플컨설팅</text>
+    <text x="58" y="486" class="body">우리엘소프트</text>
+    <text x="58" y="526" class="body">혜성식품</text>
+    <line x1="44" y1="560" x2="176" y2="560" stroke="#e2e8f0"/>
+    <text x="58" y="596" class="body" fill="#334155">+ Add Company</text>
+  </g>
+
+  <text x="224" y="134" class="font title">My Companies</text>
+  <rect x="746" y="105" width="118" height="38" rx="10" fill="url(#blue)"/>
+  <text x="772" y="130" class="font" font-size="14" font-weight="700" fill="#fff">+ Add Company</text>
+
+  <g class="font">
+    <rect x="224" y="170" width="204" height="156" rx="12" fill="#fff" stroke="#dbe3ef"/>
+    <text x="244" y="202" font-size="18" font-weight="700" fill="#0f172a">Test Company</text>
+    <rect x="344" y="186" width="62" height="24" rx="12" fill="#dcfce7"/>
+    <text x="358" y="202" class="chip">Matched</text>
+    <rect x="244" y="220" width="94" height="24" rx="12" fill="#eff6ff"/>
+    <text x="256" y="237" class="small" fill="#1d4ed8">Manufacturing</text>
+    <text x="244" y="266" class="body">경기도 시흥시 멘티브</text>
+    <text x="244" y="292" class="small">Founded 2000 · 33 employees</text>
+    <rect x="244" y="292" width="54" height="28" rx="7" fill="#0f62fe"/>
+    <text x="260" y="311" font-size="13" font-weight="700" fill="#fff">View</text>
+
+    <rect x="450" y="170" width="204" height="156" rx="12" fill="#fff" stroke="#dbe3ef"/>
+    <text x="470" y="202" font-size="18" font-weight="700" fill="#0f172a">원컨덕터</text>
+    <rect x="572" y="186" width="62" height="24" rx="12" fill="#dcfce7"/>
+    <text x="586" y="202" class="chip">Matched</text>
+    <rect x="470" y="220" width="94" height="24" rx="12" fill="#eff6ff"/>
+    <text x="482" y="237" class="small" fill="#1d4ed8">Manufacturing</text>
+    <text x="470" y="266" class="body">WON CONDUCTOR</text>
+    <text x="470" y="292" class="small">Last matched 2026. 5. 18.</text>
+    <rect x="470" y="292" width="54" height="28" rx="7" fill="#0f62fe"/>
+    <text x="486" y="311" font-size="13" font-weight="700" fill="#fff">View</text>
+
+    <rect x="676" y="170" width="188" height="156" rx="12" fill="#fff" stroke="#dbe3ef"/>
+    <text x="696" y="202" font-size="18" font-weight="700" fill="#0f172a">비플컨설팅</text>
+    <rect x="790" y="186" width="54" height="24" rx="12" fill="#fef9c3"/>
+    <text x="802" y="202" font-size="11" font-weight="700" fill="#854d0e">Running</text>
+    <rect x="696" y="220" width="78" height="24" rx="12" fill="#eff6ff"/>
+    <text x="708" y="237" class="small" fill="#1d4ed8">Technology</text>
+    <text x="696" y="266" class="body">서울시 금천구</text>
+    <text x="696" y="292" class="small">Founded 2012</text>
+    <rect x="696" y="292" width="54" height="28" rx="7" fill="#0f62fe"/>
+    <text x="712" y="311" font-size="13" font-weight="700" fill="#fff">View</text>
+  </g>
+
+  <rect x="224" y="354" width="640" height="254" rx="16" fill="#0f172a"/>
+  <text x="252" y="396" class="font" font-size="26" font-weight="700" fill="#fff">AI Matching Pipeline</text>
+  <text x="252" y="422" class="font" font-size="14" font-weight="500" fill="#94a3b8">기업 데이터와 지원사업 공고를 분석해 적합도를 계산합니다.</text>
+
+  <g class="font">
+    <rect x="252" y="454" width="182" height="104" rx="12" fill="#172033" stroke="#29364f"/>
+    <text x="272" y="484" font-size="14" font-weight="700" fill="#fff">기업 정보 추출</text>
+    <text x="272" y="514" class="small">업종 · 주소 · 고용 · 매출</text>
+    <rect x="272" y="532" width="112" height="8" rx="4" fill="#22c55e"/>
+
+    <rect x="458" y="454" width="182" height="104" rx="12" fill="#172033" stroke="#29364f"/>
+    <text x="478" y="484" font-size="14" font-weight="700" fill="#fff">공고 자동 매칭</text>
+    <text x="478" y="514" class="small">지원자격 · 지역 · 가점</text>
+    <rect x="478" y="532" width="134" height="8" rx="4" fill="#3b82f6"/>
+
+    <rect x="664" y="454" width="172" height="104" rx="12" fill="#172033" stroke="#29364f"/>
+    <text x="684" y="484" font-size="14" font-weight="700" fill="#fff">로드맵 생성</text>
+    <text x="684" y="514" class="small">Now · Next · Risk</text>
+    <rect x="684" y="532" width="98" height="8" rx="4" fill="#a78bfa"/>
+  </g>
+
+  <g class="font">
+    <rect x="252" y="578" width="128" height="46" rx="12" fill="#172033"/>
+    <text x="270" y="606" font-size="20" font-weight="800" fill="#fff">350</text>
+    <text x="318" y="605" class="small">공고 수집</text>
+    <rect x="394" y="578" width="128" height="46" rx="12" fill="#172033"/>
+    <text x="412" y="606" font-size="20" font-weight="800" fill="#fff">65</text>
+    <text x="452" y="605" class="small">매칭 기업</text>
+    <rect x="536" y="578" width="128" height="46" rx="12" fill="#172033"/>
+    <text x="554" y="606" font-size="20" font-weight="800" fill="#fff">95%</text>
+    <text x="608" y="605" class="small">매칭율</text>
+  </g>
+</svg>

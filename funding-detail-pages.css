@@ -66,23 +66,13 @@ a {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--navy);
-  white-space: nowrap;
+  min-width: 0;
 }
 
-.logo-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--blue), var(--green));
-  display: grid;
-  place-items: center;
-  color: var(--white);
-  font-size: 17px;
-  font-weight: 900;
+.brand-logo {
+  width: clamp(142px, 16vw, 190px);
+  height: auto;
+  display: block;
 }
 
 .nav-menu {

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>관리자 대시보드 | 더이로운기업</title>
+  <meta name="description" content="더이로운기업 문의 접수, 자료 첨부, AI 로드맵, 컨시어지 배정 현황을 관리하는 관리자 대시보드입니다." />
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --ink: #161616;
+      --muted: #525252;
+      --hairline: #d9d9d9;
+      --blue: #0f62fe;
+      --green: #16a34a;
+      --orange: #ff4f00;
+      --dark: #010102;
+      --surface: #18191d;
+      --surface-2: #202228;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-logo {
+      width: clamp(142px, 16vw, 190px);
+      height: auto;
+      display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .admin-role {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 700;
+    }
+
+    .dashboard {
+      padding: 54px 0 86px;
+    }
+
+    .dashboard-head {
+      display: grid;
+      grid-template-columns: 0.36fr 0.64fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .label {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 14px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--hairline);
+      border-left: 1px solid var(--hairline);
+      margin-bottom: 28px;
+    }
+
+    .metric {
+      padding: 24px;
+      background: var(--white);
+      border-right: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .metric strong {
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 600;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .panel-head h2 {
+      font-size: 24px;
+    }
+
+    .panel-head p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--hairline);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge.green {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge.orange {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .dark-panel {
+      padding: 24px;
+      background: var(--dark);
+      border-radius: 16px;
+      color: var(--white);
+    }
+
+    .dark-panel h2 {
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .pipeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .pipeline-row {
+      display: grid;
+      grid-template-columns: 30px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      background: var(--surface);
+      border: 1px solid #2f323c;
+      border-radius: 12px;
+    }
+
+    .pipeline-index {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--surface-2);
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .pipeline-row strong {
+      font-size: 14px;
+    }
+
+    .pipeline-row span:last-child {
+      color: #a8adb8;
+      font-size: 12px;
+    }
+
+    .notice-panel {
+      padding: 22px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+    }
+
+    .notice-panel h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .notice-panel p {
+      color: #7c2d12;
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--hairline);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .dashboard-head,
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        min-width: 720px;
+      }
+
+      .panel {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="./funding-strategy-lab.html" aria-label="메인으로 이동">
+        <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
+      </a>
+      <div class="nav-actions">
+        <span class="admin-role" id="adminRole">총괄 관리자</span>
+        <a href="./funding-admin-login.html" onclick="clearAdminSession()">로그아웃</a>
+        <a href="./funding-strategy-lab.html">사이트로 돌아가기</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <div class="container">
+      <div class="dashboard-head">
+        <span class="label">Admin Dashboard · 총괄 관리자</span>
+        <div>
+          <h1>문의 접수부터 로드맵 발송까지 관리합니다.</h1>
+          <p class="lead">자료첨부 필수 문의를 기준으로 AI 분석, 담당 컨시어지 검토, 견적 발송 상태를 추적합니다.</p>
+        </div>
+      </div>
+
+      <section class="metrics" aria-label="관리자 주요 지표">
+        <article class="metric">
+          <span>신규 문의</span>
+          <strong>12</strong>
+        </article>
+        <article class="metric">
+          <span>자료첨부 완료</span>
+          <strong>9</strong>
+        </article>
+        <article class="metric">
+          <span>AI 로드맵 생성</span>
+          <strong>7</strong>
+        </article>
+        <article class="metric">
+          <span>컨시어지 배정</span>
+          <strong>4</strong>
+        </article>
+      </section>
+
+      <div class="admin-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>문의 게시판</h2>
+              <p>자료첨부 상태와 로드맵 진행 단계를 확인합니다.</p>
+            </div>
+            <span class="badge green">Live</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>기업</th>
+                <th>요청 항목</th>
+                <th>자료</th>
+                <th>상태</th>
+                <th>담당</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>원컨덕터</strong>제조 · R&D</td>
+                <td>10억 이하 자금 로드맵</td>
+                <td><span class="badge green">첨부 완료</span></td>
+                <td>AI 로드맵 생성</td>
+                <td>김 컨시어지</td>
+              </tr>
+              <tr>
+                <td><strong>비플컨설팅</strong>기술서비스</td>
+                <td>사업계획서 작성 견적</td>
+                <td><span class="badge green">첨부 완료</span></td>
+                <td>컨시어지 검토</td>
+                <td>박 컨시어지</td>
+              </tr>
+              <tr>
+                <td><strong>혜성식품</strong>식품 제조</td>
+                <td>정부지원사업·R&D 매칭</td>
+                <td><span class="badge orange">보완 요청</span></td>
+                <td>자료 확인</td>
+                <td>미배정</td>
+              </tr>
+              <tr>
+                <td><strong>우리엘소프트</strong>소프트웨어</td>
+                <td>정책자금·투자유치 검토</td>
+                <td><span class="badge green">첨부 완료</span></td>
+                <td>견적 발송 대기</td>
+                <td>이 컨시어지</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <aside class="side">
+          <section class="dark-panel">
+            <h2>진행 사이클</h2>
+            <div class="pipeline">
+              <div class="pipeline-row">
+                <span class="pipeline-index">1</span>
+                <strong>문의 접수</strong>
+                <span>12</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">2</span>
+                <strong>자료 확인</strong>
+                <span>9</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">3</span>
+                <strong>AI 로드맵 생성</strong>
+                <span>7</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">4</span>
+                <strong>컨시어지 검토</strong>
+                <span>4</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">5</span>
+                <strong>견적 발송</strong>
+                <span>2</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="notice-panel">
+            <h2>누락 방지 규칙</h2>
+            <p>사용자 문의 폼의 자료첨부 필드는 필수로 고정되어 있습니다. 자료가 없으면 관리자 대시보드로 들어오기 전에 제출이 차단됩니다.</p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 더이로운기업 · 관리자 대시보드</div>
+  </footer>
+
+  <script>
+    if (sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
+      window.location.replace("./funding-admin-login.html");
+    }
+
+    document.getElementById("adminRole").textContent = sessionStorage.getItem("fundingAdminRole") || "총괄 관리자";
+
+    function clearAdminSession() {
+      sessionStorage.removeItem("fundingAdminLoggedIn");
+      sessionStorage.removeItem("fundingAdminId");
+      sessionStorage.removeItem("fundingAdminRole");
+    }
+  </script>
+</body>
+</html>

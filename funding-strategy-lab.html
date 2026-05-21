@@ -112,20 +112,13 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0;
+      min-width: 0;
     }
 
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      background: var(--ink);
-      color: #fff;
-      font-weight: 600;
+    .brand-logo {
+      width: clamp(142px, 16vw, 190px);
+      height: auto;
+      display: block;
     }
 
     .nav-menu {
@@ -258,6 +251,12 @@
       padding: 20px;
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
       scroll-margin-top: 96px;
+    }
+
+    .hero-dashboard-image {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
     }
 
     .panel-topbar {
@@ -570,6 +569,12 @@
       margin-top: 32px;
     }
 
+    .strategy-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
     .strategy-section {
       background: var(--surface-1);
     }
@@ -582,6 +587,8 @@
     }
 
     .strategy-card {
+      display: flex;
+      flex-direction: column;
       padding: 24px;
       background: #fff;
       border-right: 1px solid var(--hairline);
@@ -589,14 +596,35 @@
     }
 
     .strategy-card h3 {
+      min-height: 64px;
       font-size: 22px;
       font-weight: 400;
+      line-height: 1.3;
       margin-bottom: 14px;
     }
 
     .strategy-card p {
       color: var(--ink-muted);
       font-size: 15px;
+    }
+
+    .strategy-media {
+      width: 100%;
+      height: 156px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f4f4f4;
+      border: 1px solid var(--hairline);
+      margin-top: auto;
+    }
+
+    .strategy-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .submission-section {
@@ -931,6 +959,15 @@
         font-size: 38px;
       }
 
+      .strategy-card h3 {
+        min-height: 0;
+      }
+
+      .strategy-media {
+        height: 180px;
+        margin-top: 12px;
+      }
+
       section {
         padding: 72px 0;
       }
@@ -964,6 +1001,7 @@
         <a href="#services">서비스</a>
         <a href="#submission">접수관리</a>
         <a href="#contact">상담문의</a>
+        <a href="./funding-admin-login.html">관리자 로그인</a>
       </div>
     </div>
   </div>
@@ -971,13 +1009,12 @@
   <header class="site-header">
     <div class="container nav">
       <a href="#top" class="brand" aria-label="홈으로 이동">
-        <span class="brand-mark">더</span>
-        <span>더이로운기업</span>
+        <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
       </a>
       <nav class="nav-menu" aria-label="주요 메뉴">
         <a href="./funding-strategy-planning.html">로드맵</a>
         <a href="./funding-notice-matching.html">공고 매칭</a>
-        <a href="./funding-proposal-writing.html">시업계획서</a>
+        <a href="./funding-proposal-writing.html">사업계획서</a>
         <a href="./funding-submission-management.html">접수 관리</a>
       </nav>
       <a href="#contact" class="btn btn-primary">상담 신청</a>
@@ -989,7 +1026,7 @@
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">기업 성장자금 확보 컨설팅</span>
-          <h1>기업 <span class="em-growth">성장자금</span>,<br /><span class="em-notice">공고</span>가 아니라 <span class="em-plan">기획</span>에서 시작됩니다.</h1>
+          <h1><span class="em-growth">정부자금 유치</span>,<br /><span class="em-notice">공고 자동화</span>와<br /><span class="em-plan">맞춤형 기획</span>이 시작입니다.</h1>
           <p class="hero-desc">
             정부지원사업, R&D 과제, 정책자금, 투자유치까지 기업의 현재 상황을 분석하고 맞는 자금 전략을 설계합니다.
           </p>
@@ -1000,54 +1037,8 @@
           <p class="hero-note">기업명, 업종, 자금 목적만 남기면 1차 가능성을 검토해드립니다.</p>
         </div>
 
-        <aside id="roadmap" class="product-panel" aria-label="자금전략 제품 UI 미리보기">
-          <div class="panel-topbar">
-            <span class="panel-dot"></span>
-            <span class="panel-dot"></span>
-            <span class="panel-dot"></span>
-            <span class="panel-title">Funding OS</span>
-          </div>
-          <div class="panel-hero">
-            <small>Current diagnosis</small>
-            <h2>우리 기업에 맞는 자금 로드맵은?</h2>
-            <p>TIPS부터 10억 이하 자금 로드맵을 AI 자동화 매칭합니다.</p>
-          </div>
-          <div class="funding-table">
-            <div class="funding-row">
-              <strong>기업 현황 분석</strong>
-              <span class="status active">Ready</span>
-              <span>92</span>
-            </div>
-            <div class="funding-row">
-              <strong>적합 공고 매칭</strong>
-              <span class="status active">Live</span>
-              <span>84</span>
-            </div>
-            <div class="funding-row">
-              <strong>사업계획서 설계</strong>
-              <span class="status">Draft</span>
-              <span>76</span>
-            </div>
-            <div class="funding-row">
-              <strong>접수·발표 관리</strong>
-              <span class="status">Queued</span>
-              <span>68</span>
-            </div>
-          </div>
-          <div class="metric-grid">
-            <div class="metric-card">
-              <strong>04</strong>
-              <span>실행 단계</span>
-            </div>
-            <div class="metric-card">
-              <strong>12M</strong>
-              <span>로드맵 범위</span>
-            </div>
-            <div class="metric-card">
-              <strong>1:1</strong>
-              <span>상담 전환</span>
-            </div>
-          </div>
+        <aside id="roadmap" class="product-panel" aria-label="스마트 매칭 대시보드 미리보기">
+          <img class="hero-dashboard-image" src="./assets/smart-matching-dashboard-preview.svg" alt="Smart Matching Index 기업 매칭 대시보드 이미지" loading="eager" />
         </aside>
       </div>
     </section>
@@ -1147,27 +1138,38 @@
         <div class="section-head">
           <span class="section-label">03. 사업계획서</span>
           <div>
-            <h2>AI가 95% 사업계획서 작성 가능한 시기에 선정 데이터 기반 5% 기획력이 핵심입니다.</h2>
+            <h2>18년 현장 경험과 선정 데이터 기반 기업 특화 기획력이 선정의 핵심입니다.</h2>
             <p>아이템 설명을 나열하지 않고 문제 정의, 차별성, 실행계획, 사업화 성과를 심사 기준에 맞춰 하나의 논리로 연결합니다.</p>
           </div>
         </div>
         <div class="strategy-grid">
           <article class="strategy-card">
-            <h3>평가항목 역산 설계</h3>
-            <p>공고의 평가표와 배점을 먼저 분해하고 기술성, 시장성, 사업성, 수행역량에 맞춰 목차와 핵심 메시지를 정렬합니다.</p>
+            <h3>정부 자금 30억·투자 30억·가맹 120곳</h3>
+            <figure class="strategy-media">
+              <img src="https://img.youtube.com/vi/elfRxjSRUO8/hqdefault.jpg" alt="광고 마케팅 성과 배우 이시영 광고 이미지" loading="lazy" />
+            </figure>
           </article>
           <article class="strategy-card">
-            <h3>문제·해결 논리 구성</h3>
-            <p>고객 문제, 기존 방식의 한계, 우리 솔루션의 차별성을 한 흐름으로 연결해 사업의 필요성과 시급성을 보여줍니다.</p>
+            <h3>누적 성공금액 180억+</h3>
+            <figure class="strategy-media">
+              <img src="https://cdn.imweb.me/thumbnail/20241122/9a41ea285da1b.png" alt="선정금액 성과 이미지" loading="lazy" />
+            </figure>
           </article>
           <article class="strategy-card">
-            <h3>정량 목표와 실행계획</h3>
-            <p>개발 목표, 성능지표, 추진 일정, 예산 사용계획을 숫자와 근거로 제시해 실제 수행 가능성을 높입니다.</p>
+            <h3>200+ 선정 사례 데이터</h3>
+            <figure class="strategy-media">
+              <img src="https://cdn.imweb.me/thumbnail/20241122/bedf556053653.png" alt="자사 선정 사례 리스트 이미지" loading="lazy" />
+            </figure>
           </article>
           <article class="strategy-card">
-            <h3>사업화·성과 전략</h3>
-            <p>매출모델, 판로, 고용, 투자, 후속자금 계획까지 연결해 지원 이후의 성장 가능성과 기대효과를 증명합니다.</p>
+            <h3>개발과제 최대 200억 규모 진행</h3>
+            <figure class="strategy-media">
+              <img src="https://cdn.imweb.me/thumbnail/20241122/4f9d8f18966c4.png" alt="기술 개발 성과 이미지" loading="lazy" />
+            </figure>
           </article>
+        </div>
+        <div class="strategy-actions">
+          <a href="./funding-proposal-writing.html" class="btn btn-primary">선정 사업계획서 바로가기</a>
         </div>
       </div>
     </section>
@@ -1177,7 +1179,7 @@
         <div class="section-head">
           <span class="section-label">04 접수 관리</span>
           <div>
-            <h2>마감 전 리스크를 제품 UI처럼 추적합니다.</h2>
+            <h2>모든 리스크를 제품 제조처럼 컨시어지가 추적, 관리합니다.</h2>
             <p>사업계획서 작성 이후에도 서류, 온라인 입력, 일정, 발표 준비를 하나의 사이클로 관리합니다.</p>
           </div>
         </div>
@@ -1236,7 +1238,7 @@
         <div class="section-head">
           <span class="section-label">05 문의 게시판</span>
           <div>
-            <h2>기본 정보와 최소한의 기업정보만 첨부하면 로드맵을 보내드립니다.</h2>
+            <h2>최소한의 기업 정보만으로 AI와 담당 컨시어지가 로드맵을 보내드립니다.</h2>
             <p>기업 소개자료, 재무·매출 자료, 기존 사업계획서, 준비 중인 공고 정보를 남기면 검토 후 자금 로드맵과 예상 견적을 안내합니다.</p>
           </div>
         </div>
@@ -1286,8 +1288,8 @@
                 </select>
               </div>
               <div class="field full">
-                <label for="attachments">정성·정량 자료 첨부</label>
-                <input id="attachments" name="attachments" type="file" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.zip" />
+                <label for="attachments">자료첨부(필수)</label>
+                <input id="attachments" name="attachments" type="file" multiple required accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.zip" />
               </div>
               <div class="field full">
                 <label for="message">문의 내용</label>
@@ -1320,6 +1322,12 @@
       const business = form.business.value;
       const message = form.message.value.trim();
       const attachments = Array.from(form.attachments.files).map((file) => file.name);
+
+      if (!attachments.length) {
+        alert("로드맵 검토를 위해 자료 첨부는 필수입니다.\n\n기업 소개서, 매출자료, 기존 사업계획서, 준비 중인 공고 자료 중 하나 이상을 첨부해주세요.");
+        form.attachments.focus();
+        return;
+      }
 
       const text = [
         "[로드맵·견적 문의 정보]",
