@@ -107,6 +107,7 @@
       grid-template-columns: auto 1fr auto;
       gap: 32px;
       align-items: center;
+      position: relative;
     }
 
     .brand {
@@ -131,6 +132,24 @@
 
     .nav-menu a:hover {
       color: var(--ibm-blue);
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid var(--hairline);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .mobile-nav-cta {
+      display: none;
     }
 
     .btn {
@@ -905,10 +924,53 @@
 
       .nav {
         grid-template-columns: 1fr auto;
+        min-height: 62px;
+        gap: 12px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .site-header .nav > .btn {
+        display: none;
       }
 
       .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 110;
         display: none;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid var(--hairline);
+        border-top: 0;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-menu.is-open {
+        display: flex;
+      }
+
+      .nav-menu a {
+        display: flex;
+        align-items: center;
+        min-height: 52px;
+        padding: 0 18px;
+        border-top: 1px solid var(--hairline);
+        color: var(--ink);
+        font-size: 16px;
+      }
+
+      .mobile-nav-cta {
+        display: flex !important;
+        justify-content: center;
+        background: var(--ibm-blue);
+        color: #fff !important;
+        font-weight: 500;
       }
 
       .hero {
@@ -1008,11 +1070,13 @@
       <a href="#top" class="brand" aria-label="홈으로 이동">
         <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
       </a>
-      <nav class="nav-menu" aria-label="주요 메뉴">
+      <button class="menu-toggle" type="button" aria-label="주요 메뉴 열기" aria-expanded="false" aria-controls="mainNavMenu">메뉴</button>
+      <nav class="nav-menu" id="mainNavMenu" aria-label="주요 메뉴">
         <a href="./funding-strategy-planning.html">로드맵</a>
         <a href="./funding-notice-matching.html">공고 매칭</a>
         <a href="./funding-proposal-writing.html">사업계획서</a>
         <a href="./funding-submission-management.html">접수 관리</a>
+        <a href="#contact" class="mobile-nav-cta">상담 신청</a>
       </nav>
       <a href="#contact" class="btn btn-primary">상담 신청</a>
     </div>
@@ -1141,7 +1205,7 @@
         </div>
         <div class="strategy-grid">
           <article class="strategy-card">
-            <h3>정부 자금 30억·투자 30억·가맹 120곳</h3>
+            <h3>정부 자금 30억·투자 30억·가맹 120곳 경험</h3>
             <figure class="strategy-media">
               <img src="https://img.youtube.com/vi/elfRxjSRUO8/hqdefault.jpg" alt="광고 마케팅 성과 배우 이시영 광고 이미지" loading="lazy" />
             </figure>
@@ -1310,6 +1374,25 @@
   <a href="#contact" class="floating-cta">무료 자금진단 신청</a>
 
   <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNavMenu = document.getElementById("mainNavMenu");
+
+    if (menuToggle && mainNavMenu) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mainNavMenu.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "주요 메뉴 닫기" : "주요 메뉴 열기");
+      });
+
+      mainNavMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mainNavMenu.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "주요 메뉴 열기");
+        });
+      });
+    }
+
     function handleSubmit(event) {
       event.preventDefault();
       const form = event.target;
