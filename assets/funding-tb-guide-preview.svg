@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">T·B 요소 5대 기준 매핑</title>
+  <desc id="desc">기술성 T와 사업성 B 요소를 목적, 설명, 얻는 효과로 나누어 정리한 사업계획서 작성 가이드</desc>
+  <defs>
+    <linearGradient id="header" x1="54" y1="0" x2="1146" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#123d66"/>
+      <stop offset="0.58" stop-color="#1d4f86"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <filter id="shadow" x="-6%" y="-6%" width="112%" height="118%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .eyebrow { font-size: 14px; font-weight: 900; letter-spacing: 0; }
+      .title { font-size: 34px; font-weight: 900; letter-spacing: 0; }
+      .sub { font-size: 17px; font-weight: 750; letter-spacing: 0; }
+      .head { font-size: 17px; font-weight: 900; letter-spacing: 0; }
+      .purpose { font-size: 18px; font-weight: 900; letter-spacing: 0; }
+      .text { font-size: 15px; font-weight: 760; letter-spacing: 0; }
+      .effect { font-size: 15px; font-weight: 860; letter-spacing: 0; }
+      .tiny { font-size: 13px; font-weight: 820; letter-spacing: 0; }
+      .white { fill: #ffffff; }
+      .navy { fill: #0f172a; }
+      .muted { fill: #64748b; }
+      .blue { fill: #2563eb; }
+      .line { stroke: #dbe7f5; stroke-width: 1.4; }
+      .vline { stroke: #c7d2fe; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="700" rx="28" fill="#ffffff"/>
+  <rect x="34" y="30" width="1132" height="640" rx="24" fill="#f8fbff" stroke="#e2e8f0"/>
+
+  <g class="font">
+    <rect x="64" y="58" width="10" height="62" rx="5" fill="#2563eb"/>
+    <text x="92" y="82" class="eyebrow blue">T-B WRITING GUIDE</text>
+    <text x="92" y="116" class="title navy">T·B 요소 5대 기준 매핑</text>
+    <text x="430" y="116" class="sub muted">기술성(T)과 사업성(B)을 한 장의 평가 논리로 연결합니다.</text>
+
+    <g transform="translate(64 148)" filter="url(#shadow)">
+      <rect x="0" y="0" width="1072" height="470" rx="18" fill="#ffffff"/>
+      <rect x="0" y="0" width="1072" height="56" rx="18" fill="url(#header)"/>
+      <path d="M0 38 Q0 0 18 0 H1054 Q1072 0 1072 18 V56 H0 Z" fill="url(#header)"/>
+
+      <line x1="284" y1="0" x2="284" y2="470" class="vline"/>
+      <line x1="802" y1="0" x2="802" y2="470" class="vline"/>
+
+      <text x="28" y="35" class="head white">목적</text>
+      <text x="312" y="35" class="head white">설명</text>
+      <text x="830" y="35" class="head white">얻는 효과</text>
+
+      <rect x="0" y="56" width="1072" height="82" fill="#f1f7ff"/>
+      <rect x="0" y="220" width="1072" height="82" fill="#f8fbff"/>
+      <rect x="0" y="384" width="1072" height="86" fill="#f8fbff"/>
+      <line x1="0" y1="138" x2="1072" y2="138" class="line"/>
+      <line x1="0" y1="220" x2="1072" y2="220" class="line"/>
+      <line x1="0" y1="302" x2="1072" y2="302" class="line"/>
+      <line x1="0" y1="384" x2="1072" y2="384" class="line"/>
+
+      <text x="28" y="88" class="purpose navy">1. 평가표 전항목</text>
+      <text x="28" y="114" class="purpose navy">커버리지 확보</text>
+      <text x="312" y="85" class="text navy">정부 R&amp;D·창업 과제 평가표를 기술성(T) 5개와</text>
+      <text x="312" y="110" class="text navy">사업성(B) 5개 축으로 나누고 기준별로 매핑합니다.</text>
+      <text x="830" y="90" class="effect navy">감점 방지</text>
+      <text x="830" y="116" class="text muted">작성 누락·중복 최소화</text>
+
+      <text x="28" y="170" class="purpose navy">2. Tech ↔ Biz</text>
+      <text x="28" y="196" class="purpose navy">연계 논리 강화</text>
+      <text x="312" y="167" class="text navy">혁신성·성능지표 같은 기술 근거를 시장성·수익모델 등</text>
+      <text x="312" y="192" class="text navy">사업 근거와 1:1로 연결해 심사위원 이해를 높입니다.</text>
+      <text x="830" y="172" class="effect navy">설득력 상승</text>
+      <text x="830" y="198" class="text muted">사업성 모호 지적 차단</text>
+
+      <text x="28" y="252" class="purpose navy">3. 정량 근거 &amp;</text>
+      <text x="28" y="278" class="purpose navy">리스크 관리</text>
+      <text x="312" y="249" class="text navy">단위·목표·측정방법·기관을 기준별로 붙이고</text>
+      <text x="312" y="274" class="text navy">리스크와 대응책까지 연결해 객관성을 확보합니다.</text>
+      <text x="830" y="254" class="effect navy">KPI 신뢰도 상승</text>
+      <text x="830" y="280" class="text muted">리스크 대비 증명</text>
+
+      <text x="28" y="334" class="purpose navy">4. 내부/외부</text>
+      <text x="28" y="360" class="purpose navy">커뮤니케이션 효율화</text>
+      <text x="312" y="331" class="text navy">개발팀·사업팀·투자자·심사위원이 동일한 10칸 틀을</text>
+      <text x="312" y="356" class="text navy">공유해 문서, 슬라이드, 보고서를 공통 언어로 정리합니다.</text>
+      <text x="830" y="336" class="effect navy">팀 간 업무정렬</text>
+      <text x="830" y="362" class="text muted">발표·질의응답 대응 속도 상승</text>
+
+      <text x="28" y="418" class="purpose navy">5. 보강·업데이트</text>
+      <text x="28" y="444" class="purpose navy">용이성</text>
+      <text x="312" y="416" class="text navy">새 정책이나 경쟁제품이 등장하면 관련 셀만 패치해</text>
+      <text x="312" y="441" class="text navy">전체 논리를 빠르게 갱신하고 재평가에 대비합니다.</text>
+      <text x="830" y="421" class="effect navy">빠른 리비전</text>
+      <text x="830" y="447" class="text muted">후속 평가·IR 대응 간편</text>
+    </g>
+
+    <g transform="translate(64 642)">
+      <rect x="0" y="-18" width="36" height="36" rx="11" fill="url(#chip)"/>
+      <text x="10" y="6" class="tiny white">T·B</text>
+      <text x="50" y="6" class="tiny muted">기술 KPI가 시장·매출·판로·리스크 대응으로 이어지도록 사업계획서 구조를 맞춥니다.</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">공고 매칭 로드맵</title>
+  <desc id="desc">사업명과 시행기관, 지원 대상, 지원 내용 및 규모, 지원분야와 방법, 공고 시기를 기준으로 지원 우선순위를 정리한 표</desc>
+  <defs>
+    <linearGradient id="header" x1="40" y1="0" x2="1160" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#123d66"/>
+      <stop offset="0.58" stop-color="#1d4f86"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <filter id="shadow" x="-6%" y="-6%" width="112%" height="118%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .eyebrow { font-size: 14px; font-weight: 900; letter-spacing: 0; }
+      .title { font-size: 34px; font-weight: 900; letter-spacing: 0; }
+      .sub { font-size: 17px; font-weight: 750; letter-spacing: 0; }
+      .head { font-size: 16px; font-weight: 900; letter-spacing: 0; }
+      .cell { font-size: 15px; font-weight: 740; letter-spacing: 0; }
+      .tiny { font-size: 13px; font-weight: 820; letter-spacing: 0; }
+      .white { fill: #fff; }
+      .navy { fill: #0f172a; }
+      .muted { fill: #64748b; }
+      .blue { fill: #2563eb; }
+      .line { stroke: #dbe7f5; stroke-width: 1.4; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="560" rx="28" fill="#ffffff"/>
+  <rect x="34" y="30" width="1132" height="500" rx="24" fill="#f8fbff" stroke="#e2e8f0"/>
+
+  <g class="font">
+    <rect x="64" y="58" width="10" height="62" rx="5" fill="#2563eb"/>
+    <text x="92" y="82" class="eyebrow blue">NOTICE MATCHING ROADMAP</text>
+    <text x="92" y="116" class="title navy">공고 매칭 로드맵</text>
+    <text x="394" y="116" class="sub muted">공고를 찾기 전에 지원 대상·규모·방법·시기를 한 장으로 비교합니다.</text>
+
+    <g transform="translate(64 148)" filter="url(#shadow)">
+      <rect x="0" y="0" width="1072" height="334" rx="18" fill="#ffffff"/>
+      <rect x="0" y="0" width="1072" height="56" rx="18" fill="url(#header)"/>
+      <path d="M0 38 Q0 0 18 0 H1054 Q1072 0 1072 18 V56 H0 Z" fill="url(#header)"/>
+
+      <line x1="218" y1="0" x2="218" y2="334" stroke="#c7d2fe" stroke-width="1.2"/>
+      <line x1="424" y1="0" x2="424" y2="334" stroke="#c7d2fe" stroke-width="1.2"/>
+      <line x1="684" y1="0" x2="684" y2="334" stroke="#c7d2fe" stroke-width="1.2"/>
+      <line x1="902" y1="0" x2="902" y2="334" stroke="#c7d2fe" stroke-width="1.2"/>
+
+      <text x="28" y="35" class="head white">사업명/시행기관</text>
+      <text x="246" y="35" class="head white">지원 대상</text>
+      <text x="452" y="35" class="head white">지원 내용 및 규모</text>
+      <text x="712" y="35" class="head white">지원분야 및 방법</text>
+      <text x="930" y="35" class="head white">공고 시기</text>
+
+      <rect x="0" y="56" width="1072" height="46" fill="#f1f7ff"/>
+      <rect x="0" y="148" width="1072" height="46" fill="#f8fbff"/>
+      <rect x="0" y="240" width="1072" height="46" fill="#f8fbff"/>
+      <line x1="0" y1="102" x2="1072" y2="102" class="line"/>
+      <line x1="0" y1="148" x2="1072" y2="148" class="line"/>
+      <line x1="0" y1="194" x2="1072" y2="194" class="line"/>
+      <line x1="0" y1="240" x2="1072" y2="240" class="line"/>
+      <line x1="0" y1="286" x2="1072" y2="286" class="line"/>
+
+      <text x="26" y="84" class="cell navy">예비창업패키지</text>
+      <text x="26" y="98" class="tiny muted">창업진흥원</text>
+      <text x="246" y="86" class="cell navy">예비창업자</text>
+      <text x="452" y="86" class="cell navy">사업화 자금 최대 1억</text>
+      <text x="712" y="86" class="cell navy">온라인 접수·발표평가</text>
+      <text x="930" y="86" class="cell blue">1~2월</text>
+
+      <text x="26" y="130" class="cell navy">초기창업패키지</text>
+      <text x="26" y="144" class="tiny muted">창업진흥원</text>
+      <text x="246" y="132" class="cell navy">업력 3년 이내</text>
+      <text x="452" y="132" class="cell navy">시제품·시장검증 자금</text>
+      <text x="712" y="132" class="cell navy">요건검토·서면·발표</text>
+      <text x="930" y="132" class="cell blue">2~3월</text>
+
+      <text x="26" y="176" class="cell navy">창업도약패키지</text>
+      <text x="26" y="190" class="tiny muted">창업진흥원</text>
+      <text x="246" y="178" class="cell navy">업력 3~7년</text>
+      <text x="452" y="178" class="cell navy">사업화·성장촉진 자금</text>
+      <text x="712" y="178" class="cell navy">BM 고도화·성장성 평가</text>
+      <text x="930" y="178" class="cell blue">2~4월</text>
+
+      <text x="26" y="222" class="cell navy">중소기업 정책자금</text>
+      <text x="26" y="236" class="tiny muted">중진공</text>
+      <text x="246" y="224" class="cell navy">중소기업·소상공인</text>
+      <text x="452" y="224" class="cell navy">운전·시설자금 융자</text>
+      <text x="712" y="224" class="cell navy">기업진단·신용평가</text>
+      <text x="930" y="224" class="cell blue">수시</text>
+
+      <text x="26" y="268" class="cell navy">기술보증기금 보증</text>
+      <text x="26" y="282" class="tiny muted">기보</text>
+      <text x="246" y="270" class="cell navy">기술 기반 기업</text>
+      <text x="452" y="270" class="cell navy">보증·연계자금</text>
+      <text x="712" y="270" class="cell navy">기술평가·보증심사</text>
+      <text x="930" y="270" class="cell blue">수시</text>
+
+      <text x="26" y="314" class="cell navy">수출·혁신바우처</text>
+      <text x="26" y="328" class="tiny muted">중기부·KOTRA</text>
+      <text x="246" y="316" class="cell navy">수출 준비·성장기업</text>
+      <text x="452" y="316" class="cell navy">인증·마케팅·컨설팅</text>
+      <text x="712" y="316" class="cell navy">수행기관 매칭</text>
+      <text x="930" y="316" class="cell blue">상·하반기</text>
+    </g>
+
+    <g transform="translate(64 502)">
+      <rect x="0" y="-16" width="34" height="34" rx="10" fill="url(#badge)"/>
+      <text x="11" y="7" class="tiny white">AI</text>
+      <text x="48" y="7" class="tiny muted">지역·전국 공고, 자금 규모, 마감일, 기업 단계 적합도를 기준으로 우선순위를 갱신합니다.</text>
+    </g>
+  </g>
+</svg>

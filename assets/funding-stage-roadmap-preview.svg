@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="787" viewBox="0 0 1400 787" role="img" aria-labelledby="title desc">
+  <title id="title">성장 단계별 AI 자금유치 로드맵</title>
+  <desc id="desc">예비창업, 초기창업, 도약기업, 7년 이상 성장기업 단계별 지원사업과 준비 과제를 카드형으로 정리한 웹용 로드맵</desc>
+  <defs>
+    <linearGradient id="stageBlue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2563eb" />
+      <stop offset="1" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="path" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#dbeafe" />
+      <stop offset="1" stop-color="#bfdbfe" />
+    </linearGradient>
+    <filter id="softShadow" x="-8%" y="-10%" width="116%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="1400" height="787" rx="28" fill="#f8fafc" />
+  <rect x="42" y="38" width="1316" height="711" rx="24" fill="#ffffff" filter="url(#softShadow)" />
+
+  <rect x="76" y="78" width="12" height="58" fill="#2563eb" />
+  <text x="108" y="111" fill="#0f172a" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="32" font-weight="900">성장 단계별 AI 자금유치 로드맵</text>
+  <text x="108" y="150" fill="#475569" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="17" font-weight="700">창업 준비부터 7년 이상 성장기업까지, 지금 지원할 과제와 다음 단계 준비 과제를 분리합니다.</text>
+  <line x1="76" y1="180" x2="1324" y2="180" stroke="#dbe3ef" stroke-width="2" />
+
+  <path d="M120 632 C 360 590, 475 525, 620 464 S 898 350, 1264 230" fill="none" stroke="url(#path)" stroke-width="88" stroke-linecap="round" />
+  <path d="M1212 214 L1296 202 L1242 268" fill="none" stroke="#93c5fd" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif">
+    <g transform="translate(86 238)">
+      <rect width="290" height="392" rx="20" fill="#ffffff" stroke="#dbe3ef" />
+      <circle cx="44" cy="44" r="28" fill="url(#stageBlue)" />
+      <text x="44" y="53" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="900">1</text>
+      <text x="88" y="38" fill="#2563eb" font-size="18" font-weight="900">예비창업</text>
+      <text x="88" y="64" fill="#0f172a" font-size="22" font-weight="900">최대 1억</text>
+      <line x1="24" y1="92" x2="266" y2="92" stroke="#e2e8f0" />
+      <text x="24" y="128" fill="#0f172a" font-size="17" font-weight="900">바로 지원</text>
+      <text x="24" y="158" fill="#334155" font-size="16" font-weight="700">• 예비창업패키지</text>
+      <text x="24" y="185" fill="#334155" font-size="16" font-weight="700">• 입주지원</text>
+      <text x="24" y="212" fill="#334155" font-size="16" font-weight="700">• IP디딤돌</text>
+      <text x="24" y="239" fill="#334155" font-size="16" font-weight="700">• 특허출원</text>
+      <text x="24" y="286" fill="#0f172a" font-size="17" font-weight="900">준비 과제</text>
+      <text x="24" y="316" fill="#475569" font-size="15" font-weight="700">아이템 구체화, 창업 전</text>
+      <text x="24" y="340" fill="#475569" font-size="15" font-weight="700">시장 검증, 사업자등록 전후</text>
+      <text x="24" y="364" fill="#475569" font-size="15" font-weight="700">기초 자료 정리</text>
+    </g>
+
+    <g transform="translate(400 238)">
+      <rect width="290" height="392" rx="20" fill="#ffffff" stroke="#dbe3ef" />
+      <circle cx="44" cy="44" r="28" fill="url(#stageBlue)" />
+      <text x="44" y="53" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="900">2</text>
+      <text x="88" y="38" fill="#2563eb" font-size="18" font-weight="900">초기창업 1~3년</text>
+      <text x="88" y="64" fill="#0f172a" font-size="22" font-weight="900">최대 10억</text>
+      <line x1="24" y1="92" x2="266" y2="92" stroke="#e2e8f0" />
+      <text x="24" y="128" fill="#0f172a" font-size="17" font-weight="900">바로 지원</text>
+      <text x="24" y="158" fill="#334155" font-size="16" font-weight="700">• 초기창업패키지</text>
+      <text x="24" y="185" fill="#334155" font-size="16" font-weight="700">• 창업성장기술개발 디딤돌</text>
+      <text x="24" y="212" fill="#334155" font-size="16" font-weight="700">• 연구소 설립</text>
+      <text x="24" y="239" fill="#334155" font-size="16" font-weight="700">• 벤처인증 · 특허출원</text>
+      <text x="24" y="286" fill="#0f172a" font-size="17" font-weight="900">준비 과제</text>
+      <text x="24" y="316" fill="#475569" font-size="15" font-weight="700">제품화, 기술개발 첫 이력,</text>
+      <text x="24" y="340" fill="#475569" font-size="15" font-weight="700">대표·재무·기술 자료 보강</text>
+    </g>
+
+    <g transform="translate(714 238)">
+      <rect width="290" height="392" rx="20" fill="#ffffff" stroke="#dbe3ef" />
+      <circle cx="44" cy="44" r="28" fill="url(#stageBlue)" />
+      <text x="44" y="53" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="900">3</text>
+      <text x="88" y="38" fill="#2563eb" font-size="18" font-weight="900">도약기업 3~7년</text>
+      <text x="88" y="64" fill="#0f172a" font-size="22" font-weight="900">최대 30억</text>
+      <line x1="24" y1="92" x2="266" y2="92" stroke="#e2e8f0" />
+      <text x="24" y="128" fill="#0f172a" font-size="17" font-weight="900">바로 지원</text>
+      <text x="24" y="158" fill="#334155" font-size="16" font-weight="700">• 창업도약패키지</text>
+      <text x="24" y="185" fill="#334155" font-size="16" font-weight="700">• TIPS · 기술이전</text>
+      <text x="24" y="212" fill="#334155" font-size="16" font-weight="700">• 메인비즈 · 이노비즈</text>
+      <text x="24" y="239" fill="#334155" font-size="16" font-weight="700">• 수출·혁신바우처</text>
+      <text x="24" y="286" fill="#0f172a" font-size="17" font-weight="900">준비 과제</text>
+      <text x="24" y="316" fill="#475569" font-size="15" font-weight="700">스마트서비스·스마트제조,</text>
+      <text x="24" y="340" fill="#475569" font-size="15" font-weight="700">사업화와 스케일업 과제</text>
+    </g>
+
+    <g transform="translate(1028 238)">
+      <rect width="290" height="392" rx="20" fill="#ffffff" stroke="#dbe3ef" />
+      <circle cx="44" cy="44" r="28" fill="url(#stageBlue)" />
+      <text x="44" y="53" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="900">4</text>
+      <text x="88" y="38" fill="#2563eb" font-size="18" font-weight="900">7년 이상 성장기업</text>
+      <text x="88" y="64" fill="#0f172a" font-size="22" font-weight="900">M&amp;A · IPO</text>
+      <line x1="24" y1="92" x2="266" y2="92" stroke="#e2e8f0" />
+      <text x="24" y="128" fill="#0f172a" font-size="17" font-weight="900">바로 지원</text>
+      <text x="24" y="158" fill="#334155" font-size="16" font-weight="700">• 기술혁신개발사업</text>
+      <text x="24" y="185" fill="#334155" font-size="16" font-weight="700">• 시장대응형·시장확대형 R&amp;D</text>
+      <text x="24" y="212" fill="#334155" font-size="16" font-weight="700">• 판로·해외진출</text>
+      <text x="24" y="239" fill="#334155" font-size="16" font-weight="700">• 대기업 특허이전 · 조달</text>
+      <text x="24" y="286" fill="#0f172a" font-size="17" font-weight="900">준비 과제</text>
+      <text x="24" y="316" fill="#475569" font-size="15" font-weight="700">우수제품, 투자유치,</text>
+      <text x="24" y="340" fill="#475569" font-size="15" font-weight="700">M&amp;A, IPO 후속 성장경로</text>
+    </g>
+  </g>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="15" font-weight="800" fill="#2563eb">
+    <text x="108" y="696">진단 기준</text>
+    <text x="216" y="696" fill="#475569">업력 · 매출 · 아이템 · 기술성 · 인증 · 특허 · 연구소 · 지원사업 이력</text>
+  </g>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="787" viewBox="0 0 1400 787" role="img" aria-labelledby="title desc">
+  <title id="title">로드맵 기반 성장 사례 타임라인</title>
+  <desc id="desc">2022년부터 2026년까지 인증, 지원사업 선정, 투자유치, 해외진출, 특례상장 준비를 정렬한 성장 로드맵</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1d4ed8" />
+      <stop offset="1" stop-color="#0ea5e9" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="1400" height="787" rx="28" fill="#f8fafc" />
+  <rect x="42" y="38" width="1316" height="711" rx="22" fill="#ffffff" filter="url(#shadow)" />
+
+  <rect x="76" y="78" width="12" height="58" fill="#2563eb" />
+  <text x="108" y="113" fill="#0f172a" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="34" font-weight="800">성장 사례</text>
+  <text x="108" y="148" fill="#2563eb" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="18" font-weight="800">로드맵 기반</text>
+  <line x1="76" y1="172" x2="1324" y2="172" stroke="#cbd5e1" stroke-width="2" />
+
+  <text x="108" y="222" fill="#ef4444" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="18" font-weight="800">F사 로드맵 With 더이로운기업</text>
+  <text x="108" y="252" fill="#64748b" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="16" font-weight="700">선정 이후 인증, 바우처, 투자유치, 해외진출까지 이어지는 성장 경로</text>
+
+  <rect x="108" y="295" width="1184" height="64" rx="12" fill="#0f172a" />
+  <rect x="108" y="295" width="296" height="64" rx="12" fill="#1e3a8a" />
+  <rect x="404" y="295" width="296" height="64" fill="#1e40af" />
+  <rect x="700" y="295" width="296" height="64" fill="#1d4ed8" />
+  <rect x="996" y="295" width="296" height="64" rx="12" fill="#0ea5e9" />
+  <line x1="404" y1="295" x2="404" y2="690" stroke="#cbd5e1" stroke-width="2" />
+  <line x1="700" y1="295" x2="700" y2="690" stroke="#cbd5e1" stroke-width="2" />
+  <line x1="996" y1="295" x2="996" y2="690" stroke="#cbd5e1" stroke-width="2" />
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" text-anchor="middle" fill="#ffffff">
+    <text x="256" y="322" font-size="17" font-weight="800">2022 5/27 법인 설립</text>
+    <text x="256" y="347" font-size="17" font-weight="800">2023 ~ 기업가치 50억</text>
+    <text x="552" y="335" font-size="18" font-weight="800">2024 기업가치 100억</text>
+    <text x="848" y="335" font-size="18" font-weight="800">2025 기업가치 500억</text>
+    <text x="1144" y="335" font-size="18" font-weight="800">2026 기업가치 800억</text>
+  </g>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="14" fill="#0f172a">
+    <g transform="translate(128 392)">
+      <text x="0" y="0" font-weight="800" fill="#2563eb">2022-2023 기반 구축</text>
+      <text x="0" y="34"><tspan font-weight="800">2022/05</tspan><tspan dx="18">법인 설립</tspan></text>
+      <text x="0" y="58"><tspan font-weight="800">2022/07</tspan><tspan dx="18">연구전담부서</tspan></text>
+      <text x="0" y="82"><tspan font-weight="800">2022/08</tspan><tspan dx="18">ISO 14001, 9001 인증</tspan></text>
+      <text x="0" y="106"><tspan font-weight="800">2023/02</tspan><tspan dx="18">벤처기업인증</tspan></text>
+      <text x="0" y="130"><tspan font-weight="800">2023/05</tspan><tspan dx="18">초기창업패키지</tspan></text>
+      <text x="0" y="154"><tspan font-weight="800">2023/06</tspan><tspan dx="18">수출바우처 / 혁신바우처</tspan></text>
+      <text x="0" y="178"><tspan font-weight="800">2023/07</tspan><tspan dx="18">제주 TP 육성사업</tspan></text>
+      <text x="0" y="202"><tspan font-weight="800">2023/08</tspan><tspan dx="18">삼성전자 특허 3건 기술이전</tspan></text>
+      <text x="0" y="226"><tspan font-weight="800">2023/09</tspan><tspan dx="18">브릿지스퀘어 투자유치</tspan></text>
+      <text x="0" y="250"><tspan font-weight="800">2023/10</tspan><tspan dx="18">맞춤형 기술사업 R&amp;D</tspan></text>
+      <text x="0" y="274"><tspan font-weight="800">2023/11</tspan><tspan dx="18">MOU · 개인엔젤투자</tspan></text>
+    </g>
+
+    <g transform="translate(424 392)">
+      <text x="0" y="0" font-weight="800" fill="#2563eb">2024 사업화 검증</text>
+      <text x="0" y="34"><tspan font-weight="800">2024/01</tspan><tspan dx="18">한화리조트 PoC 선정</tspan></text>
+      <text x="88" y="56" fill="#475569">디스펜서 · 어메니티 보완</text>
+      <text x="0" y="84"><tspan font-weight="800">2024/02</tspan><tspan dx="18">G-STAR 기술지주 투자유치</tspan></text>
+      <text x="0" y="108"><tspan font-weight="800">2024/03</tspan><tspan dx="18">김포지사 확장 이전</tspan></text>
+      <text x="0" y="132"><tspan font-weight="800">2024/03</tspan><tspan dx="18">혁신바우처 · 수출바우처 선정</tspan></text>
+      <text x="0" y="156"><tspan font-weight="800">2024/04</tspan><tspan dx="18">창업도약패키지 선정</tspan></text>
+      <text x="0" y="180"><tspan font-weight="800">2024/04</tspan><tspan dx="18">120 Value 투자오픈</tspan></text>
+      <text x="0" y="204"><tspan font-weight="800">2024/04</tspan><tspan dx="18">호텔롯데 오픈이노베이션</tspan></text>
+      <text x="0" y="228"><tspan font-weight="800">2024/05</tspan><tspan dx="18">Osuller 브랜드 런칭</tspan></text>
+      <text x="0" y="252"><tspan font-weight="800">2024/06</tspan><tspan dx="18">호텔·레스토랑 유럽 진출</tspan></text>
+      <text x="0" y="276"><tspan font-weight="800">2024/07</tspan><tspan dx="18">사업화 채널 확장</tspan></text>
+      <text x="0" y="300"><tspan font-weight="800">2024/10</tspan><tspan dx="18">스케일업 준비</tspan></text>
+    </g>
+
+    <g transform="translate(720 392)">
+      <text x="0" y="0" font-weight="800" fill="#2563eb">2025 스케일업</text>
+      <text x="0" y="34"><tspan font-weight="800">2025년</tspan><tspan dx="28">100억 매출 예정</tspan></text>
+      <text x="0" y="58"><tspan font-weight="800">2025/03</tspan><tspan dx="18">IoT 어메니티 PoC 진행</tspan></text>
+      <text x="0" y="82"><tspan font-weight="800">2025/04</tspan><tspan dx="18">해외 합작법인 설립 검토</tspan></text>
+      <text x="0" y="106"><tspan font-weight="800">2025/05</tspan><tspan dx="18">LCA carbon App 베타 테스트</tspan></text>
+      <text x="0" y="130"><tspan font-weight="800">2025/05</tspan><tspan dx="18">리필 어메니티 생산공장 구축</tspan></text>
+      <text x="0" y="154"><tspan font-weight="800">2025/06</tspan><tspan dx="18">관리 시스템 양산</tspan></text>
+      <text x="0" y="178"><tspan font-weight="800">2025/07</tspan><tspan dx="18">특례상장 예비심사 준비</tspan></text>
+      <text x="0" y="202"><tspan font-weight="800">2025/09</tspan><tspan dx="18">해외대리점 5개소 달성</tspan></text>
+      <text x="0" y="226"><tspan font-weight="800">2025/10</tspan><tspan dx="18">글로벌 SI 투자유치 진행</tspan></text>
+      <text x="0" y="250"><tspan font-weight="800">2025/11</tspan><tspan dx="18">대리점 80개소 달성</tspan></text>
+      <text x="0" y="274"><tspan font-weight="800">2025/12</tspan><tspan dx="18">글로벌 SI 투자유치 공모</tspan></text>
+    </g>
+
+    <g transform="translate(1016 392)">
+      <text x="0" y="0" font-weight="800" fill="#2563eb">2026 확장 목표</text>
+      <text x="0" y="34"><tspan font-weight="800">2026</tspan><tspan dx="40">300억 매출 목표</tspan></text>
+      <text x="0" y="58"><tspan font-weight="800">2026</tspan><tspan dx="40">AI 플랫폼 콘텐츠</tspan></text>
+      <text x="0" y="82"><tspan font-weight="800">2026</tspan><tspan dx="40">특례상장 FI 투자유치</tspan></text>
+      <text x="0" y="106"><tspan font-weight="800">2026</tspan><tspan dx="40">위생관리 플랫폼 출시</tspan></text>
+      <text x="0" y="130"><tspan font-weight="800">2026</tspan><tspan dx="40">특례상장 예비심사 청구</tspan></text>
+    </g>
+  </g>
+
+  <line x1="108" y1="718" x2="1292" y2="718" stroke="#0f172a" stroke-width="2" />
+</svg>

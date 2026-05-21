@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">선정로드맵</title>
+  <desc id="desc">기업 진단부터 기초자료 보강, 정책자금 후보 선정, 사업계획서 작성, 후속 성장 과제 연결까지의 로드맵</desc>
+  <defs>
+    <linearGradient id="blueHeader" x1="64" y1="0" x2="1136" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f3f73"/>
+      <stop offset="0.55" stop-color="#155fb8"/>
+      <stop offset="1" stop-color="#16a3d8"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#082f55"/>
+      <stop offset="1" stop-color="#114d82"/>
+    </linearGradient>
+    <linearGradient id="barSoft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <filter id="softShadow" x="-8%" y="-8%" width="116%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .tiny { font-size: 14px; font-weight: 800; }
+      .small { font-size: 18px; font-weight: 750; }
+      .body { font-size: 22px; font-weight: 800; }
+      .title { font-size: 34px; font-weight: 900; }
+      .white { fill: #ffffff; }
+      .navy { fill: #0f172a; }
+      .muted { fill: #64748b; }
+      .blue { fill: #2563eb; }
+      .lane { fill: #f8fbff; stroke: #dbe7f5; stroke-width: 1; }
+      .axis { stroke: #bfdbfe; stroke-width: 2; }
+      .divider { stroke: #dbe7f5; stroke-width: 1.5; stroke-dasharray: 5 7; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="520" rx="28" fill="#ffffff"/>
+  <rect x="36" y="32" width="1128" height="456" rx="24" fill="#f8fbff" stroke="#e2e8f0"/>
+
+  <g class="font">
+    <rect x="64" y="58" width="10" height="64" rx="5" fill="#2563eb"/>
+    <text x="92" y="82" class="tiny blue">DIAGNOSIS ROADMAP</text>
+    <text x="92" y="116" class="title navy">선정로드맵</text>
+    <text x="510" y="116" class="small muted">진단표 결과를 바탕으로 보강 순서와 지원 우선순위를 한 번에 정렬합니다.</text>
+
+    <g transform="translate(64 150)">
+      <rect x="0" y="0" width="1072" height="60" rx="16" fill="url(#blueHeader)" filter="url(#softShadow)"/>
+      <text x="34" y="24" class="tiny white">01</text>
+      <text x="34" y="46" class="small white">자가진단</text>
+      <text x="248" y="24" class="tiny white">02</text>
+      <text x="248" y="46" class="small white">기초자료</text>
+      <text x="462" y="24" class="tiny white">03</text>
+      <text x="462" y="46" class="small white">정책자금</text>
+      <text x="676" y="24" class="tiny white">04</text>
+      <text x="676" y="46" class="small white">과제연결</text>
+      <text x="890" y="24" class="tiny white">05</text>
+      <text x="890" y="46" class="small white">후속성장</text>
+    </g>
+
+    <g transform="translate(64 226)">
+      <rect x="0" y="0" width="1072" height="210" rx="18" fill="#ffffff" stroke="#dbe7f5"/>
+      <line x1="214" y1="0" x2="214" y2="210" class="divider"/>
+      <line x1="428" y1="0" x2="428" y2="210" class="divider"/>
+      <line x1="642" y1="0" x2="642" y2="210" class="divider"/>
+      <line x1="856" y1="0" x2="856" y2="210" class="divider"/>
+
+      <rect x="18" y="18" width="228" height="28" rx="7" fill="url(#bar)"/>
+      <text x="34" y="38" class="tiny white">대표·재무·기술·조직 진단</text>
+
+      <rect x="18" y="58" width="392" height="28" rx="7" fill="url(#bar)"/>
+      <text x="34" y="78" class="tiny white">증빙자료 준비 수준 확인</text>
+
+      <rect x="18" y="98" width="594" height="28" rx="7" fill="url(#bar)"/>
+      <text x="34" y="118" class="tiny white">부족 항목 보강 순서 정리</text>
+
+      <rect x="232" y="138" width="380" height="28" rx="7" fill="#0b3f70"/>
+      <text x="248" y="158" class="tiny white">정책자금·보증 적합도 검토</text>
+
+      <rect x="232" y="178" width="602" height="28" rx="7" fill="#0b3f70"/>
+      <text x="248" y="198" class="tiny white">융자 지원사업 후보 선정</text>
+
+      <rect x="446" y="18" width="388" height="28" rx="7" fill="#0d4b83"/>
+      <text x="462" y="38" class="tiny white">사업계획서·상환계획 작성</text>
+
+      <rect x="446" y="58" width="606" height="28" rx="7" fill="#0d4b83"/>
+      <text x="462" y="78" class="tiny white">R&amp;D·바우처 후속과제 연결</text>
+
+      <rect x="660" y="98" width="392" height="28" rx="7" fill="url(#barSoft)"/>
+      <text x="676" y="118" class="tiny white">투자유치·판로·스케일업 로드맵</text>
+
+      <circle cx="214" cy="220" r="5" fill="#2563eb"/>
+      <circle cx="428" cy="220" r="5" fill="#2563eb"/>
+      <circle cx="642" cy="220" r="5" fill="#2563eb"/>
+      <circle cx="856" cy="220" r="5" fill="#2563eb"/>
+      <line x1="0" y1="220" x2="1072" y2="220" class="axis"/>
+      <text x="18" y="246" class="tiny navy">자가진단 점수</text>
+      <text x="232" y="246" class="tiny navy">보유자료 정리</text>
+      <text x="446" y="246" class="tiny navy">공고 후보군</text>
+      <text x="660" y="246" class="tiny navy">작성·신청</text>
+      <text x="874" y="246" class="tiny navy">후속 성장</text>
+    </g>
+
+    <g transform="translate(64 468)">
+      <rect x="0" y="0" width="1072" height="1" fill="#dbe7f5"/>
+      <text x="0" y="28" class="tiny blue">제공 형태</text>
+      <text x="86" y="28" class="tiny muted">진단표 + 보강 체크리스트 + 지원 우선순위 로드맵</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="787" viewBox="0 0 1400 787" role="img" aria-labelledby="title desc">
+  <title id="title">정부무상자금 AI 자동화 매칭 프로세스</title>
+  <desc id="desc">파악 분석, 수정, 공고 로드맵, 매칭, 신청, 관리로 이어지는 6단계 AI 공고 매칭 진행 흐름</desc>
+  <defs>
+    <linearGradient id="processBlue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2563eb" />
+      <stop offset="1" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="arrowLine" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1e3a8a" />
+      <stop offset="0.52" stop-color="#2563eb" />
+      <stop offset="1" stop-color="#0ea5e9" />
+    </linearGradient>
+    <filter id="cardShadow" x="-8%" y="-10%" width="116%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <rect width="1400" height="787" rx="28" fill="#f8fafc" />
+  <rect x="42" y="38" width="1316" height="711" rx="24" fill="#ffffff" filter="url(#cardShadow)" />
+
+  <rect x="76" y="78" width="12" height="58" fill="#2563eb" />
+  <text x="108" y="111" fill="#0f172a" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="32" font-weight="900">정부무상자금 AI 자동화 매칭 프로세스</text>
+  <text x="108" y="150" fill="#475569" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="17" font-weight="700">오프라인 컨시어지가 기업 자료와 문화를 수집하고, AI가 공고 데이터를 분석해 선정 가능성이 높은 순서로 연결합니다.</text>
+  <line x1="76" y1="180" x2="1324" y2="180" stroke="#dbe3ef" stroke-width="2" />
+
+  <rect x="96" y="218" width="1208" height="88" rx="18" fill="#eff6ff" />
+  <text x="126" y="255" fill="#2563eb" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="18" font-weight="900">핵심 흐름</text>
+  <text x="126" y="283" fill="#334155" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="17" font-weight="700">현장 분석과 기업 객관화 자료를 먼저 정리한 뒤, 기존·예상 공고를 로드맵화하고 신청·선정 후 관리까지 이어갑니다.</text>
+
+  <path d="M136 372 H1268" stroke="url(#arrowLine)" stroke-width="14" stroke-linecap="round" />
+  <path d="M1268 372 l-34 -24 v48 z" fill="#0ea5e9" />
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif">
+    <g transform="translate(78 336)">
+      <rect width="192" height="298" rx="18" fill="#ffffff" stroke="#dbe3ef" filter="url(#cardShadow)" />
+      <circle cx="40" cy="36" r="24" fill="url(#processBlue)" />
+      <text x="40" y="44" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">1</text>
+      <text x="74" y="32" fill="#2563eb" font-size="15" font-weight="900">STEP 1</text>
+      <text x="74" y="59" fill="#0f172a" font-size="22" font-weight="900">파악 분석</text>
+      <line x1="20" y1="82" x2="172" y2="82" stroke="#e2e8f0" />
+      <text x="20" y="120" fill="#334155" font-size="15" font-weight="700">• 현장 분석</text>
+      <text x="34" y="145" fill="#64748b" font-size="14" font-weight="700">개발·공장·운영·재기</text>
+      <text x="20" y="174" fill="#334155" font-size="15" font-weight="700">• 전자계약</text>
+      <text x="20" y="203" fill="#334155" font-size="15" font-weight="700">• 담당자 매칭</text>
+      <rect x="20" y="240" width="152" height="34" rx="10" fill="#eff6ff" />
+      <text x="96" y="263" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="900">자료 수집 시작</text>
+    </g>
+
+    <g transform="translate(286 336)">
+      <rect width="192" height="298" rx="18" fill="#ffffff" stroke="#dbe3ef" filter="url(#cardShadow)" />
+      <circle cx="40" cy="36" r="24" fill="url(#processBlue)" />
+      <text x="40" y="44" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">2</text>
+      <text x="74" y="32" fill="#2563eb" font-size="15" font-weight="900">STEP 2</text>
+      <text x="74" y="59" fill="#0f172a" font-size="22" font-weight="900">수정</text>
+      <line x1="20" y1="82" x2="172" y2="82" stroke="#e2e8f0" />
+      <text x="20" y="120" fill="#334155" font-size="15" font-weight="700">• 단계 설정</text>
+      <text x="34" y="145" fill="#64748b" font-size="14" font-weight="700">상·중·하 성장단계</text>
+      <text x="20" y="174" fill="#334155" font-size="15" font-weight="700">• 산업군 파악</text>
+      <text x="20" y="203" fill="#334155" font-size="15" font-weight="700">• BM 파악</text>
+      <rect x="20" y="240" width="152" height="34" rx="10" fill="#eff6ff" />
+      <text x="96" y="263" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="900">기업 표현 정리</text>
+    </g>
+
+    <g transform="translate(494 336)">
+      <rect width="192" height="298" rx="18" fill="#ffffff" stroke="#dbe3ef" filter="url(#cardShadow)" />
+      <circle cx="40" cy="36" r="24" fill="url(#processBlue)" />
+      <text x="40" y="44" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">3</text>
+      <text x="74" y="32" fill="#2563eb" font-size="15" font-weight="900">STEP 3</text>
+      <text x="74" y="59" fill="#0f172a" font-size="22" font-weight="900">공고 로드맵</text>
+      <line x1="20" y1="82" x2="172" y2="82" stroke="#e2e8f0" />
+      <text x="20" y="120" fill="#334155" font-size="15" font-weight="700">• 기업 디자인</text>
+      <text x="20" y="149" fill="#334155" font-size="15" font-weight="700">• 기존 공고</text>
+      <text x="20" y="178" fill="#334155" font-size="15" font-weight="700">• 예상 공고</text>
+      <text x="20" y="207" fill="#334155" font-size="15" font-weight="700">• 지원 순서</text>
+      <rect x="20" y="240" width="152" height="34" rx="10" fill="#eff6ff" />
+      <text x="96" y="263" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="900">우선순위 설계</text>
+    </g>
+
+    <g transform="translate(702 336)">
+      <rect width="192" height="298" rx="18" fill="#ffffff" stroke="#dbe3ef" filter="url(#cardShadow)" />
+      <circle cx="40" cy="36" r="24" fill="url(#processBlue)" />
+      <text x="40" y="44" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">4</text>
+      <text x="74" y="32" fill="#2563eb" font-size="15" font-weight="900">STEP 4</text>
+      <text x="74" y="59" fill="#0f172a" font-size="22" font-weight="900">매칭</text>
+      <line x1="20" y1="82" x2="172" y2="82" stroke="#e2e8f0" />
+      <text x="20" y="120" fill="#334155" font-size="15" font-weight="700">• 정량 자료</text>
+      <text x="20" y="149" fill="#334155" font-size="15" font-weight="700">• 비정형 자료</text>
+      <text x="20" y="178" fill="#334155" font-size="15" font-weight="700">• AI 분석</text>
+      <text x="20" y="207" fill="#334155" font-size="15" font-weight="700">• 사전조건 확인</text>
+      <rect x="20" y="240" width="152" height="34" rx="10" fill="#eff6ff" />
+      <text x="96" y="263" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="900">적합 공고 선별</text>
+    </g>
+
+    <g transform="translate(910 336)">
+      <rect width="192" height="298" rx="18" fill="#ffffff" stroke="#dbe3ef" filter="url(#cardShadow)" />
+      <circle cx="40" cy="36" r="24" fill="url(#processBlue)" />
+      <text x="40" y="44" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">5</text>
+      <text x="74" y="32" fill="#2563eb" font-size="15" font-weight="900">STEP 5</text>
+      <text x="74" y="59" fill="#0f172a" font-size="22" font-weight="900">신청</text>
+      <line x1="20" y1="82" x2="172" y2="82" stroke="#e2e8f0" />
+      <text x="20" y="120" fill="#334155" font-size="15" font-weight="700">• 기획</text>
+      <text x="20" y="149" fill="#334155" font-size="15" font-weight="700">• 개발</text>
+      <text x="20" y="178" fill="#334155" font-size="15" font-weight="700">• 지원사업</text>
+      <text x="20" y="207" fill="#334155" font-size="15" font-weight="700">• 표준사업계획서</text>
+      <rect x="20" y="240" width="152" height="34" rx="10" fill="#eff6ff" />
+      <text x="96" y="263" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="900">접수 자료 완성</text>
+    </g>
+
+    <g transform="translate(1118 336)">
+      <rect width="192" height="298" rx="18" fill="#ffffff" stroke="#dbe3ef" filter="url(#cardShadow)" />
+      <circle cx="40" cy="36" r="24" fill="url(#processBlue)" />
+      <text x="40" y="44" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="900">6</text>
+      <text x="74" y="32" fill="#2563eb" font-size="15" font-weight="900">STEP 6</text>
+      <text x="74" y="59" fill="#0f172a" font-size="22" font-weight="900">관리</text>
+      <line x1="20" y1="82" x2="172" y2="82" stroke="#e2e8f0" />
+      <text x="20" y="120" fill="#334155" font-size="15" font-weight="700">• 접수</text>
+      <text x="20" y="149" fill="#334155" font-size="15" font-weight="700">• 선정</text>
+      <text x="20" y="178" fill="#334155" font-size="15" font-weight="700">• 보강 대응</text>
+      <text x="20" y="207" fill="#334155" font-size="15" font-weight="700">• 선정 후 관리</text>
+      <rect x="20" y="240" width="152" height="34" rx="10" fill="#eff6ff" />
+      <text x="96" y="263" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="900">다음 과제 연결</text>
+    </g>
+  </g>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif" font-size="15" font-weight="800">
+    <text x="108" y="696" fill="#2563eb">사용 데이터</text>
+    <text x="222" y="696" fill="#475569">대표 인터뷰 · 기업 자료 · 재무/기술 증빙 · 기존/예상 공고 · 정량/비정형 자료</text>
+  </g>
+</svg>
