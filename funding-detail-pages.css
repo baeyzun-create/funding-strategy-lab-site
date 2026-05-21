@@ -305,6 +305,7 @@ section {
 .roadmap-visual {
   margin: 28px 0 34px;
   overflow: hidden;
+  max-width: 100%;
   border: 1px solid var(--gray-200);
   border-radius: 18px;
   background: var(--white);
@@ -415,6 +416,7 @@ section {
 .deliverable-card-visual {
   margin-top: 20px;
   overflow: hidden;
+  max-width: 100%;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
   background: var(--white);
@@ -424,6 +426,26 @@ section {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.mobile-scroll-visual {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-gutter: stable;
+}
+
+.mobile-scroll-visual::before,
+.mobile-scroll-visual::after {
+  display: none;
+}
+
+.mobile-scroll-visual > img {
+  width: max(100%, 860px);
+  max-width: none;
 }
 
 .cta-strip {
@@ -540,17 +562,55 @@ section {
     padding-top: 6px;
   }
 
-  .roadmap-visual {
+  .roadmap-visual,
+  .deliverable-card-visual {
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-gutter: stable;
   }
 
   .roadmap-visual img,
   .deliverable-card-visual img {
-    min-width: 720px;
+    width: 860px;
+    max-width: none;
+    min-width: 860px;
   }
 
-  .deliverable-card-visual {
-    overflow-x: auto;
+  .mobile-scroll-visual::before,
+  .mobile-scroll-visual::after {
+    position: absolute;
+    right: 12px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .mobile-scroll-visual::before {
+    content: "";
+    display: block;
+    top: 12px;
+    width: 76px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-scroll-visual::after {
+    content: "←  →";
+    display: flex;
+    top: 12px;
+    width: 76px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
   }
 
   .cta-box {
