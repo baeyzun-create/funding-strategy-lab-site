@@ -83,13 +83,19 @@
 
     .utility-inner {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 24px;
+    }
+
+    .utility-links a:hover {
+      color: var(--ink);
     }
 
     .utility-links {
       display: flex;
       gap: 20px;
+      white-space: nowrap;
     }
 
     .site-header {
@@ -167,6 +173,16 @@
       line-height: 1.29;
       letter-spacing: 0.16px;
       transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+      line-height: 1;
     }
 
     .btn-primary {
@@ -617,11 +633,15 @@
     }
 
     .strategy-card h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-height: 64px;
       font-size: 22px;
       font-weight: 400;
       line-height: 1.3;
       margin-bottom: 14px;
+      text-align: center;
     }
 
     .strategy-card p {
@@ -1090,7 +1110,7 @@
         <a href="./funding-strategy-planning.html">로드맵</a>
         <a href="./funding-notice-matching.html">공고매칭</a>
         <a href="./funding-proposal-writing.html">사업계획서</a>
-        <a href="./funding-submission-management.html">접수 관리</a>
+        <a href="./funding-submission-management.html">접수·관리</a>
         <a href="#contact" class="mobile-nav-cta">상담 신청</a>
       </nav>
       <a href="#contact" class="btn btn-primary">상담 신청</a>
@@ -1151,7 +1171,10 @@
           </article>
         </div>
         <div class="problem-actions">
-          <a href="./funding-strategy-planning.html" class="btn btn-primary">10억 선정 로드맵 바로가기</a>
+          <a href="./funding-strategy-planning.html" class="btn btn-primary" aria-label="10억 선정 로드맵 바로가기">
+            <span>10억 선정 로드맵</span>
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1204,8 +1227,10 @@
           </div>
         </div>
         <div class="services-actions">
-          <a href="./funding-smart-matching-login.html" class="btn btn-primary">스마트 매칭 바로가기</a>
-          <a href="./funding-signup.html" class="btn btn-secondary">회원가입</a>
+          <a href="./funding-smart-matching-login.html" class="btn btn-primary" aria-label="스마트 매칭 바로가기">
+            <span>스마트 매칭</span>
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1221,7 +1246,7 @@
         </div>
         <div class="strategy-grid">
           <article class="strategy-card">
-            <h3>정부 자금 30억·투자 30억·가맹 120곳 경험</h3>
+            <h3>정부 자금·투자 30억,가맹 120곳 경험</h3>
             <figure class="strategy-media">
               <img src="https://img.youtube.com/vi/elfRxjSRUO8/hqdefault.jpg" alt="광고 마케팅 성과 배우 이시영 광고 이미지" loading="lazy" />
             </figure>
@@ -1239,14 +1264,17 @@
             </figure>
           </article>
           <article class="strategy-card">
-            <h3>개발과제 최대 200억 규모 진행</h3>
+            <h3>최대 200억 규모 진행</h3>
             <figure class="strategy-media">
               <img src="https://cdn.imweb.me/thumbnail/20241122/4f9d8f18966c4.png" alt="기술 개발 성과 이미지" loading="lazy" />
             </figure>
           </article>
         </div>
         <div class="strategy-actions">
-          <a href="./funding-proposal-writing.html" class="btn btn-primary">선정 사업계획서 바로가기</a>
+          <a href="./funding-proposal-writing.html" class="btn btn-primary" aria-label="선정 사업계획서 바로가기">
+            <span>선정 사업계획서</span>
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1409,18 +1437,49 @@
     const mainNavMenu = document.getElementById("mainNavMenu");
 
     if (menuToggle && mainNavMenu) {
-      menuToggle.addEventListener("click", () => {
+      const closeMobileMenu = () => {
+        mainNavMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "주요 메뉴 열기");
+      };
+
+      menuToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
         const isOpen = mainNavMenu.classList.toggle("is-open");
         menuToggle.setAttribute("aria-expanded", String(isOpen));
         menuToggle.setAttribute("aria-label", isOpen ? "주요 메뉴 닫기" : "주요 메뉴 열기");
       });
 
+      mainNavMenu.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+
       mainNavMenu.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
-          mainNavMenu.classList.remove("is-open");
-          menuToggle.setAttribute("aria-expanded", "false");
-          menuToggle.setAttribute("aria-label", "주요 메뉴 열기");
+          closeMobileMenu();
         });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!mainNavMenu.classList.contains("is-open")) {
+          return;
+        }
+
+        if (!event.target.closest(".site-header")) {
+          closeMobileMenu();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMobileMenu();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 760) {
+          closeMobileMenu();
+        }
       });
     }
 
