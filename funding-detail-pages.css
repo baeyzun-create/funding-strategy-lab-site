@@ -430,22 +430,23 @@ section {
 
 .mobile-scroll-visual {
   position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   max-width: 100%;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  scrollbar-gutter: stable;
 }
 
-.mobile-scroll-visual::before,
-.mobile-scroll-visual::after {
+.mobile-scroll-track {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.mobile-scroll-track > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scroll-cue {
   display: none;
-}
-
-.mobile-scroll-visual > img {
-  width: max(100%, 860px);
-  max-width: none;
 }
 
 .cta-strip {
@@ -562,8 +563,7 @@ section {
     padding-top: 6px;
   }
 
-  .roadmap-visual,
-  .deliverable-card-visual {
+  .mobile-scroll-track {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -571,46 +571,32 @@ section {
     scrollbar-gutter: stable;
   }
 
-  .roadmap-visual img,
-  .deliverable-card-visual img {
+  .mobile-scroll-track > img {
     width: 860px;
     max-width: none;
     min-width: 860px;
   }
 
-  .mobile-scroll-visual::before,
-  .mobile-scroll-visual::after {
+  .scroll-cue {
+    display: flex;
     position: absolute;
+    top: 12px;
     right: 12px;
     z-index: 3;
-    pointer-events: none;
-  }
-
-  .mobile-scroll-visual::before {
-    content: "";
-    display: block;
-    top: 12px;
-    width: 76px;
-    height: 34px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 999px;
-    background: rgba(15, 23, 42, 0.72);
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
-    backdrop-filter: blur(10px);
-  }
-
-  .mobile-scroll-visual::after {
-    content: "←  →";
-    display: flex;
-    top: 12px;
     width: 76px;
     height: 34px;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
     color: var(--white);
     font-size: 18px;
     font-weight: 900;
     letter-spacing: 0.08em;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
   }
 
   .cta-box {
