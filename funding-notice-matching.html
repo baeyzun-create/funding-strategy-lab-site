@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>공고 매칭 자동화 | 더이로운기업</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
   <meta name="description" content="업종, 업력, 매출, 기술 분야, 지역, 가점 조건을 기준으로 기업에 맞는 정부지원사업과 R&D 공고를 선별합니다." />
+  <meta property="og:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
   <link rel="stylesheet" href="./funding-detail-pages.css?v=mobile-image-scroll" />
 </head>
 <body>
@@ -13,11 +19,14 @@
       <a href="./funding-strategy-lab.html" class="logo" aria-label="메인으로 이동">
         <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map &amp; Free Funds Consulting" />
       </a>
-      <nav class="nav-menu" aria-label="주요 메뉴">
+      <button class="menu-toggle" type="button" aria-label="주요 메뉴 열기" aria-expanded="false" aria-controls="detailNavMenu">
+        <span class="menu-toggle-lines" aria-hidden="true"></span>
+      </button>
+      <nav class="nav-menu" id="detailNavMenu" aria-label="주요 메뉴">
         <a href="./funding-strategy-planning.html">로드맵</a>
         <a href="./funding-notice-matching.html" class="current">공고매칭</a>
         <a href="./funding-proposal-writing.html">사업계획서</a>
-        <a href="./funding-submission-management.html">접수 관리</a>
+        <a href="./funding-submission-management.html">접수·관리</a>
         <a href="./funding-strategy-lab.html#contact" class="nav-cta">상담 신청</a>
       </nav>
     </div>
@@ -140,6 +149,7 @@
       <p>© 2026. All rights reserved.</p>
     </div>
   </footer>
+  <script src="./assets/detail-mobile-nav.js"></script>
   <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>
