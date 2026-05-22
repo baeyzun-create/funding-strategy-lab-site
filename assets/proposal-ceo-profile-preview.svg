@@ -1,0 +1,58 @@
+<svg width="920" height="560" viewBox="0 0 920 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">배용준 대표 이력 요약</title>
+  <desc id="desc">대표 경영, 투자유치, 정부과제, AIoT 사업화, 평가위원 이력을 요약한 카드형 그래픽</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="920" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eff6ff"/>
+      <stop offset="0.52" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <filter id="shadow" x="-20" y="-20" width="960" height="620" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .font { font-family: "Noto Sans KR", "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .small { font-size: 18px; font-weight: 700; fill: #2563eb; }
+      .body { font-size: 20px; font-weight: 600; fill: #475569; }
+      .label { font-size: 15px; font-weight: 800; fill: #64748b; }
+      .title { font-size: 42px; font-weight: 900; fill: #0f172a; letter-spacing: -1.2px; }
+    </style>
+  </defs>
+  <rect width="920" height="560" rx="30" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="50" y="54" width="820" height="452" rx="28" fill="#ffffff"/>
+  </g>
+  <rect x="82" y="88" width="98" height="98" rx="26" fill="url(#blue)"/>
+  <text x="109" y="151" class="font" font-size="42" font-weight="900" fill="#fff">B</text>
+  <text x="206" y="122" class="font small">CEO PROFILE</text>
+  <text x="206" y="174" class="font title">배용준 대표</text>
+  <text x="206" y="214" class="font body">AI 경영전략 · 데이터마이닝 · CRM · 정부사업 선정 전략</text>
+
+  <g class="font">
+    <rect x="82" y="260" width="170" height="96" rx="20" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="110" y="300" class="label">경영 이력</text>
+    <text x="110" y="332" font-size="28" font-weight="900" fill="#1d4ed8">15년</text>
+
+    <rect x="274" y="260" width="170" height="96" rx="20" fill="#f8fafc" stroke="#dbe3ef"/>
+    <text x="302" y="300" class="label">투자유치</text>
+    <text x="302" y="332" font-size="28" font-weight="900" fill="#0f172a">30억</text>
+
+    <rect x="466" y="260" width="170" height="96" rx="20" fill="#f8fafc" stroke="#dbe3ef"/>
+    <text x="494" y="300" class="label">개발과제</text>
+    <text x="494" y="332" font-size="28" font-weight="900" fill="#0f172a">10억+</text>
+
+    <rect x="658" y="260" width="170" height="96" rx="20" fill="#ecfeff" stroke="#bae6fd"/>
+    <text x="686" y="300" class="label">가맹/운영</text>
+    <text x="686" y="332" font-size="28" font-weight="900" fill="#0369a1">120곳</text>
+  </g>
+
+  <g class="font">
+    <rect x="82" y="386" width="746" height="74" rx="18" fill="#0f172a"/>
+    <text x="112" y="426" font-size="19" font-weight="800" fill="#fff">프린팅 AIoT 플랫폼, 해외공장, 특허출원 10여건, 평가위원 경험을 사업계획서 논리로 전환</text>
+    <text x="112" y="450" font-size="14" font-weight="700" fill="#93c5fd">이력서 원본 기반 요약 · 공개 페이지용 개인정보 비노출 버전</text>
+  </g>
+</svg>
