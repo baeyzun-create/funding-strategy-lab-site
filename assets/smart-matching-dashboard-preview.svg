@@ -27,13 +27,13 @@
     </style>
   </defs>
 
-  <rect width="920" height="680" rx="28" fill="#05070c"/>
+  <rect width="920" height="680" rx="22" fill="#05070c"/>
   <g filter="url(#shadow)">
-    <rect x="28" y="28" width="864" height="624" rx="22" fill="url(#bg)"/>
+    <rect x="16" y="16" width="888" height="648" rx="18" fill="url(#bg)"/>
   </g>
 
-  <rect x="28" y="28" width="864" height="54" rx="22" fill="#ffffff"/>
-  <rect x="28" y="60" width="864" height="22" fill="#ffffff"/>
+  <rect x="16" y="16" width="888" height="54" rx="18" fill="#ffffff"/>
+  <rect x="16" y="48" width="888" height="34" fill="#ffffff"/>
   <rect x="54" y="43" width="28" height="28" rx="8" fill="url(#blue)"/>
   <path d="M63 58.8h4.4l2.1-7.8 4.8 16 2.2-8.2h4.9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="96" y="55" class="font title" font-size="17" font-weight="700" fill="#111827">Smart Matching Index</text>
@@ -43,7 +43,7 @@
   <circle cx="858" cy="56" r="18" fill="#dbeafe"/>
   <text x="852" y="62" class="font" font-size="14" font-weight="700" fill="#2563eb">T</text>
 
-  <rect x="28" y="82" width="166" height="570" fill="#f8fafc"/>
+  <rect x="16" y="82" width="178" height="582" fill="#f8fafc"/>
   <g class="font">
     <text x="54" y="124" class="body" fill="#334155">Dashboard</text>
     <line x1="44" y1="146" x2="176" y2="146" stroke="#e2e8f0"/>
@@ -68,7 +68,7 @@
 
   <text x="224" y="134" class="font title">My Companies</text>
   <rect x="746" y="105" width="118" height="38" rx="10" fill="url(#blue)"/>
-  <text x="772" y="130" class="font" font-size="14" font-weight="700" fill="#fff">+ Add Company</text>
+  <text x="805" y="130" class="font" font-size="14" font-weight="700" text-anchor="middle" fill="#fff">+ Add</text>
 
   <g class="font">
     <rect x="224" y="170" width="204" height="156" rx="12" fill="#fff" stroke="#dbe3ef"/>
@@ -78,9 +78,9 @@
     <rect x="244" y="220" width="94" height="24" rx="12" fill="#eff6ff"/>
     <text x="256" y="237" class="small" fill="#1d4ed8">Manufacturing</text>
     <text x="244" y="266" class="body">경기도 시흥시 멘티브</text>
-    <text x="244" y="292" class="small">Founded 2000 · 33 employees</text>
-    <rect x="244" y="292" width="54" height="28" rx="7" fill="#0f62fe"/>
-    <text x="260" y="311" font-size="13" font-weight="700" fill="#fff">View</text>
+    <text x="244" y="284" class="small">Founded 2000 · 33 employees</text>
+    <rect x="244" y="296" width="54" height="24" rx="7" fill="#0f62fe"/>
+    <text x="260" y="313" font-size="12" font-weight="700" fill="#fff">View</text>
 
     <rect x="450" y="170" width="204" height="156" rx="12" fill="#fff" stroke="#dbe3ef"/>
     <text x="470" y="202" font-size="18" font-weight="700" fill="#0f172a">원컨덕터</text>
@@ -89,9 +89,9 @@
     <rect x="470" y="220" width="94" height="24" rx="12" fill="#eff6ff"/>
     <text x="482" y="237" class="small" fill="#1d4ed8">Manufacturing</text>
     <text x="470" y="266" class="body">WON CONDUCTOR</text>
-    <text x="470" y="292" class="small">Last matched 2026. 5. 18.</text>
-    <rect x="470" y="292" width="54" height="28" rx="7" fill="#0f62fe"/>
-    <text x="486" y="311" font-size="13" font-weight="700" fill="#fff">View</text>
+    <text x="470" y="284" class="small">Last matched 2026. 5. 18.</text>
+    <rect x="470" y="296" width="54" height="24" rx="7" fill="#0f62fe"/>
+    <text x="486" y="313" font-size="12" font-weight="700" fill="#fff">View</text>
 
     <rect x="676" y="170" width="188" height="156" rx="12" fill="#fff" stroke="#dbe3ef"/>
     <text x="696" y="202" font-size="18" font-weight="700" fill="#0f172a">비플컨설팅</text>
@@ -100,9 +100,9 @@
     <rect x="696" y="220" width="78" height="24" rx="12" fill="#eff6ff"/>
     <text x="708" y="237" class="small" fill="#1d4ed8">Technology</text>
     <text x="696" y="266" class="body">서울시 금천구</text>
-    <text x="696" y="292" class="small">Founded 2012</text>
-    <rect x="696" y="292" width="54" height="28" rx="7" fill="#0f62fe"/>
-    <text x="712" y="311" font-size="13" font-weight="700" fill="#fff">View</text>
+    <text x="696" y="284" class="small">Founded 2012</text>
+    <rect x="696" y="296" width="54" height="24" rx="7" fill="#0f62fe"/>
+    <text x="712" y="313" font-size="12" font-weight="700" fill="#fff">View</text>
   </g>
 
   <rect x="224" y="354" width="640" height="254" rx="16" fill="#0f172a"/>

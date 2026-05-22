@@ -218,7 +218,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 96px 0 112px;
+      padding: 88px 0 96px;
       background:
         radial-gradient(circle at 12% 4%, #fff4df 0, transparent 28%),
         radial-gradient(circle at 36% 6%, #f7b36c 0, transparent 28%),
@@ -231,7 +231,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
-      gap: 56px;
+      gap: clamp(36px, 4.4vw, 56px);
       align-items: center;
     }
 
@@ -288,18 +288,26 @@
     }
 
     .product-panel {
+      width: min(100%, 720px);
+      aspect-ratio: 920 / 680;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       background: var(--linear-canvas);
       color: var(--linear-ink);
       border: 1px solid var(--linear-hairline);
       border-radius: 16px;
-      padding: 20px;
+      padding: clamp(10px, 1.2vw, 14px);
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
       scroll-margin-top: 96px;
     }
 
     .hero-dashboard-image {
       width: 100%;
+      height: 100%;
+      object-fit: contain;
       display: block;
       border-radius: 12px;
     }
@@ -953,6 +961,19 @@
         grid-template-columns: 1fr;
       }
 
+      .hero {
+        padding: 72px 0 84px;
+      }
+
+      .hero-grid {
+        gap: 40px;
+      }
+
+      .product-panel {
+        width: min(100%, 760px);
+        justify-self: center;
+      }
+
       .problem-grid,
       .strategy-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1044,7 +1065,7 @@
       }
 
       .product-panel {
-        padding: 14px;
+        padding: 10px;
       }
 
       .funding-row {
@@ -1140,13 +1161,13 @@
           <span class="eyebrow">기업 성장자금 확보 컨설팅</span>
           <h1><span class="em-growth">정부자금 유치</span>,<br /><span class="em-notice">공고 자동화</span>와<br /><span class="em-plan">맞춤형 기획</span>이 시작입니다.</h1>
           <p class="hero-desc">
-            정부지원사업, R&D 과제, 정책자금, 투자유치까지 기업의 현재 상황을 분석하고 맞는 자금 전략을 설계합니다.
+            정부지원사업, R&D, 정책자금, 투자유치까지 현재 상황에 맞는 자금 전략을 설계합니다.
           </p>
           <div class="hero-actions">
             <a href="#contact" class="btn btn-primary">무료 자금진단 신청하기</a>
             <a href="#services" class="btn btn-secondary">서비스 구조 보기</a>
           </div>
-          <p class="hero-note">기업명, 업종, 자금 목적만 남기면 1차 가능성을 검토해드립니다.</p>
+          <p class="hero-note">기업명, 업종, 자금 목적만 남겨주세요.</p>
         </div>
 
         <aside id="roadmap" class="product-panel" aria-label="스마트 매칭 대시보드 미리보기">
@@ -1160,30 +1181,30 @@
         <div class="section-head">
           <span class="section-label">01 문제 정의</span>
           <div>
-            <h2>정부 자금은 최소 3개월 전부터 준비가 필요합니다.</h2>
-            <p>선정 가능성은 공고 확인 이후가 아니라, 공고가 나오기 전 기업의 방향과 자료를 어떻게 준비했는지에서 결정됩니다.</p>
+            <h2>정부 자금은 3개월 전부터 준비가 필수입니다</h2>
+            <p>공고 전 기업 방향과 자료 수준이 선정 가능성을 좌우합니다.</p>
           </div>
         </div>
         <div class="problem-grid">
           <article class="problem-card">
             <div class="num">Problem 01</div>
             <h3>지원사업 선택이 어렵습니다</h3>
-            <p>정부지원사업, R&D, 정책자금, 보증, 투자 중 무엇을 먼저 준비해야 하는지 판단이 어렵습니다.</p>
+            <p>지원금, R&D, 정책자금, 투자 중 우선순위를 정하기 어렵습니다.</p>
           </article>
           <article class="problem-card">
             <div class="num">Problem 02</div>
             <h3>공고를 놓치기 쉽습니다</h3>
-            <p>중기부는 연간 5,000개 이상의 공고가 등록되어 기업에 맞는 사업 선별이 불가능합니다.</p>
+            <p>수많은 공고 속에서 우리 기업에 맞는 사업을 찾기 어렵습니다.</p>
           </article>
           <article class="problem-card">
             <div class="num">Problem 03</div>
             <h3>기업의 표준 사업계획서가 없습니다</h3>
-            <p>기술성, 시장성, 사업화 가능성이 평가항목과 연결되지 않으면 설득력이 낮아집니다.</p>
+            <p>기술성, 시장성, 사업성이 평가항목과 연결되어야 합니다.</p>
           </article>
           <article class="problem-card">
             <div class="num">Problem 04</div>
             <h3>접수 과정에서 누락됩니다</h3>
-            <p>증빙서류, 온라인 입력, 마감일, 발표평가까지 관리하지 않으면 제출 자체가 어려워질 수 있습니다.</p>
+            <p>서류, 온라인 입력, 마감일을 놓치면 제출이 어려워집니다.</p>
           </article>
         </div>
         <div class="problem-actions">
@@ -1200,8 +1221,8 @@
         <div class="section-head">
           <span class="section-label">02. 스마트 매칭</span>
           <div>
-            <h2>10만건 공고 분석 기반 기업 맞춤형 공고를 매칭합니다.</h2>
-            <p>각 서비스는 오프라인 컨시어지가 접수까지 이어지는 하나의 작업 흐름으로 연결 관리합니다.</p>
+            <h2>10만건 공고 분석으로 맞춤 공고를 매칭합니다.</h2>
+            <p>공고 선별부터 접수까지 하나의 흐름으로 관리합니다.</p>
           </div>
         </div>
 
@@ -1219,25 +1240,25 @@
             <a href="./funding-strategy-planning.html" class="service-card">
               <div class="service-meta"><span>FND-01</span><span class="status active">Strategy</span></div>
               <h3>무상·유상 자금 확보 기획</h3>
-              <p>기업 단계와 자금 목적에 맞춰 정부지원금, R&D, 정책자금, 투자유치의 우선순위를 설계합니다.</p>
+              <p>기업 단계와 자금 목적에 맞춰 확보 순서를 설계합니다.</p>
               <span class="service-link">자세히 보기 →</span>
             </a>
             <a href="./funding-notice-matching.html" class="service-card" aria-label="공고 매칭 페이지로 이동">
               <div class="service-meta"><span>FND-02</span><span class="status active">Matching</span></div>
               <h3>공고 매칭 자동화</h3>
-              <p>업종, 업력, 매출, 기술 분야, 지역, 가점 조건을 기준으로 기업에 맞는 공고를 선별합니다.</p>
+              <p>업종, 업력, 매출, 기술, 지역 기준으로 공고를 선별합니다.</p>
               <span class="service-link">자세히 보기 →</span>
             </a>
             <a href="./funding-proposal-writing.html" class="service-card">
               <div class="service-meta"><span>FND-03</span><span class="status">Proposal</span></div>
               <h3>기업 분석 기반 사업계획서 작성</h3>
-              <p>기술성, 사업성, 시장성, 대표자 역량을 평가항목에 맞춰 설득력 있는 문서 구조로 전환합니다.</p>
+              <p>기술성, 사업성, 시장성을 평가항목에 맞춰 구조화합니다.</p>
               <span class="service-link">자세히 보기 →</span>
             </a>
             <a href="./funding-submission-management.html" class="service-card">
               <div class="service-meta"><span>FND-04</span><span class="status">Submission</span></div>
               <h3>접수 관리 및 진행 지원</h3>
-              <p>신청서, 증빙자료, 온라인 접수, 발표평가, 보완 요청까지 제출 전 과정을 관리합니다.</p>
+              <p>신청서, 증빙자료, 온라인 접수, 보완 요청을 관리합니다.</p>
               <span class="service-link">자세히 보기 →</span>
             </a>
           </div>
@@ -1256,8 +1277,8 @@
         <div class="section-head">
           <span class="section-label">03. 사업계획서</span>
           <div>
-            <h2>18년 현장 경험과 선정 데이터 기반 기업 특화 기획력이 선정의 핵심입니다.</h2>
-            <p>아이템 설명을 나열하지 않고 문제 정의, 차별성, 실행계획, 사업화 성과를 심사 기준에 맞춰 하나의 논리로 연결합니다.</p>
+            <h2>18년 경험과 선정 데이터로 기획력을 높입니다.</h2>
+            <p>문제, 차별성, 실행계획, 성과를 심사 기준에 맞춰 연결합니다.</p>
           </div>
         </div>
         <div class="strategy-grid">
@@ -1300,8 +1321,8 @@
         <div class="section-head">
           <span class="section-label">04 접수 관리</span>
           <div>
-            <h2>모든 리스크를 제품 제조처럼 컨시어지가 추적, 관리합니다.</h2>
-            <p>사업계획서 작성 이후에도 서류, 온라인 입력, 일정, 발표 준비를 하나의 사이클로 관리합니다.</p>
+            <h2>접수 리스크를 컨시어지가 추적합니다.</h2>
+            <p>서류, 입력, 일정, 발표 준비를 한 사이클로 관리합니다.</p>
           </div>
         </div>
         <div class="submission-ui">
@@ -1310,7 +1331,7 @@
               <span class="timeline-index">1</span>
               <div>
                 <h3>서류 점검</h3>
-                <p>사업계획서, 신청서, 사업자등록증, 재무자료, 인증서, 특허, 견적서를 확인합니다.</p>
+                <p>사업계획서, 신청서, 증빙자료를 확인합니다.</p>
               </div>
               <span class="status active">Ready</span>
             </div>
@@ -1318,7 +1339,7 @@
               <span class="timeline-index">2</span>
               <div>
                 <h3>온라인 접수</h3>
-                <p>접수 시스템 입력 항목, 첨부파일 형식, 제출 전 최종 확인 항목을 관리합니다.</p>
+                <p>입력 항목, 첨부파일, 최종 제출을 점검합니다.</p>
               </div>
               <span class="status active">Live</span>
             </div>
@@ -1326,7 +1347,7 @@
               <span class="timeline-index">3</span>
               <div>
                 <h3>일정 관리</h3>
-                <p>공고 마감일, 보완 요청, 발표평가, 협약 일정 등 주요 일정을 놓치지 않도록 관리합니다.</p>
+                <p>마감일, 보완 요청, 발표평가 일정을 관리합니다.</p>
               </div>
               <span class="status">Queued</span>
             </div>
@@ -1334,7 +1355,7 @@
               <span class="timeline-index">4</span>
               <div>
                 <h3>발표 준비</h3>
-                <p>발표자료, 예상 질문, 평가위원 관점의 답변 방향을 정리합니다.</p>
+                <p>발표자료와 예상 질문을 정리합니다.</p>
               </div>
               <span class="status">Draft</span>
             </div>
@@ -1365,19 +1386,19 @@
         <div class="section-head">
           <span class="section-label">05 문의 게시판</span>
           <div>
-            <h2>최소한의 기업 정보만으로 AI와 담당 컨시어지가 로드맵을 보내드립니다.</h2>
-            <p>기업 소개자료, 재무·매출 자료, 기존 사업계획서, 준비 중인 공고 정보를 남기면 검토 후 자금 로드맵과 예상 견적을 안내합니다.</p>
+            <h2>기업 정보만 남기면 로드맵을 보내드립니다.</h2>
+            <p>자료와 준비 공고를 검토해 자금 로드맵과 예상 견적을 안내합니다.</p>
           </div>
         </div>
         <div class="consult-grid">
           <aside class="chat-card">
             <h3>자료 기반 상담 흐름</h3>
-            <p>문의 게시판에 자료를 첨부하면 오프라인 컨시어지가 로드맵과 견적 검토 흐름으로 연결합니다.</p>
+            <p>자료를 첨부하면 로드맵과 견적 검토로 연결합니다.</p>
             <div class="chat-flow">
-              <div class="bubble">기업의 정성 자료와 정량 자료를 첨부해주세요.</div>
-              <div class="bubble answer">소개서, 매출자료, 기존 사업계획서를 함께 올릴게요.</div>
-              <div class="bubble">검토 후 무엇을 받을 수 있나요?</div>
-              <div class="bubble answer">지원 가능 공고, 10억 이하 자금 로드맵, 예상 견적을 안내드립니다.</div>
+              <div class="bubble">기업 자료를 첨부해주세요.</div>
+              <div class="bubble answer">소개서와 매출자료를 올릴게요.</div>
+              <div class="bubble">무엇을 받을 수 있나요?</div>
+              <div class="bubble answer">지원 공고, 자금 로드맵, 예상 견적을 안내드립니다.</div>
             </div>
             <div class="quick-options">
               <span>기업 소개서</span>
@@ -1389,7 +1410,7 @@
 
           <form class="form-box" onsubmit="handleSubmit(event)">
             <h3>로드맵·견적 문의 남기기</h3>
-            <p class="form-desc">기업 자료를 첨부해주시면 지원 가능성, 로드맵, 예상 견적을 검토해 연락드립니다.</p>
+            <p class="form-desc">자료를 첨부하면 가능성, 로드맵, 견적을 검토합니다.</p>
             <div class="form-grid">
               <div class="field">
                 <label for="company">기업명</label>
