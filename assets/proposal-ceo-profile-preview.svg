@@ -1,6 +1,6 @@
 <svg width="920" height="560" viewBox="0 0 920 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">배용준 대표 이력 요약</title>
-  <desc id="desc">대표 경영, 투자유치, 정부과제, AIoT 사업화, 평가위원 이력을 요약한 카드형 그래픽</desc>
+  <desc id="desc">대표 경영, 투자유치, 정부과제, 평가위원 및 정책자문 이력을 요약한 카드형 그래픽</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="920" y2="560" gradientUnits="userSpaceOnUse">
       <stop stop-color="#eff6ff"/>
@@ -52,7 +52,7 @@
 
   <g class="font">
     <rect x="82" y="386" width="746" height="74" rx="18" fill="#0f172a"/>
-    <text x="112" y="426" font-size="19" font-weight="800" fill="#fff">프린팅 AIoT 플랫폼, 해외공장, 특허출원 10여건, 평가위원 경험을 사업계획서 논리로 전환</text>
-    <text x="112" y="450" font-size="14" font-weight="700" fill="#93c5fd">이력서 원본 기반 요약 · 공개 페이지용 개인정보 비노출 버전</text>
+    <text x="112" y="420" font-size="16" font-weight="800" fill="#fff">적격엔젤투자자, 창업진흥원·경기콘텐츠진흥원·성남산업진흥원 평가위원</text>
+    <text x="112" y="448" font-size="16" font-weight="800" fill="#fff">서울산업진흥원 정책자문위원, 경기테크노파크 전문위원 등</text>
   </g>
 </svg>
