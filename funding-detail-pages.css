@@ -63,7 +63,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: clamp(14px, 2vw, 24px);
   position: relative;
 }
 
@@ -82,10 +82,13 @@ a {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 18px;
+  justify-content: flex-end;
+  gap: clamp(9px, 1.1vw, 16px);
   color: var(--gray-600);
-  font-size: 15px;
+  font-size: clamp(13px, 1.1vw, 14px);
   font-weight: 700;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .nav-menu a:hover,
@@ -94,7 +97,7 @@ a {
 }
 
 .nav-cta {
-  padding: 11px 18px;
+  padding: 10px clamp(14px, 1.35vw, 18px);
   border-radius: 999px;
   background: var(--blue);
   color: var(--white) !important;

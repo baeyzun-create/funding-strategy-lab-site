@@ -141,9 +141,10 @@
     .nav-menu {
       display: flex;
       justify-content: center;
-      gap: 28px;
+      gap: clamp(12px, 1.55vw, 22px);
       color: var(--ink-muted);
-      font-size: 14px;
+      font-size: clamp(13px, 1.1vw, 14px);
+      white-space: nowrap;
     }
 
     .nav-menu a:hover {
@@ -1160,6 +1161,7 @@
         <a href="./funding-notice-matching.html">공고매칭</a>
         <a href="./funding-proposal-writing.html">사업계획서</a>
         <a href="./funding-submission-management.html">접수·관리</a>
+        <a href="./funding-services-pricing.html">서비스 및 가격</a>
         <a href="#contact" class="mobile-nav-cta">상담 신청</a>
       </nav>
       <a href="#contact" class="btn btn-primary">상담 신청</a>
@@ -1269,8 +1271,8 @@
             </a>
             <a href="./funding-submission-management.html" class="service-card">
               <div class="service-meta"><span>FND-04</span><span class="status">Submission</span></div>
-              <h3>접수 관리 및 진행 지원</h3>
-              <p>신청서, 증빙자료, 온라인 접수, 보완 요청을 관리합니다.</p>
+              <h3>접수·관리 운영 지원</h3>
+              <p>오프라인 컨시어지와 협업툴로 접수·마감·보완 요청을 관리합니다.</p>
               <span class="service-link">자세히 보기 →</span>
             </a>
           </div>
@@ -1333,8 +1335,8 @@
         <div class="section-head">
           <span class="section-label">04 접수 관리</span>
           <div>
-            <h2>접수 리스크를 컨시어지가 추적합니다.</h2>
-            <p>서류, 입력, 일정, 발표 준비를 한 사이클로 관리합니다.</p>
+            <h2>컨시어지와 협업툴이 접수 리스크를 추적합니다.</h2>
+            <p>자료수집, 계약, 피드백, 마감 알림을 한 사이클로 관리합니다.</p>
           </div>
         </div>
         <div class="submission-ui">
@@ -1342,32 +1344,32 @@
             <div class="timeline-row">
               <span class="timeline-index">1</span>
               <div>
-                <h3>서류 점검</h3>
-                <p>사업계획서, 신청서, 증빙자료를 확인합니다.</p>
+                <h3>오프라인 컨시어지</h3>
+                <p>기업정보, 자료수집, 계약, 접수 대행 범위를 정리합니다.</p>
               </div>
               <span class="status active">Ready</span>
             </div>
             <div class="timeline-row">
               <span class="timeline-index">2</span>
               <div>
-                <h3>온라인 접수</h3>
-                <p>입력 항목, 첨부파일, 최종 제출을 점검합니다.</p>
+                <h3>협업툴 관리</h3>
+                <p>카톡 연동 피드백, 공유, 승인, 보완 요청을 기록합니다.</p>
               </div>
               <span class="status active">Live</span>
             </div>
             <div class="timeline-row">
               <span class="timeline-index">3</span>
               <div>
-                <h3>일정 관리</h3>
-                <p>마감일, 보완 요청, 발표평가 일정을 관리합니다.</p>
+                <h3>온라인 진행</h3>
+                <p>공고 진행, 마감, 연구노트, 접수 입력 항목을 추적합니다.</p>
               </div>
               <span class="status">Queued</span>
             </div>
             <div class="timeline-row">
               <span class="timeline-index">4</span>
               <div>
-                <h3>발표 준비</h3>
-                <p>발표자료와 예상 질문을 정리합니다.</p>
+                <h3>성과·후속 관리</h3>
+                <p>매칭률, 선정금액, 다음 과제와 발표평가 대응을 정리합니다.</p>
               </div>
               <span class="status">Draft</span>
             </div>
@@ -1377,10 +1379,10 @@
             <p style="color: var(--linear-muted);">현재 접수 준비율</p>
             <div class="progress"><span></span></div>
             <div class="side-list">
-              <span>필수서류 8개 중 6개 준비</span>
-              <span>온라인 입력 항목 72% 완료</span>
-              <span>발표 예상 질문 12개 정리</span>
-              <span>보완 요청 대응 템플릿 준비</span>
+              <span>오프라인 자료수집 범위 확정</span>
+              <span>협업툴 피드백 72% 반영</span>
+              <span>공고 마감·보완 요청 알림 설정</span>
+              <span>성과 KPI와 다음 과제 로그 준비</span>
             </div>
           </aside>
         </div>
