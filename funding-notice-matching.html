@@ -12,6 +12,36 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
   <link rel="stylesheet" href="./funding-detail-pages.css?v=nav-services-pricing" />
+  <style>
+    .matching-flow-steps {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: 24px;
+    }
+
+    .matching-flow-visual figcaption {
+      color: var(--navy);
+    }
+
+    .mobile-break {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .matching-flow-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .matching-flow-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-break {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -39,9 +69,10 @@
         <div>
           <a href="./funding-strategy-lab.html#services" class="back-link">← 서비스 전체 보기</a>
           <div class="kicker">02. Notice Matching</div>
-          <h1>공고를 찾는 시간을 줄이고, 맞는 사업에 집중합니다.</h1>
+          <h1>공고를 찾는 시간을 줄이고,<br />맞는 사업에 집중합니다.</h1>
           <p class="hero-lead">
-            정부지원사업 공고는 많지만 모든 공고가 우리 기업에 적합한 것은 아닙니다. 지원 자격, 업력, 매출, 기술 분야, 사업 목적, 가점 조건을 함께 검토합니다.
+            정부지원사업 공고는 많지만<br class="mobile-break" /> 모든 공고가 우리 기업에<br class="mobile-break" /> 적합한 것은 아닙니다.<br class="mobile-break" />
+            지원 자격, 업력, 매출,<br class="mobile-break" /> 기술 분야, 사업 목적,<br class="mobile-break" /> 가점 조건을 함께 검토합니다.
           </p>
           <div class="hero-actions">
             <a href="./funding-strategy-lab.html#contact" class="btn btn-primary">무료 자금진단 신청</a>
@@ -71,6 +102,45 @@
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="matching-flow">
+      <div class="container">
+        <div class="section-head section-head-wide">
+          <span class="section-label">MATCHING FLOW</span>
+          <h2>컨시어지와 전문 AI가<br />공고 매칭 흐름을 만듭니다.</h2>
+          <p>기업분석과 로드맵에서 출발해<br class="mobile-break" /> 기초 기획서, 표준사업계획서,<br class="mobile-break" /> 전문 AI 검토를 거쳐<br class="mobile-break" /> 지원 가능한 공고를 좁힙니다.</p>
+        </div>
+        <figure class="roadmap-visual mobile-scroll-visual matching-flow-visual">
+          <span class="scroll-cue" aria-hidden="true">← →</span>
+          <div class="mobile-scroll-track">
+            <img src="./assets/funding-notice-matching-concierge-ai-flow.png" alt="기업분석과 로드맵, 기초 기획서, 컨시어지, 전문 AI, 공고 매칭이 연결되는 공고 매칭 흐름도" />
+          </div>
+          <figcaption>컨시어지가 기업 자료를 해석하고,<br class="mobile-break" /> 전문 AI가 공고 데이터를 비교해<br class="mobile-break" /> 기초·고도화 계획서와 공고 매칭을 반복 보정합니다.</figcaption>
+        </figure>
+        <div class="process-guide matching-flow-steps">
+          <article class="process-step">
+            <h3>기업분석·로드맵</h3>
+            <p>대표, 재무, 기술, 조직 자료를 기준으로 기업의 현재 위치와 준비 순서를 잡습니다.</p>
+          </article>
+          <article class="process-step">
+            <h3>기초 기획서</h3>
+            <p>기업 요구와 선정 요인을 반영해 공고 대응에 필요한 기초 문장과 구조를 만듭니다.</p>
+          </article>
+          <article class="process-step">
+            <h3>컨시어지 검토</h3>
+            <p>현장 자료, 인터뷰, 증빙 가능성을 확인해 AI가 놓치기 쉬운 정성 맥락을 보완합니다.</p>
+          </article>
+          <article class="process-step">
+            <h3>전문 AI 분석</h3>
+            <p>대량 공고, 요건, 마감, 지원 규모를 비교해 기업 조건과 맞는 후보를 정렬합니다.</p>
+          </article>
+          <article class="process-step">
+            <h3>공고 매칭</h3>
+            <p>기초 계획서와 고도화 계획서를 오가며 선정 가능성이 높은 공고부터 실행합니다.</p>
+          </article>
+        </div>
       </div>
     </section>
 

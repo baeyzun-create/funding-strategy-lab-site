@@ -39,6 +39,8 @@
       background: var(--bg);
       line-height: 1.55;
       word-break: keep-all;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
     }
 
     a {
@@ -77,7 +79,7 @@
     }
 
     .brand-logo {
-      width: clamp(142px, 16vw, 190px);
+      width: 184px;
       height: auto;
       display: block;
     }
@@ -273,10 +275,11 @@
 
     h1 {
       max-width: 760px;
-      font-size: clamp(42px, 5vw, 64px);
+      font-size: 60px;
       font-weight: 300;
       line-height: 1.08;
-      letter-spacing: -0.5px;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     .lead {
@@ -366,7 +369,7 @@
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
     }
 
     td strong {
@@ -630,9 +633,71 @@
       .drive-board {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      h1 {
+        font-size: 42px;
+      }
     }
 
     @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .brand-logo {
+        width: 142px;
+      }
+
+      .nav-actions {
+        flex-wrap: wrap;
+        gap: 10px 14px;
+      }
+
+      .dashboard {
+        padding: 36px 0 72px;
+      }
+
+      .admin-layout,
+      body:not(.quick-nav-collapsed) .admin-layout,
+      body.quick-nav-collapsed .admin-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-nav {
+        position: static;
+        min-height: auto;
+      }
+
+      body.quick-nav-collapsed .quick-nav-list,
+      body.quick-nav-collapsed .quick-nav-caption {
+        display: none;
+      }
+
+      body.quick-nav-collapsed .quick-nav-title {
+        display: grid;
+      }
+
+      .dashboard-head {
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      h1 {
+        font-size: 34px;
+        line-height: 1.18;
+      }
+
+      .lead {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
       .metrics {
         grid-template-columns: 1fr;
       }
@@ -648,6 +713,22 @@
       .panel,
       .sub-panel {
         overflow-x: auto;
+      }
+
+      .panel-head,
+      .sub-panel-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .pipeline-row {
+        grid-template-columns: 30px 1fr;
+      }
+
+      .pipeline-row span:last-child {
+        grid-column: 2;
       }
     }
   </style>

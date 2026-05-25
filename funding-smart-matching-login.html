@@ -39,6 +39,8 @@
       background: var(--canvas);
       line-height: 1.55;
       word-break: keep-all;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
     }
 
     a {
@@ -75,7 +77,7 @@
     }
 
     .brand-logo {
-      width: clamp(142px, 16vw, 190px);
+      width: 184px;
       height: auto;
       display: block;
     }
@@ -113,16 +115,17 @@
     .section-label {
       color: var(--blue);
       font-size: 14px;
-      letter-spacing: 0.16px;
+      letter-spacing: 0;
     }
 
     h1 {
       max-width: 760px;
-      font-size: clamp(42px, 5.6vw, 72px);
+      font-size: 64px;
       font-weight: 300;
       line-height: 1.08;
-      letter-spacing: -0.6px;
+      letter-spacing: 0;
       margin-bottom: 18px;
+      overflow-wrap: anywhere;
     }
 
     .lead {
@@ -184,7 +187,7 @@
     .login-card h2 {
       font-size: 32px;
       line-height: 1.14;
-      letter-spacing: -0.4px;
+      letter-spacing: 0;
       margin-bottom: 10px;
     }
 
@@ -304,6 +307,10 @@
         padding: 16px 0;
       }
 
+      .brand-logo {
+        width: 142px;
+      }
+
       .nav-actions {
         flex-wrap: wrap;
         gap: 12px;
@@ -312,6 +319,16 @@
 
       .login-hero {
         padding: 52px 0 72px;
+      }
+
+      h1 {
+        font-size: 34px;
+        line-height: 1.18;
+      }
+
+      .lead {
+        font-size: 16px;
+        line-height: 1.75;
       }
 
       .login-shell {
@@ -344,8 +361,8 @@
         <div class="hero-head">
           <span class="section-label">스마트 매칭 로그인</span>
           <div>
-            <h1>멥버쉽 기업 및 협업 영업인 전용 페이지 입니다.</h1>
-            <p class="lead">준비 중</p>
+            <h1>멤버십 기업과 협업 영업인을 위한 전용 로그인입니다.</h1>
+            <p class="lead">자금 로드맵, 공고 매칭 결과, 접수 관리 현황을 계정별로 확인할 수 있는 영역입니다.</p>
           </div>
         </div>
 
@@ -371,7 +388,7 @@
             </div>
             <button class="login-button" type="submit">기업 로그인</button>
             <a href="./funding-signup.html" class="signup-link">기업회원 가입하기</a>
-            <div class="helper">기업용 실제 시스템 URL이 준비되면 이 버튼에 연결하면 됩니다.</div>
+            <div class="helper">운영 계정 발급 후 기업별 로드맵 화면으로 연결됩니다.</div>
           </form>
 
           <form class="login-card sales" onsubmit="handleLogin(event, '영업인')">
@@ -395,7 +412,7 @@
             </div>
             <button class="login-button" type="submit">영업인 로그인</button>
             <a href="./funding-signup.html" class="signup-link">영업인 파트너 가입하기</a>
-            <div class="helper">영업인용 실제 시스템 URL이 준비되면 이 버튼에 연결하면 됩니다.</div>
+            <div class="helper">운영 계정 발급 후 담당 기업의 진행 현황으로 연결됩니다.</div>
           </form>
         </div>
       </div>

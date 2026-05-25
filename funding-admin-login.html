@@ -37,6 +37,8 @@
       background: var(--canvas);
       line-height: 1.55;
       word-break: keep-all;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
     }
 
     a {
@@ -67,7 +69,7 @@
     }
 
     .brand-logo {
-      width: clamp(142px, 16vw, 190px);
+      width: 184px;
       height: auto;
       display: block;
     }
@@ -108,11 +110,12 @@
 
     h1 {
       max-width: 600px;
-      font-size: clamp(42px, 5vw, 68px);
+      font-size: 64px;
       font-weight: 300;
       line-height: 1.08;
-      letter-spacing: -0.6px;
+      letter-spacing: 0;
       margin-bottom: 18px;
+      overflow-wrap: anywhere;
     }
 
     .lead {
@@ -261,8 +264,32 @@
         white-space: normal;
       }
 
+      .brand-logo {
+        width: 142px;
+      }
+
       .login-grid {
         grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 34px;
+        line-height: 1.18;
+      }
+
+      .lead {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .login-card {
+        padding: 24px;
+      }
+
+      .preview-list span {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
       }
     }
   </style>
@@ -286,7 +313,7 @@
         <div>
           <div class="eyebrow">Admin Console</div>
           <h1>문의 접수와 로드맵 진행을 한 화면에서 관리합니다.</h1>
-          <p class="lead">자료첨부 필수 문의, AI 로드맵 생성, 담당 컨시어지 배정, 견적 발송 상태를 관리자 대시보드에서 확인합니다.</p>
+          <p class="lead">자료 첨부 문의, AI 로드맵 생성, 담당 컨시어지 배정, 견적 발송 상태를 관리자 대시보드에서 확인합니다.</p>
           <div class="preview-panel">
             <h3>대시보드 관리 항목</h3>
             <div class="preview-list">
@@ -300,7 +327,7 @@
 
         <form class="login-card" onsubmit="handleAdminLogin(event)">
           <h2>관리자 로그인</h2>
-          <p>현재는 사이트 시연용 관리자 진입 화면입니다. 실제 운영 시 인증 서버와 연결하면 됩니다.</p>
+          <p>현재는 사이트 시연용 관리자 진입 화면입니다. 운영 전환 시 지정된 관리자 인증과 연결합니다.</p>
           <div class="field">
             <label for="adminId">관리자 아이디</label>
             <input id="adminId" name="adminId" type="email" placeholder="관리자 아이디 입력" autocomplete="off" data-lpignore="true" />

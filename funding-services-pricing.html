@@ -44,15 +44,16 @@
       margin: 18px 0 10px;
       font-size: 23px;
       line-height: 1.28;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .pricing-card strong {
       display: block;
       color: var(--blue);
-      font-size: clamp(26px, 3vw, 34px);
+      font-size: 32px;
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     .pricing-card p {
@@ -162,6 +163,17 @@
 
       .pricing-card {
         min-height: auto;
+        padding: 22px;
+      }
+
+      .pricing-card strong {
+        font-size: 28px;
+        line-height: 1.18;
+      }
+
+      .price-note {
+        padding: 16px;
+        font-size: 15px;
       }
     }
   </style>
@@ -192,9 +204,9 @@
         <div>
           <a href="./funding-strategy-lab.html" class="back-link">← 메인화면</a>
           <div class="kicker">05. Service &amp; Pricing</div>
-          <h1>기업 단계에 맞는 서비스와 견적 기준을 제안합니다.</h1>
+          <h1>기업 단계에 맞는 서비스와 견적 기준을 먼저 제안합니다.</h1>
           <p class="hero-lead">
-            무료 진단부터 공고매칭, 사업계획서, 접수·관리까지 필요한 범위를 먼저 확인한 뒤 실행 가능한 견적을 산정합니다.
+            무료 진단으로 자료 수준과 공고 난이도를 확인하고, 공고매칭·사업계획서·접수관리 중 필요한 범위만 견적화합니다.
           </p>
           <div class="hero-actions">
             <a href="./funding-strategy-lab.html#contact" class="btn btn-primary">무료 자금진단 신청</a>
@@ -241,9 +253,9 @@
             <strong>무료 진단</strong>
             <p>기업명, 업종, 자금 목적만 남기면 1차 가능성과 보강 순서를 확인합니다.</p>
             <ul>
-              <li>기업 단계와 자료 수준 확인</li>
-              <li>지원 가능 공고 방향 검토</li>
-              <li>보강 항목 우선순위 제안</li>
+              <li>기업 단계와 보유 자료 확인</li>
+              <li>지원 가능 공고 방향 제안</li>
+              <li>보강 항목 우선순위 정리</li>
             </ul>
             <a href="./funding-strategy-planning.html" class="btn btn-secondary">로드맵 보기</a>
           </article>
@@ -322,7 +334,7 @@
             </tr>
           </tbody>
         </table>
-        <p class="price-note">정확한 금액은 무료 진단 이후 공고명, 마감일, 자료 준비 상태를 확인해 제안드립니다.</p>
+        <p class="price-note">정확한 금액은 무료 진단 이후 공고명, 마감일, 자료 준비 상태, 작성 범위를 확인한 뒤 제안드립니다.</p>
       </div>
     </section>
 

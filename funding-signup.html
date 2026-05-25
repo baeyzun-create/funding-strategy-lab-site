@@ -41,6 +41,8 @@
       background: var(--canvas);
       line-height: 1.55;
       word-break: keep-all;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
     }
 
     a {
@@ -83,7 +85,7 @@
     }
 
     .brand-logo {
-      width: clamp(142px, 16vw, 190px);
+      width: 184px;
       height: auto;
       display: block;
     }
@@ -122,16 +124,17 @@
       color: var(--blue);
       font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.16px;
+      letter-spacing: 0;
     }
 
     h1 {
       max-width: 760px;
-      font-size: clamp(40px, 5vw, 68px);
+      font-size: 64px;
       font-weight: 300;
       line-height: 1.08;
-      letter-spacing: -0.4px;
+      letter-spacing: 0;
       margin-bottom: 18px;
+      overflow-wrap: anywhere;
     }
 
     .lead {
@@ -186,7 +189,7 @@
     .section-title h3 {
       font-size: 20px;
       font-weight: 600;
-      letter-spacing: -0.2px;
+      letter-spacing: 0;
     }
 
     .status-pill {
@@ -216,6 +219,8 @@
 
     .role-option input {
       position: absolute;
+      width: 1px;
+      min-height: 1px;
       opacity: 0;
       pointer-events: none;
     }
@@ -497,6 +502,10 @@
         padding: 16px 0;
       }
 
+      .brand-logo {
+        width: 142px;
+      }
+
       .nav-actions {
         flex-wrap: wrap;
         gap: 12px;
@@ -508,7 +517,13 @@
       }
 
       h1 {
-        font-size: clamp(34px, 12vw, 46px);
+        font-size: 34px;
+        line-height: 1.18;
+      }
+
+      .lead {
+        font-size: 16px;
+        line-height: 1.75;
       }
 
       .signup-shell {
@@ -528,6 +543,17 @@
 
       .role-option span {
         min-height: 76px;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .inline-button {
+        width: 100%;
+        white-space: normal;
       }
     }
   </style>
@@ -553,8 +579,8 @@
         <div class="hero-head">
           <span class="section-label">회원가입</span>
           <div>
-            <h1>다양한 정보 및 메일링 서비스를 제공해 드립니다.</h1>
-            <p class="lead">기업회원과 영업인 파트너가 자금 로드맵, 공고 매칭, 사업계획서, 접수 관리 흐름을 확인할 수 있는 계정을 만듭니다.</p>
+            <h1>자금 로드맵과 공고 알림을 받을 계정을 만듭니다.</h1>
+            <p class="lead">기업회원과 영업인 파트너가 공고 매칭, 사업계획서, 접수 관리 흐름을 안전하게 확인할 수 있도록 가입 정보를 받습니다.</p>
           </div>
         </div>
 
