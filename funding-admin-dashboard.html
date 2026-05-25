@@ -350,6 +350,36 @@
       font-size: 14px;
     }
 
+    .panel-head-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .admin-status {
+      margin: 16px 24px 0;
+      padding: 12px 14px;
+      color: #374151;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .admin-status.is-success {
+      color: #166534;
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .admin-status.is-error {
+      color: #991b1b;
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -375,6 +405,46 @@
     td strong {
       display: block;
       margin-bottom: 4px;
+    }
+
+    .table-muted {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .attachment-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      max-width: 260px;
+    }
+
+    .attachment-link {
+      min-height: 28px;
+      padding: 4px 8px;
+      color: #0f62fe;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status-select {
+      min-width: 150px;
+      min-height: 34px;
+      padding: 6px 10px;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .badge {
@@ -741,7 +811,7 @@
       </a>
       <div class="nav-actions">
         <span class="admin-role" id="adminRole">관리자</span>
-        <a href="./funding-admin-login.html" onclick="clearAdminSession()">로그아웃</a>
+        <a href="./funding-admin-login.html" onclick="clearAdminSession(event)">로그아웃</a>
         <a href="./funding-services-pricing.html">서비스 및 가격</a>
         <a href="./funding-strategy-lab.html">메인화면</a>
       </div>
@@ -807,19 +877,19 @@
       <section class="metrics dashboard-unit" id="summaryMetrics" aria-label="관리자 주요 지표">
         <article class="metric">
           <span>신규 문의</span>
-          <strong>12</strong>
+          <strong id="metricNewCount">12</strong>
         </article>
         <article class="metric">
           <span>자료첨부 완료</span>
-          <strong>9</strong>
+          <strong id="metricAttachmentCount">9</strong>
         </article>
         <article class="metric">
           <span>AI 로드맵 생성</span>
-          <strong>7</strong>
+          <strong id="metricRoadmapCount">7</strong>
         </article>
         <article class="metric">
           <span>컨시어지 배정</span>
-          <strong>4</strong>
+          <strong id="metricConciergeCount">4</strong>
         </article>
       </section>
 
@@ -830,8 +900,12 @@
               <h2>문의 게시판</h2>
               <p>자료첨부 상태와 로드맵 진행 단계를 확인합니다.</p>
             </div>
-            <span class="badge green">Live</span>
+            <div class="panel-head-actions">
+              <span class="badge green" id="inquiryLiveBadge">Live</span>
+              <button class="action-button" type="button" onclick="loadSupabaseInquiries()">새로고침</button>
+            </div>
           </div>
+          <p class="admin-status" id="inquiryStatus" role="status" aria-live="polite">Supabase 문의 DB 연결을 확인하고 있습니다.</p>
           <table>
             <thead>
               <tr>
@@ -842,7 +916,7 @@
                 <th>담당</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="inquiryTableBody">
               <tr>
                 <td><strong>원컨덕터</strong>제조 · R&D</td>
                 <td>10억 이하 자금 로드맵</td>
@@ -882,27 +956,27 @@
               <div class="pipeline-row">
                 <span class="pipeline-index">1</span>
                 <strong>문의 접수</strong>
-                <span>12</span>
+                <span id="pipelineNewCount">12</span>
               </div>
               <div class="pipeline-row">
                 <span class="pipeline-index">2</span>
                 <strong>자료 확인</strong>
-                <span>9</span>
+                <span id="pipelineReviewCount">9</span>
               </div>
               <div class="pipeline-row">
                 <span class="pipeline-index">3</span>
                 <strong>AI 로드맵 생성</strong>
-                <span>7</span>
+                <span id="pipelineRoadmapCount">7</span>
               </div>
               <div class="pipeline-row">
                 <span class="pipeline-index">4</span>
                 <strong>컨시어지 검토</strong>
-                <span>4</span>
+                <span id="pipelineConciergeCount">4</span>
               </div>
               <div class="pipeline-row">
                 <span class="pipeline-index">5</span>
                 <strong>견적 발송</strong>
-                <span>2</span>
+                <span id="pipelineEstimateCount">2</span>
               </div>
             </div>
           </section>
@@ -1178,6 +1252,9 @@
     <div class="container">© 2026 더이로운기업 · 관리자 대시보드</div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./assets/supabase-config.js"></script>
+  <script src="./assets/supabase-roadmap.js"></script>
   <script>
     const quickNavToggle = document.querySelector(".quick-nav-toggle");
     const compactNavQuery = window.matchMedia("(max-width: 980px)");
@@ -1266,20 +1343,289 @@
       });
     });
 
-    showAdminView("dashboard");
+    const inquiryTableBody = document.getElementById("inquiryTableBody");
+    const statusOptions = window.FundingSupabase?.STATUS_OPTIONS || [
+      { value: "new", label: "문의 접수" },
+      { value: "materials_received", label: "자료 확인" },
+      { value: "analysis", label: "AI 로드맵 생성" },
+      { value: "concierge", label: "컨시어지 검토" },
+      { value: "estimate", label: "견적 발송" },
+      { value: "closed", label: "종료" }
+    ];
 
-    if (sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
-      window.location.replace("./funding-admin-login.html");
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
-    const adminRoleText = sessionStorage.getItem("fundingAdminRole") || "관리자";
-    document.getElementById("adminRole").textContent = adminRoleText === "총괄 관리자" ? "관리자" : adminRoleText;
+    function truncateText(value, maxLength) {
+      const text = String(value || "").trim();
+      if (text.length <= maxLength) {
+        return text;
+      }
+      return text.slice(0, maxLength - 1) + "...";
+    }
 
-    function clearAdminSession() {
+    function formatDate(value) {
+      if (!value) {
+        return "";
+      }
+
+      try {
+        return new Intl.DateTimeFormat("ko-KR", {
+          dateStyle: "short",
+          timeStyle: "short"
+        }).format(new Date(value));
+      } catch (error) {
+        return String(value);
+      }
+    }
+
+    function normalizeAttachments(value) {
+      if (Array.isArray(value)) {
+        return value;
+      }
+
+      if (typeof value === "string") {
+        try {
+          const parsed = JSON.parse(value);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      return [];
+    }
+
+    function setText(id, value) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = String(value);
+      }
+    }
+
+    function setInquiryStatusMessage(type, message) {
+      const status = document.getElementById("inquiryStatus");
+      if (!status) {
+        return;
+      }
+
+      status.className = "admin-status";
+      if (type) {
+        status.classList.add("is-" + type);
+      }
+      status.textContent = message;
+    }
+
+    function getStatusLabel(value) {
+      const option = statusOptions.find((item) => item.value === value);
+      return option ? option.label : "문의 접수";
+    }
+
+    function updateDashboardCounts(rows) {
+      const countByStatus = rows.reduce((acc, row) => {
+        const status = row.status || "new";
+        acc[status] = (acc[status] || 0) + 1;
+        return acc;
+      }, {});
+      const attachmentCount = rows.filter((row) => Number(row.attachment_count || 0) > 0).length;
+      const roadmapCount = rows.filter((row) => ["analysis", "concierge", "estimate", "closed"].includes(row.status)).length;
+      const conciergeCount = rows.filter((row) => row.status === "concierge" || row.assigned_to).length;
+
+      setText("metricNewCount", countByStatus.new || 0);
+      setText("metricAttachmentCount", attachmentCount);
+      setText("metricRoadmapCount", roadmapCount);
+      setText("metricConciergeCount", conciergeCount);
+      setText("pipelineNewCount", countByStatus.new || 0);
+      setText("pipelineReviewCount", countByStatus.materials_received || 0);
+      setText("pipelineRoadmapCount", countByStatus.analysis || 0);
+      setText("pipelineConciergeCount", countByStatus.concierge || 0);
+      setText("pipelineEstimateCount", countByStatus.estimate || 0);
+    }
+
+    function renderInquiries(rows) {
+      if (!inquiryTableBody) {
+        return;
+      }
+
+      updateDashboardCounts(rows);
+
+      if (!rows.length) {
+        inquiryTableBody.innerHTML = [
+          "<tr>",
+          "<td colspan=\"5\">",
+          "<strong>아직 접수된 문의가 없습니다.</strong>",
+          "<span class=\"table-muted\">랜딩 페이지의 로드맵·견적 문의 폼에서 접수되면 이곳에 자동으로 표시됩니다.</span>",
+          "</td>",
+          "</tr>"
+        ].join("");
+        return;
+      }
+
+      inquiryTableBody.innerHTML = rows.map((row) => {
+        const attachments = normalizeAttachments(row.attachments);
+        const attachmentHtml = attachments.length
+          ? "<div class=\"attachment-list\">" + attachments.map((file) => {
+            return "<button class=\"attachment-link\" type=\"button\" data-attachment-path=\"" + escapeHtml(file.path) + "\">" + escapeHtml(truncateText(file.name || "첨부파일", 18)) + "</button>";
+          }).join("") + "</div>"
+          : "<span class=\"badge orange\">첨부 없음</span>";
+        const statusSelect = "<select class=\"status-select\" data-current-status=\"" + escapeHtml(row.status || "new") + "\" data-inquiry-id=\"" + escapeHtml(row.id) + "\" aria-label=\"" + escapeHtml(row.company_name || "문의") + " 상태 변경\">" + statusOptions.map((option) => {
+          const selected = option.value === (row.status || "new") ? " selected" : "";
+          return "<option value=\"" + escapeHtml(option.value) + "\"" + selected + ">" + escapeHtml(option.label) + "</option>";
+        }).join("") + "</select>";
+
+        return [
+          "<tr>",
+          "<td>",
+          "<strong>" + escapeHtml(row.company_name) + "</strong>",
+          "<span class=\"table-muted\">" + escapeHtml(row.contact_name || "담당자 미입력") + " · " + escapeHtml(row.phone || "연락처 미입력") + "</span>",
+          "</td>",
+          "<td>",
+          escapeHtml(row.consultation_type || "상담 항목 미입력"),
+          "<span class=\"table-muted\">" + escapeHtml(truncateText(row.message || "문의 내용 미입력", 56)) + "</span>",
+          "<span class=\"table-muted\">" + escapeHtml(formatDate(row.created_at)) + "</span>",
+          "</td>",
+          "<td>" + attachmentHtml + "</td>",
+          "<td>" + statusSelect + "</td>",
+          "<td>" + escapeHtml(row.assigned_to || "미배정") + "<span class=\"table-muted\">" + escapeHtml(getStatusLabel(row.status || "new")) + "</span></td>",
+          "</tr>"
+        ].join("");
+      }).join("");
+    }
+
+    async function loadSupabaseInquiries() {
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        setInquiryStatusMessage("error", "Supabase 설정값이 비어 있습니다. assets/supabase-config.js에 프로젝트 URL과 anon key를 입력하면 실시간 문의 DB가 표시됩니다.");
+        return;
+      }
+
+      try {
+        setInquiryStatusMessage("", "Supabase 문의 DB에서 최신 접수 목록을 불러오는 중입니다.");
+        const rows = await window.FundingSupabase.fetchInquiries({ limit: 100 });
+        renderInquiries(rows);
+        setInquiryStatusMessage("success", "문의 DB와 연결되었습니다. 첨부파일은 관리자 권한으로 signed URL을 생성해 열람합니다.");
+      } catch (error) {
+        setInquiryStatusMessage("error", error && error.message ? error.message : "문의 목록을 불러오지 못했습니다.");
+      }
+    }
+
+    if (inquiryTableBody) {
+      inquiryTableBody.addEventListener("click", async (event) => {
+        const button = event.target.closest(".attachment-link");
+        if (!button) {
+          return;
+        }
+
+        const originalText = button.textContent;
+        try {
+          button.disabled = true;
+          button.textContent = "열람 준비";
+          const signedUrl = await window.FundingSupabase.createAttachmentSignedUrl(button.dataset.attachmentPath, 600);
+          window.open(signedUrl, "_blank", "noopener");
+          setInquiryStatusMessage("success", "첨부파일 열람 링크를 10분 유효 signed URL로 열었습니다.");
+        } catch (error) {
+          setInquiryStatusMessage("error", error && error.message ? error.message : "첨부파일을 열지 못했습니다.");
+          alert(error && error.message ? error.message : "첨부파일을 열지 못했습니다.");
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      });
+
+      inquiryTableBody.addEventListener("change", async (event) => {
+        const select = event.target.closest(".status-select");
+        if (!select) {
+          return;
+        }
+
+        const previousStatus = select.dataset.currentStatus || "new";
+        try {
+          select.disabled = true;
+          await window.FundingSupabase.updateInquiry(select.dataset.inquiryId, { status: select.value });
+          select.dataset.currentStatus = select.value;
+          setInquiryStatusMessage("success", "문의 상태가 '" + getStatusLabel(select.value) + "' 단계로 저장되었습니다.");
+          await loadSupabaseInquiries();
+        } catch (error) {
+          select.value = previousStatus;
+          setInquiryStatusMessage("error", error && error.message ? error.message : "문의 상태를 저장하지 못했습니다.");
+          alert(error && error.message ? error.message : "문의 상태를 저장하지 못했습니다.");
+        } finally {
+          select.disabled = false;
+        }
+      });
+    }
+
+    async function bootstrapAdminDashboard() {
+      const initialView = window.location.hash ? window.location.hash.replace("#", "") : "dashboard";
+      showAdminView(initialView, false);
+
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        if (sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
+          window.location.replace("./funding-admin-login.html");
+          return;
+        }
+
+        const role = sessionStorage.getItem("fundingAdminRole") || "관리자";
+        document.getElementById("adminRole").textContent = role === "총괄 관리자" ? "관리자" : role;
+        setInquiryStatusMessage("error", "Supabase 설정 전이라 기존 예시 목록만 표시됩니다. assets/supabase-config.js 설정과 SQL 적용 후 관리자 DB가 연결됩니다.");
+        return;
+      }
+
+      try {
+        const session = await window.FundingSupabase.getSession();
+        if (!session) {
+          window.location.replace("./funding-admin-login.html");
+          return;
+        }
+
+        const profile = await window.FundingSupabase.fetchAdminProfile();
+        if (!profile) {
+          await window.FundingSupabase.signOut();
+          sessionStorage.removeItem("fundingAdminLoggedIn");
+          sessionStorage.removeItem("fundingAdminId");
+          sessionStorage.removeItem("fundingAdminRole");
+          window.location.replace("./funding-admin-login.html");
+          return;
+        }
+
+        document.getElementById("adminRole").textContent = profile.role || "관리자";
+        sessionStorage.setItem("fundingAdminLoggedIn", "true");
+        sessionStorage.setItem("fundingAdminId", profile.email || session.user.email || "");
+        sessionStorage.setItem("fundingAdminRole", profile.role || "관리자");
+        await loadSupabaseInquiries();
+      } catch (error) {
+        setInquiryStatusMessage("error", error && error.message ? error.message : "관리자 세션을 확인하지 못했습니다.");
+      }
+    }
+
+    async function clearAdminSession(event) {
+      if (event) {
+        event.preventDefault();
+      }
+
+      if (window.FundingSupabase && window.FundingSupabase.isConfigured()) {
+        try {
+          await window.FundingSupabase.signOut();
+        } catch (error) {
+          console.warn("Supabase sign out failed", error);
+        }
+      }
       sessionStorage.removeItem("fundingAdminLoggedIn");
       sessionStorage.removeItem("fundingAdminId");
       sessionStorage.removeItem("fundingAdminRole");
+      window.location.href = "./funding-admin-login.html";
     }
+
+    window.toggleQuickNav = toggleQuickNav;
+    window.loadSupabaseInquiries = loadSupabaseInquiries;
+    window.clearAdminSession = clearAdminSession;
+
+    bootstrapAdminDashboard();
   </script>
   <script src="./assets/disable-mobile-zoom.js"></script>
 </body>

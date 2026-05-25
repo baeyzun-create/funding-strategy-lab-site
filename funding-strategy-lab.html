@@ -917,6 +917,27 @@
       margin-top: 14px;
     }
 
+    .form-status {
+      min-height: 22px;
+      margin-top: 12px;
+      color: var(--ink-muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .form-status.is-success {
+      color: #166534;
+    }
+
+    .form-status.is-error {
+      color: #b42318;
+    }
+
+    .form-box.is-submitting .submit-btn {
+      opacity: 0.72;
+      cursor: progress;
+    }
+
     .footer {
       background: #082438;
       color: #f4f7fb;
@@ -1506,6 +1527,7 @@
               </div>
             </div>
             <button class="btn btn-dark submit-btn" type="submit">로드맵·견적 문의 남기기</button>
+            <p class="form-status" id="roadmapFormStatus" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -1536,6 +1558,9 @@
 
   <a href="#contact" class="floating-cta">무료 자금진단 신청</a>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./assets/supabase-config.js"></script>
+  <script src="./assets/supabase-roadmap.js"></script>
   <script>
     const menuToggle = document.querySelector(".menu-toggle");
     const mainNavMenu = document.getElementById("mainNavMenu");
@@ -1587,36 +1612,75 @@
       });
     }
 
-    function handleSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const company = form.company.value.trim();
-      const name = form.name.value.trim();
-      const phone = form.phone.value.trim();
-      const business = form.business.value;
-      const message = form.message.value.trim();
-      const attachments = Array.from(form.attachments.files).map((file) => file.name);
-
-      if (!attachments.length) {
-        alert("로드맵 검토를 위해 자료 첨부는 필수입니다.\n\n기업 소개서, 매출자료, 기존 사업계획서, 준비 중인 공고 자료 중 하나 이상을 첨부해주세요.");
-        form.attachments.focus();
+    function setRoadmapFormStatus(form, type, message) {
+      const status = form.querySelector("#roadmapFormStatus");
+      if (!status) {
         return;
       }
 
-      const text = [
-        "[로드맵·견적 문의 정보]",
-        "기업명: " + company,
-        "담당자명: " + name,
-        "연락처: " + phone,
-        "상담 요청 항목: " + business,
-        "첨부 자료: " + (attachments.length ? attachments.join(", ") : "미첨부"),
-        "문의 내용: " + (message || "미입력")
-      ].join("\n");
-
-      alert("로드맵·견적 문의 정보가 입력되었습니다.\n\n실제 사이트에서는 첨부자료와 문의 내용을 게시판, 이메일, DB, CRM 등으로 전송하도록 연결하면 됩니다.");
-      console.log(text);
-      form.reset();
+      status.className = "form-status";
+      if (type) {
+        status.classList.add("is-" + type);
+      }
+      status.textContent = message || "";
     }
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const fields = form.elements;
+      const submitButton = form.querySelector(".submit-btn");
+      const originalButtonText = submitButton ? submitButton.textContent : "";
+      const attachments = Array.from(fields.attachments.files);
+
+      if (!attachments.length) {
+        setRoadmapFormStatus(form, "error", "로드맵 검토를 위해 자료 첨부는 필수입니다.");
+        alert("로드맵 검토를 위해 자료 첨부는 필수입니다.\n\n기업 소개서, 매출자료, 기존 사업계획서, 준비 중인 공고 자료 중 하나 이상을 첨부해주세요.");
+        fields.attachments.focus();
+        return;
+      }
+
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        const message = "Supabase 설정값이 비어 있어 문의를 저장할 수 없습니다. assets/supabase-config.js에 URL과 anon key를 입력해주세요.";
+        setRoadmapFormStatus(form, "error", message);
+        alert(message);
+        return;
+      }
+
+      try {
+        form.classList.add("is-submitting");
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = "문의와 첨부파일을 저장하는 중입니다";
+        }
+        setRoadmapFormStatus(form, "", "첨부파일을 안전하게 업로드하고 문의 DB에 저장하고 있습니다.");
+
+        const savedInquiry = await window.FundingSupabase.submitRoadmapInquiry({
+          companyName: fields.company.value,
+          contactName: fields.name.value,
+          phone: fields.phone.value,
+          consultationType: fields.business.value,
+          message: fields.message.value,
+          files: fields.attachments.files
+        });
+
+        setRoadmapFormStatus(form, "success", "문의가 접수되었습니다. 담당자가 자료 확인 후 연락드리겠습니다.");
+        alert("로드맵·견적 문의가 접수되었습니다.\n\n접수번호: " + savedInquiry.id + "\n담당자가 자료 확인 후 연락드리겠습니다.");
+        form.reset();
+      } catch (error) {
+        const errorMessage = error && error.message ? error.message : "문의 저장 중 오류가 발생했습니다.";
+        setRoadmapFormStatus(form, "error", errorMessage);
+        alert(errorMessage);
+      } finally {
+        form.classList.remove("is-submitting");
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+    }
+
+    window.handleSubmit = handleSubmit;
   </script>
   <script src="./assets/disable-mobile-zoom.js"></script>
 </body>

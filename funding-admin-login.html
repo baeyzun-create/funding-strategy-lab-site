@@ -212,6 +212,11 @@
       cursor: pointer;
     }
 
+    .btn:disabled {
+      opacity: 0.72;
+      cursor: progress;
+    }
+
     .preview-panel {
       margin-top: 28px;
       padding: 22px;
@@ -327,21 +332,21 @@
 
         <form class="login-card" onsubmit="handleAdminLogin(event)">
           <h2>관리자 로그인</h2>
-          <p>현재는 사이트 시연용 관리자 진입 화면입니다. 운영 전환 시 지정된 관리자 인증과 연결합니다.</p>
+          <p>Supabase Auth에 등록된 관리자 계정으로 문의 DB와 첨부자료를 확인합니다.</p>
           <div class="field">
             <label for="adminId">관리자 아이디</label>
-            <input id="adminId" name="adminId" type="email" placeholder="관리자 아이디 입력" autocomplete="off" data-lpignore="true" />
+            <input id="adminId" name="adminId" type="email" placeholder="관리자 이메일 입력" autocomplete="username" data-lpignore="true" required />
           </div>
           <div class="field">
             <label for="adminPassword">비밀번호</label>
-            <input id="adminPassword" name="adminPassword" type="password" placeholder="비밀번호" autocomplete="current-password" />
+            <input id="adminPassword" name="adminPassword" type="password" placeholder="비밀번호" autocomplete="current-password" required />
           </div>
           <div class="login-error" id="loginError">관리자 아이디 또는 비밀번호가 일치하지 않습니다.</div>
           <div class="admin-note">
-            <span>테스트 기간에는 버튼 클릭만으로 관리자 대시보드에 이동할 수 있습니다.</span>
-            <span>운영 전환 시 지정된 총괄 관리자 계정 인증으로 연결합니다.</span>
+            <span>Supabase Auth 사용자 생성 후 admin_users 테이블에 관리자 권한을 등록해야 합니다.</span>
+            <span>로그인하면 문의 목록, 첨부파일 signed URL, 진행 상태 변경이 대시보드와 연결됩니다.</span>
           </div>
-          <a class="btn" href="./funding-admin-dashboard.html" onclick="setAdminDemoSession()">관리자 대시보드로 이동</a>
+          <button class="btn" type="submit">관리자 로그인</button>
         </form>
       </div>
     </section>
@@ -351,20 +356,51 @@
     <div class="container">© 2026 더이로운기업 · 관리자 로그인</div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./assets/supabase-config.js"></script>
+  <script src="./assets/supabase-roadmap.js"></script>
   <script>
-    function setAdminDemoSession() {
-      sessionStorage.setItem("fundingAdminLoggedIn", "true");
-      sessionStorage.setItem("fundingAdminId", "baeyzun@naver.com");
-      sessionStorage.setItem("fundingAdminRole", "관리자");
+    function showLoginError(message) {
+      const error = document.getElementById("loginError");
+      error.textContent = message;
+      error.classList.add("is-visible");
     }
 
-    function handleAdminLogin(event) {
+    async function handleAdminLogin(event) {
       event.preventDefault();
-      const error = document.getElementById("loginError");
-      error.classList.remove("is-visible");
-      setAdminDemoSession();
-      window.location.href = "./funding-admin-dashboard.html";
+      const form = event.target;
+      const fields = form.elements;
+      const button = form.querySelector(".btn");
+      const originalButtonText = button ? button.textContent : "";
+      document.getElementById("loginError").classList.remove("is-visible");
+
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        showLoginError("Supabase 설정값이 비어 있습니다. assets/supabase-config.js에 프로젝트 URL과 anon key를 입력해주세요.");
+        return;
+      }
+
+      try {
+        if (button) {
+          button.disabled = true;
+          button.textContent = "로그인 확인 중입니다";
+        }
+
+        const result = await window.FundingSupabase.signInAdmin(fields.adminId.value, fields.adminPassword.value);
+        sessionStorage.setItem("fundingAdminLoggedIn", "true");
+        sessionStorage.setItem("fundingAdminId", result.profile.email || result.user.email || fields.adminId.value);
+        sessionStorage.setItem("fundingAdminRole", result.profile.role || "관리자");
+        window.location.href = "./funding-admin-dashboard.html#inquiries";
+      } catch (error) {
+        showLoginError(error && error.message ? error.message : "관리자 로그인에 실패했습니다.");
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = originalButtonText;
+        }
+      }
     }
+
+    window.handleAdminLogin = handleAdminLogin;
   </script>
   <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
