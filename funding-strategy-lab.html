@@ -177,6 +177,10 @@
       display: none;
     }
 
+    .mobile-account-links {
+      display: none;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -1140,6 +1144,28 @@
         font-size: 16px;
       }
 
+      .mobile-account-links {
+        display: grid;
+        border-top: 8px solid var(--surface-1);
+        background: #fff;
+      }
+
+      .mobile-account-links a {
+        min-height: 48px;
+        color: var(--ink-muted);
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .mobile-account-links a:hover,
+      .mobile-account-links a:focus-visible {
+        color: var(--ibm-blue);
+      }
+
+      .mobile-account-links .mobile-account-admin {
+        color: var(--ibm-blue);
+      }
+
       .mobile-nav-cta {
         display: flex !important;
         justify-content: center;
@@ -1302,6 +1328,11 @@
         <a href="./funding-proposal-writing.html">사업계획서</a>
         <a href="./funding-submission-management.html">접수·관리</a>
         <a href="./funding-services-pricing.html">서비스 및 가격</a>
+        <span class="mobile-account-links" aria-label="계정 메뉴">
+          <a href="./funding-signup.html">회원가입</a>
+          <a href="./funding-smart-matching-login.html">로그인</a>
+          <a href="./funding-admin-dashboard.html#dashboard" class="mobile-account-admin">관리자 페이지</a>
+        </span>
         <a href="#contact" class="mobile-nav-cta">상담 신청</a>
       </nav>
       <a href="#contact" class="btn btn-primary">상담 신청</a>
