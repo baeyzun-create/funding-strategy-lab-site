@@ -1,4 +1,4 @@
-const CACHE_VERSION = "funding-pwa-v3";
+const CACHE_VERSION = "funding-pwa-v4";
 const APP_SHELL_CACHE = CACHE_VERSION + "-shell";
 const HTML_CACHE = CACHE_VERSION + "-html";
 const STATIC_CACHE = CACHE_VERSION + "-static";
