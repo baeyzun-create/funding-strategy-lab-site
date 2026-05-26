@@ -857,25 +857,6 @@ section {
   height: auto;
 }
 
-.patent-caption-relabel {
-  position: absolute;
-  left: 4.35%;
-  bottom: 2.6%;
-  width: 43%;
-  min-height: 5.4%;
-  display: flex;
-  align-items: center;
-  padding-left: 2%;
-  background: var(--white);
-  color: #2d3748;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1;
-  white-space: nowrap;
-  box-sizing: border-box;
-  pointer-events: none;
-}
-
 .patent-evidence-card figcaption {
   color: var(--navy);
 }
@@ -1282,6 +1263,28 @@ section {
   .results-copy .proof-grid,
   .result-evidence-panes {
     grid-template-columns: 1fr;
+  }
+
+  .proof-item {
+    display: grid;
+    grid-template-columns: minmax(76px, auto) minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    min-height: 82px;
+    padding: 18px 20px;
+  }
+
+  .proof-item strong {
+    margin-bottom: 0;
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .proof-item span {
+    min-width: 0;
+    line-height: 1.35;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .patent-summary-panel {

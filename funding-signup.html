@@ -50,6 +50,7 @@
       word-break: keep-all;
       letter-spacing: 0;
       overflow-wrap: break-word;
+      overflow-x: hidden;
     }
 
     a {
@@ -66,6 +67,7 @@
     .container {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
+      min-width: 0;
     }
 
     .header {
@@ -151,25 +153,23 @@
     }
 
     .signup-shell {
-      display: grid;
-      grid-template-columns: minmax(0, 760px);
-      justify-content: center;
-      max-width: 820px;
-      padding: 16px;
+      width: min(100%, 880px);
+      max-width: 880px;
+      padding: clamp(12px, 1.8vw, 18px);
       margin: 0 auto;
       background: var(--dark);
       border: 1px solid #292b34;
-      border-radius: 18px;
+      border-radius: 20px;
+      box-shadow: 0 22px 60px rgba(1, 1, 2, 0.14);
     }
 
     .signup-card {
-      border-radius: 14px;
-    }
-
-    .signup-card {
-      padding: 30px;
+      width: 100%;
+      min-width: 0;
+      padding: clamp(24px, 3.2vw, 34px);
       background: #fff;
       border: 1px solid var(--hairline);
+      border-radius: 15px;
     }
 
     .form-section {
@@ -221,7 +221,7 @@
     .role-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .role-option input {
@@ -234,7 +234,7 @@
 
     .role-option span {
       display: flex;
-      min-height: 94px;
+      min-height: 92px;
       align-items: center;
       justify-content: center;
       padding: 18px;
@@ -267,7 +267,7 @@
     .social-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .social-button {
@@ -276,6 +276,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      min-width: 0;
       border: 1px solid #dce1ea;
       border-radius: 10px;
       background: #fff;
@@ -491,11 +492,51 @@
     }
 
     @media (max-width: 900px) {
-      .hero-head,
-      .signup-shell {
+      .hero-head {
         grid-template-columns: 1fr;
       }
 
+      .signup-shell {
+        max-width: 760px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .signup-hero {
+        padding: 60px 0 80px;
+      }
+
+      h1 {
+        font-size: 44px;
+        line-height: 1.14;
+      }
+
+      .lead {
+        font-size: 17px;
+        line-height: 1.72;
+      }
+
+      .role-grid,
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .role-option span {
+        min-height: 68px;
+        justify-content: flex-start;
+        padding: 16px 18px;
+        text-align: left;
+      }
+
+      .role-option strong {
+        font-size: 18px;
+      }
+
+      .social-button {
+        min-height: 52px;
+        justify-content: flex-start;
+        padding: 0 18px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -534,22 +575,22 @@
       }
 
       .signup-shell {
-        padding: 10px;
+        padding: 8px;
+        border-radius: 18px;
       }
 
       .signup-card {
-        padding: 22px;
+        padding: 20px;
+        border-radius: 13px;
       }
 
-      .role-grid,
-      .social-grid,
       .field-grid,
       .phone-row {
         grid-template-columns: 1fr;
       }
 
       .role-option span {
-        min-height: 76px;
+        min-height: 60px;
       }
 
       .section-title {
@@ -575,6 +616,7 @@
         <a href="./funding-smart-matching-login.html">로그인</a>
         <a href="./funding-signup.html" class="current" aria-current="page">회원가입</a>
         <a href="./funding-services-pricing.html">서비스 및 가격</a>
+        <a href="./funding-qna.html">Q&amp;A</a>
         <a href="./funding-strategy-lab.html">메인화면</a>
       </div>
     </div>
@@ -586,7 +628,7 @@
         <div class="hero-head">
           <span class="section-label">회원가입</span>
           <div>
-            <h1>가입 유형을 먼저 선택하고 계정을 만듭니다.</h1>
+            <h1>가입 유형을 먼저 선택하고 계정을 만드세요.</h1>
             <p class="lead">기업회원, 관리자, 영업인 파트너 유형별로 필요한 정보를 받아 승인 후 통합 로그인 계정으로 연결합니다.</p>
           </div>
         </div>

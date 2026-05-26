@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Q&amp;A | 더이로운기업</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0f62fe" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="더이로운기업" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="더이로운기업 성장자금 컨설팅, 공고매칭, 사업계획서 작성, 접수관리, 월별 리포트 관련 자주 묻는 질문 10가지를 정리했습니다." />
+  <meta property="og:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
+  <link rel="stylesheet" href="./funding-detail-pages.css?v=qna-page" />
+  <style>
+    .qna-hero .hero-grid {
+      grid-template-columns: minmax(0, 820px);
+      justify-content: start;
+    }
+
+    .qna-hero {
+      padding: clamp(58px, 7vw, 86px) 0 clamp(48px, 6vw, 72px);
+    }
+
+    .qna-hero h1 {
+      max-width: 780px;
+    }
+
+    #qna-list {
+      padding: clamp(46px, 6vw, 68px) 0;
+    }
+
+    #qna-list .section-head {
+      margin-bottom: 22px;
+    }
+
+    .qna-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .qna-item {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      min-height: 164px;
+      padding: 22px;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.05);
+    }
+
+    .qna-number {
+      display: inline-flex;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 950;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .qna-content h3 {
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .qna-content p {
+      margin-top: 10px;
+      color: var(--gray-600);
+      font-size: 15px;
+      line-height: 1.68;
+    }
+
+    .qna-answer-label {
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #047857;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .qna-ready-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .qna-ready-item {
+      padding: 20px;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .qna-ready-item strong {
+      display: block;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .qna-ready-item p {
+      margin-top: 8px;
+      color: var(--gray-600);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .qna-list,
+      .qna-ready-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .qna-item {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .qna-hero {
+        padding: 50px 0 42px;
+      }
+
+      #qna-list {
+        padding: 40px 0 46px;
+      }
+
+      #qna-list .section-head {
+        margin-bottom: 14px;
+      }
+
+      .qna-list {
+        gap: 10px;
+      }
+
+      .qna-ready-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .qna-item {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        cursor: pointer;
+      }
+
+      .qna-number {
+        width: fit-content;
+        min-width: 46px;
+        height: 38px;
+        padding: 0 12px;
+        font-size: 15px;
+      }
+
+      .qna-content {
+        min-width: 0;
+      }
+
+      .qna-content h3 {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 17px;
+        cursor: pointer;
+      }
+
+      .qna-content h3::after {
+        display: inline-flex;
+        min-width: 42px;
+        min-height: 28px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 900;
+        content: "열기";
+      }
+
+      .qna-content p,
+      .qna-answer-label {
+        display: none;
+      }
+
+      .qna-item.is-open {
+        align-items: start;
+      }
+
+      .qna-item.is-open .qna-content h3::after {
+        content: "닫기";
+      }
+
+      .qna-item.is-open .qna-content p {
+        display: block;
+      }
+
+      .qna-item.is-open .qna-answer-label {
+        display: inline-flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="./funding-strategy-lab.html" class="logo" aria-label="메인으로 이동">
+        <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map &amp; Free Funds Consulting" />
+      </a>
+      <button class="menu-toggle" type="button" aria-label="주요 메뉴 열기" aria-expanded="false" aria-controls="detailNavMenu">
+        <span class="menu-toggle-lines" aria-hidden="true"></span>
+      </button>
+      <nav class="nav-menu" id="detailNavMenu" aria-label="주요 메뉴">
+        <a href="./funding-strategy-planning.html">로드맵</a>
+        <a href="./funding-notice-matching.html">공고매칭</a>
+        <a href="./funding-proposal-writing.html">사업계획서</a>
+        <a href="./funding-submission-management.html">접수·관리</a>
+        <a href="./funding-services-pricing.html">서비스 및 가격</a>
+        <a href="./funding-qna.html" class="current">Q&amp;A</a>
+        <a href="./funding-strategy-lab.html#contact" class="nav-cta">상담 신청</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="sub-hero qna-hero">
+      <div class="container hero-grid">
+        <div>
+          <a href="./funding-strategy-lab.html" class="back-link">← 메인화면</a>
+          <div class="kicker">06. Q&amp;A</div>
+          <h1>상담 전에 자주 묻는 질문을 먼저 정리했습니다.</h1>
+        </div>
+      </div>
+    </section>
+
+    <section id="qna-list">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">10 QUESTIONS</span>
+        </div>
+        <div class="qna-list">
+          <article class="qna-item">
+            <span class="qna-number">Q1</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q2</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q3</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q4</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q5</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q6</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q7</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q8</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q9</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+
+          <article class="qna-item">
+            <span class="qna-number">Q10</span>
+            <div class="qna-content">
+              <h3>준비 중입니다.</h3>
+              <p>질문과 답변은 준비 중입니다. 추후 작성해서 갱신 예정입니다.</p>
+              <span class="qna-answer-label">준비 중</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverables">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">READY CHECK</span>
+          <h2>문의 전에는 네 가지 중 가능한 자료만 준비하면 됩니다.</h2>
+          <p>자료가 부족해도 상담은 가능합니다. 현재 상태를 확인하고 보강 순서를 정하는 것이 먼저입니다.</p>
+        </div>
+        <div class="qna-ready-grid">
+          <article class="qna-ready-item">
+            <strong>기업 기본자료</strong>
+            <p>회사소개서, 사업자 정보, 업종, 주요 제품과 서비스 설명</p>
+          </article>
+          <article class="qna-ready-item">
+            <strong>정량자료</strong>
+            <p>매출, 고용, 수출, 투자, 기존 수행 과제와 협약 내역</p>
+          </article>
+          <article class="qna-ready-item">
+            <strong>정성자료</strong>
+            <p>기술 차별성, 시장 문제, 고객 사례, 대표 이력과 팀 역량</p>
+          </article>
+          <article class="qna-ready-item">
+            <strong>공고자료</strong>
+            <p>준비 중인 공고문, 신청서 양식, 마감 일정, 필수 제출 서류</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>우리 기업에 맞는 답을 상담에서 바로 확인하세요.</h2>
+            <p>기업명, 업종, 준비 중인 공고만 남겨도 1차 가능성과 자료 보강 순서를 검토할 수 있습니다.</p>
+          </div>
+          <a href="./funding-strategy-lab.html#contact" class="btn">무료 자금진단 신청</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p><strong>더이로운기업</strong> · 기업 성장자금 확보 컨설팅</p>
+      <p>© 2026. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      const mobileQuery = window.matchMedia("(max-width: 760px)");
+      const items = Array.from(document.querySelectorAll(".qna-item"));
+
+      if (!items.length) {
+        return;
+      }
+
+      const closeItem = (item) => {
+        const heading = item.querySelector(".qna-content h3");
+        item.classList.remove("is-open");
+        if (heading) {
+          heading.setAttribute("aria-expanded", "false");
+        }
+      };
+
+      const toggleItem = (item) => {
+        if (!mobileQuery.matches) {
+          return;
+        }
+
+        const isOpening = !item.classList.contains("is-open");
+        items.forEach(closeItem);
+
+        if (isOpening) {
+          const heading = item.querySelector(".qna-content h3");
+          item.classList.add("is-open");
+          if (heading) {
+            heading.setAttribute("aria-expanded", "true");
+          }
+        }
+      };
+
+      items.forEach((item, index) => {
+        const heading = item.querySelector(".qna-content h3");
+        const answer = item.querySelector(".qna-content p");
+
+        if (!heading || !answer) {
+          return;
+        }
+
+        answer.id = "qna-answer-" + (index + 1);
+        heading.setAttribute("role", "button");
+        heading.setAttribute("tabindex", "0");
+        heading.setAttribute("aria-controls", answer.id);
+        heading.setAttribute("aria-expanded", "false");
+
+        item.addEventListener("click", (event) => {
+          if (event.target.closest(".qna-content p, .qna-answer-label")) {
+            return;
+          }
+
+          toggleItem(item);
+        });
+
+        heading.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") {
+            return;
+          }
+
+          event.preventDefault();
+          toggleItem(item);
+        });
+      });
+
+      const syncAccordionState = () => {
+        items.forEach((item) => {
+          const heading = item.querySelector(".qna-content h3");
+          const answer = item.querySelector(".qna-content p");
+          item.classList.remove("is-open");
+
+          if (!heading) {
+            return;
+          }
+
+          if (mobileQuery.matches) {
+            heading.setAttribute("role", "button");
+            heading.setAttribute("tabindex", "0");
+            if (answer) {
+              heading.setAttribute("aria-controls", answer.id);
+            }
+            heading.setAttribute("aria-expanded", "false");
+            return;
+          }
+
+          heading.removeAttribute("role");
+          heading.removeAttribute("tabindex");
+          heading.removeAttribute("aria-controls");
+          heading.removeAttribute("aria-expanded");
+        });
+      };
+
+      syncAccordionState();
+
+      if (typeof mobileQuery.addEventListener === "function") {
+        mobileQuery.addEventListener("change", syncAccordionState);
+      } else {
+        mobileQuery.addListener(syncAccordionState);
+      }
+    })();
+  </script>
+  <script src="./assets/detail-mobile-nav.js"></script>
+  <script src="./assets/pwa-register.js?v=7"></script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
+</body>
+</html>

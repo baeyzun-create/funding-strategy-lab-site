@@ -1,4 +1,4 @@
-const CACHE_VERSION = "funding-pwa-v7";
+const CACHE_VERSION = "funding-pwa-v8";
 const APP_SHELL_CACHE = CACHE_VERSION + "-shell";
 const HTML_CACHE = CACHE_VERSION + "-html";
 const STATIC_CACHE = CACHE_VERSION + "-static";
@@ -38,6 +38,7 @@ const NETWORK_FIRST_PATHS = [
   "/funding-smart-matching-login.html",
   "/funding-admin-dashboard.html",
   "/funding-company-portal.html",
+  "/funding-qna.html",
   "/assets/supabase-config.js",
   "/assets/supabase-roadmap.js"
 ];
