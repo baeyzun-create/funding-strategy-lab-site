@@ -990,6 +990,8 @@ section {
   line-height: 1.35;
   letter-spacing: 0;
   margin-bottom: 10px;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .deliverable-card p {
@@ -1236,7 +1238,7 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .proposal-section .deliverable-card {
+  .deliverable-card {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     column-gap: 12px;
@@ -1245,21 +1247,24 @@ section {
     min-height: auto;
   }
 
-  .proposal-section .deliverable-card strong {
+  .deliverable-card strong {
     grid-column: 1;
     grid-row: 1;
     margin-bottom: 0;
+    flex-shrink: 0;
   }
 
-  .proposal-section .deliverable-card h3 {
+  .deliverable-card h3 {
     grid-column: 2;
     grid-row: 1;
     margin-bottom: 0;
     white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
-  .proposal-section .deliverable-card p,
-  .proposal-section .deliverable-card .deliverable-card-visual {
+  .deliverable-card p,
+  .deliverable-card .deliverable-card-visual {
     grid-column: 1 / -1;
   }
 
@@ -1305,7 +1310,8 @@ section {
     grid-row: 1;
     margin-bottom: 0;
     white-space: normal;
-    overflow-wrap: anywhere;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .process-step p {
