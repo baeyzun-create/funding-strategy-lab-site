@@ -1084,7 +1084,7 @@
       }
 
       .dashboard {
-        padding: 36px 0 72px;
+        padding: 26px 0 72px;
       }
 
       .admin-layout,
@@ -1095,7 +1095,49 @@
 
       .quick-nav {
         position: static;
+        grid-template-rows: auto;
+        gap: 12px;
         min-height: auto;
+        padding: 14px 16px;
+        border-radius: 14px;
+      }
+
+      .quick-nav-head {
+        min-height: 48px;
+        justify-content: space-between;
+      }
+
+      .quick-nav-title {
+        gap: 1px;
+      }
+
+      .quick-nav-title strong {
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .quick-nav-title span {
+        font-size: 12px;
+      }
+
+      .quick-nav-toggle {
+        min-width: 58px;
+        min-height: 44px;
+        padding: 0 14px;
+        border-radius: 13px;
+        font-size: 14px;
+      }
+
+      .quick-nav-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .quick-nav-link {
+        grid-template-columns: 30px minmax(0, 1fr);
+        min-height: 44px;
+        padding: 7px 9px;
+        font-size: 13px;
       }
 
       body.quick-nav-collapsed .quick-nav-list,
@@ -1103,8 +1145,22 @@
         display: none;
       }
 
+      body.quick-nav-collapsed .quick-nav {
+        padding: 12px 14px;
+      }
+
+      body.quick-nav-collapsed .quick-nav-head {
+        justify-content: space-between;
+      }
+
       body.quick-nav-collapsed .quick-nav-title {
         display: grid;
+      }
+
+      body.quick-nav-collapsed .quick-nav-toggle {
+        min-width: 58px;
+        min-height: 44px;
+        padding: 0 14px;
       }
 
       .dashboard-head {
