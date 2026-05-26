@@ -1,22 +1,9 @@
-const CACHE_VERSION = "funding-pwa-v4";
+const CACHE_VERSION = "funding-pwa-v7";
 const APP_SHELL_CACHE = CACHE_VERSION + "-shell";
 const HTML_CACHE = CACHE_VERSION + "-html";
 const STATIC_CACHE = CACHE_VERSION + "-static";
 
 const APP_SHELL_URLS = [
-  "./",
-  "./index.html",
-  "./funding-strategy-lab.html",
-  "./funding-strategy-planning.html",
-  "./funding-notice-matching.html",
-  "./funding-proposal-writing.html",
-  "./funding-submission-management.html",
-  "./funding-services-pricing.html",
-  "./funding-signup.html",
-  "./funding-smart-matching-login.html",
-  "./funding-company-portal.html",
-  "./funding-strategy-mobile-preview.html",
-  "./funding-admin-dashboard.html",
   "./offline.html",
   "./funding-detail-pages.css",
   "./manifest.webmanifest",
@@ -28,7 +15,7 @@ const APP_SHELL_URLS = [
   "./assets/social-preview.png",
   "./assets/detail-mobile-nav.js",
   "./assets/disable-mobile-zoom.js",
-  "./assets/pwa-register.js",
+  "./assets/pwa-register.js?v=7",
   "./assets/smart-matching-dashboard-preview.svg",
   "./assets/funding-diagnosis-roadmap-preview.svg",
   "./assets/funding-notice-matching-roadmap-preview.svg",
@@ -71,6 +58,10 @@ function shouldUseNetworkFirst(url) {
   return NETWORK_FIRST_PATHS.some((path) => url.pathname.endsWith(path));
 }
 
+function isLegacyAdminLogin(url) {
+  return url.pathname.endsWith("/funding-admin-login.html");
+}
+
 async function putResponse(cacheName, request, response) {
   if (!response || response.status !== 200 || response.type === "opaque") {
     return response;
@@ -83,7 +74,7 @@ async function putResponse(cacheName, request, response) {
 
 async function networkFirst(request, cacheName) {
   try {
-    const response = await fetch(request);
+    const response = await fetch(request, { cache: "reload" });
     return putResponse(cacheName, request, response);
   } catch (error) {
     const cached = await caches.match(request);
@@ -129,6 +120,12 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") {
     return;
@@ -136,6 +133,11 @@ self.addEventListener("fetch", (event) => {
 
   const requestUrl = new URL(event.request.url);
   if (!isSameOrigin(requestUrl)) {
+    return;
+  }
+
+  if (isLegacyAdminLogin(requestUrl)) {
+    event.respondWith(Response.redirect(fromScope("./funding-admin-dashboard.html?temporary-admin=1&admin-entry=legacy-admin-login-v7#dashboard"), 302));
     return;
   }
 

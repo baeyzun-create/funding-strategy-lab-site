@@ -129,7 +129,9 @@
       position: sticky;
       top: 82px;
       display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
       gap: 14px;
+      align-content: stretch;
       min-height: calc(100vh - 104px);
       padding: 14px;
       color: #f7f8f8;
@@ -174,7 +176,8 @@
 
     .quick-nav-list {
       display: grid;
-      gap: 6px;
+      align-content: start;
+      gap: 8px;
     }
 
     .quick-nav-link {
@@ -222,7 +225,7 @@
     }
 
     .quick-nav-caption {
-      margin-top: auto;
+      margin-top: 0;
       padding-top: 12px;
       color: #7e8492;
       border-top: 1px solid #292b34;
@@ -262,6 +265,7 @@
     .dashboard-unit[hidden],
     #inquiryAndPipeline[hidden],
     #matchingWorkbench[hidden],
+    #companyProfileWorkbench[hidden],
     #reportWorkbench[hidden],
     .admin-managed-section[hidden] {
       display: none !important;
@@ -682,6 +686,116 @@
       background: #fef2f2;
     }
 
+    .company-profile-workbench {
+      margin-top: 18px;
+    }
+
+    .company-profile-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.4fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .company-profile-form {
+      display: grid;
+      gap: 18px;
+      padding: 22px 24px 24px;
+    }
+
+    .profile-upload-box {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      background: #f8fafc;
+      border: 1px dashed #9fb7d9;
+      border-radius: 14px;
+    }
+
+    .profile-upload-box p,
+    .form-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .profile-file-list,
+    .saved-profile-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .profile-file-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 34px;
+      padding: 7px 10px;
+      color: #334155;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .profile-file-pill strong,
+    .saved-profile-card strong {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .profile-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .profile-summary-card,
+    .saved-profile-card {
+      display: grid;
+      gap: 5px;
+      padding: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+
+    .profile-summary-card span,
+    .saved-profile-card span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .profile-summary-card strong {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .llm-result-box {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      color: #dbeafe;
+      background: #0b1220;
+      border: 1px solid #263247;
+      border-radius: 14px;
+    }
+
+    .llm-result-box h3 {
+      color: #ffffff;
+      font-size: 18px;
+    }
+
+    .llm-result-box p,
+    .llm-result-box li {
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
     .report-workbench {
       margin-top: 18px;
     }
@@ -920,6 +1034,8 @@
       .dashboard-head,
       .admin-grid,
       .matching-layout,
+      .company-profile-layout,
+      .profile-summary-grid,
       .report-page-head,
       .report-reader-layout,
       .report-layout {
@@ -1041,6 +1157,7 @@
 
       .form-grid,
       .repeat-row,
+      .profile-summary-grid,
       .report-preview-head,
       .report-preview-grid {
         grid-template-columns: 1fr;
@@ -1135,6 +1252,10 @@
               <span class="quick-nav-index">09</span>
               <span class="quick-nav-label">계약 현황</span>
             </a>
+            <a class="quick-nav-link" href="#companyProfile" data-view="companyProfile">
+              <span class="quick-nav-index">10</span>
+              <span class="quick-nav-label">기업 정보 입력</span>
+            </a>
           </nav>
           <p class="quick-nav-caption">좁은 화면에서는 접힌 메뉴로 시작합니다.</p>
         </aside>
@@ -1164,6 +1285,220 @@
           <span>컨시어지 배정</span>
           <strong id="metricConciergeCount">4</strong>
         </article>
+      </section>
+
+      <section class="company-profile-workbench" id="companyProfileWorkbench" hidden aria-label="기업 정보 입력 및 LLM 분석">
+        <div class="report-page-head">
+          <div>
+            <span class="label">10. 기업 정보 입력</span>
+            <h2>기업 정보 입력</h2>
+            <p>컨시어지가 기본 정보만 입력하고, 기업의 정량·정성 자료를 첨부하면 분석 결과로 나머지 필드를 채웁니다.</p>
+          </div>
+          <div class="panel-head-actions">
+            <button class="action-button" type="button" onclick="resetCompanyProfileForm()">새 기업</button>
+            <button class="action-button approve" type="button" onclick="analyzeCompanyProfileFiles()">LLM 분석으로 필드 채우기</button>
+            <button class="action-button approve" type="button" onclick="saveCompanyProfileDraft()">임시 저장</button>
+          </div>
+        </div>
+
+        <div class="company-profile-layout">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>컨시어지 입력 화면</h2>
+                <p>기본 정보는 직접 입력하고, 재무·사업·기술 자료는 첨부 후 분석 버튼으로 자동 채움합니다.</p>
+              </div>
+              <span class="badge">LLM Ready</span>
+            </div>
+            <p class="admin-status" id="companyProfileStatus" role="status" aria-live="polite">기본 정보 입력 후 정량·정성 자료를 첨부해주세요.</p>
+            <form class="company-profile-form" id="companyProfileForm">
+              <section class="form-block">
+                <h3>기본 정보</h3>
+                <p class="form-note">컨시어지가 직접 확인해 입력하는 최소 정보입니다. 분석 결과는 이 값을 덮어쓰지 않습니다.</p>
+                <div class="form-grid">
+                  <div class="field-group">
+                    <label for="companyProfileName">기업명</label>
+                    <input id="companyProfileName" name="companyName" type="text" placeholder="예: 주식회사 OOO" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileConcierge">담당 컨시어지</label>
+                    <input id="companyProfileConcierge" name="concierge" type="text" placeholder="예: 김 컨시어지" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileRepresentative">대표자명</label>
+                    <input id="companyProfileRepresentative" name="representative" type="text" placeholder="예: 홍길동" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileContactName">기업 담당자</label>
+                    <input id="companyProfileContactName" name="contactName" type="text" placeholder="예: 이담당" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfilePhone">연락처</label>
+                    <input id="companyProfilePhone" name="phone" type="tel" placeholder="010-0000-0000" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileEmail">이메일</label>
+                    <input id="companyProfileEmail" name="email" type="email" placeholder="company@example.com" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileBizNumber">사업자등록번호</label>
+                    <input id="companyProfileBizNumber" name="bizNumber" type="text" placeholder="000-00-00000" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileWebsite">웹사이트</label>
+                    <input id="companyProfileWebsite" name="website" type="url" placeholder="https://example.com" />
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <h3>정량·정성 자료 첨부</h3>
+                <div class="profile-upload-box">
+                  <div class="field-group">
+                    <label for="companyProfileFiles">기업 자료</label>
+                    <input id="companyProfileFiles" name="companyFiles" type="file" multiple accept=".txt,.md,.csv,.json,.pdf,.doc,.docx,.hwp,.hwpx,.xls,.xlsx,.ppt,.pptx" />
+                  </div>
+                  <p>권장 자료: 회사소개서, 재무·매출 자료, 고용·수출 실적, 특허·인증, 사업계획서, 공고 준비자료. 현재 화면에서는 텍스트/CSV/JSON/MD 파일 본문과 모든 파일명을 기준으로 데모 분석합니다.</p>
+                  <div class="profile-file-list" id="companyProfileFileList">
+                    <span class="table-muted">첨부된 파일이 없습니다.</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <h3>LLM 분석 필드</h3>
+                <div class="profile-summary-grid" id="companyProfileAnalysisSummary">
+                  <article class="profile-summary-card">
+                    <span>자료 상태</span>
+                    <strong>대기</strong>
+                  </article>
+                  <article class="profile-summary-card">
+                    <span>정량 필드</span>
+                    <strong>0개</strong>
+                  </article>
+                  <article class="profile-summary-card">
+                    <span>정성 필드</span>
+                    <strong>0개</strong>
+                  </article>
+                </div>
+                <div class="form-grid">
+                  <div class="field-group">
+                    <label for="companyProfileIndustry">업종/분야</label>
+                    <input id="companyProfileIndustry" name="industry" type="text" placeholder="제조, SaaS, 바이오 등" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileRegion">소재지</label>
+                    <input id="companyProfileRegion" name="region" type="text" placeholder="서울, 경기, 인천 등" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileFounded">설립/업력</label>
+                    <input id="companyProfileFounded" name="founded" type="text" placeholder="2020년 설립" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileEmployees">고용 인원</label>
+                    <input id="companyProfileEmployees" name="employees" type="text" placeholder="12명" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileRevenue">최근 매출</label>
+                    <input id="companyProfileRevenue" name="revenue" type="text" placeholder="2025년 12억원" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileGrowth">성장률/추이</label>
+                    <input id="companyProfileGrowth" name="growth" type="text" placeholder="전년 대비 35%" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileExport">수출/해외 실적</label>
+                    <input id="companyProfileExport" name="export" type="text" placeholder="수출 2억원 또는 준비 중" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileRnd">R&D/기술 인력</label>
+                    <input id="companyProfileRnd" name="rnd" type="text" placeholder="연구소 보유, R&D 인력 3명" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfilePatents">특허/IP</label>
+                    <input id="companyProfilePatents" name="patents" type="text" placeholder="특허 2건, 출원 1건" />
+                  </div>
+                  <div class="field-group">
+                    <label for="companyProfileCertifications">인증/확인서</label>
+                    <input id="companyProfileCertifications" name="certifications" type="text" placeholder="벤처기업, ISO 등" />
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileBusinessModel">사업 모델</label>
+                    <textarea id="companyProfileBusinessModel" name="businessModel" placeholder="매출 구조, 고객군, 판매 방식"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileCoreTech">핵심 기술/서비스</label>
+                    <textarea id="companyProfileCoreTech" name="coreTech" placeholder="핵심 기술, 제품, 서비스 차별성"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileMarket">시장/고객</label>
+                    <textarea id="companyProfileMarket" name="market" placeholder="타깃 시장, 고객, 경쟁 환경"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileDifferentiation">차별성/강점</label>
+                    <textarea id="companyProfileDifferentiation" name="differentiation" placeholder="심사에서 강조할 강점"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileFundingPurpose">자금 목적/추천 방향</label>
+                    <textarea id="companyProfileFundingPurpose" name="fundingPurpose" placeholder="R&D, 사업화, 고용, 수출, 시설 등"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileRisks">리스크/보완 필요</label>
+                    <textarea id="companyProfileRisks" name="risks" placeholder="누락 증빙, 조건 미충족 가능성"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileDataGaps">추가 요청 자료</label>
+                    <textarea id="companyProfileDataGaps" name="dataGaps" placeholder="분석 후 기업에 추가 요청할 자료"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileLLMSummary">LLM 분석 요약</label>
+                    <textarea id="companyProfileLLMSummary" name="llmSummary" placeholder="자료 분석 결과 요약"></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="companyProfileNextActions">다음 액션</label>
+                    <textarea id="companyProfileNextActions" name="nextActions" placeholder="컨시어지 후속 작업, 공고 매칭, 보완 일정"></textarea>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </section>
+
+          <aside class="dark-panel">
+            <h2>운영 흐름</h2>
+            <div class="pipeline">
+              <div class="pipeline-row">
+                <span class="pipeline-index">1</span>
+                <strong>기본 입력</strong>
+                <span>컨시어지 확인</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">2</span>
+                <strong>자료 첨부</strong>
+                <span>정량·정성 데이터</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">3</span>
+                <strong>LLM 분석</strong>
+                <span>필드 자동 채움</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">4</span>
+                <strong>검토 저장</strong>
+                <span>기업 프로필화</span>
+              </div>
+            </div>
+            <div class="llm-result-box">
+              <h3>저장된 기업 프로필</h3>
+              <p>DB 연결 전까지 이 브라우저에 임시 저장됩니다.</p>
+              <div class="saved-profile-list" id="savedCompanyProfiles">
+                <article class="saved-profile-card">
+                  <strong>저장된 기업이 없습니다.</strong>
+                  <span>분석 후 임시 저장하면 이곳에 표시됩니다.</span>
+                </article>
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
 
       <div class="admin-grid" id="inquiryAndPipeline">
@@ -1839,11 +2174,13 @@
         "companyMatching",
         "analysisQueue",
         "marketingStatus",
-        "contractStatus"
+        "contractStatus",
+        "companyProfile"
       ].includes(viewName) ? viewName : "dashboard";
 
       setHidden("dashboardTop", view !== "dashboard");
       setHidden("summaryMetrics", view !== "dashboard");
+      setHidden("companyProfileWorkbench", view !== "companyProfile");
       setHidden("inquiryAndPipeline", !["inquiries", "pipeline"].includes(view));
       setHidden("inquiryBoard", view !== "inquiries");
       setHidden("pipelineSide", view !== "pipeline");
@@ -1967,6 +2304,376 @@
         status.classList.add("is-" + type);
       }
       status.textContent = message;
+    }
+
+    const companyProfileForm = document.getElementById("companyProfileForm");
+    const companyProfileFiles = document.getElementById("companyProfileFiles");
+    const companyProfileFileList = document.getElementById("companyProfileFileList");
+    const savedCompanyProfiles = document.getElementById("savedCompanyProfiles");
+    const companyProfileStorageKey = "fundingCompanyProfileDrafts";
+    const companyProfileFieldIds = [
+      "companyProfileName",
+      "companyProfileConcierge",
+      "companyProfileRepresentative",
+      "companyProfileContactName",
+      "companyProfilePhone",
+      "companyProfileEmail",
+      "companyProfileBizNumber",
+      "companyProfileWebsite",
+      "companyProfileIndustry",
+      "companyProfileRegion",
+      "companyProfileFounded",
+      "companyProfileEmployees",
+      "companyProfileRevenue",
+      "companyProfileGrowth",
+      "companyProfileExport",
+      "companyProfileRnd",
+      "companyProfilePatents",
+      "companyProfileCertifications",
+      "companyProfileBusinessModel",
+      "companyProfileCoreTech",
+      "companyProfileMarket",
+      "companyProfileDifferentiation",
+      "companyProfileFundingPurpose",
+      "companyProfileRisks",
+      "companyProfileDataGaps",
+      "companyProfileLLMSummary",
+      "companyProfileNextActions"
+    ];
+
+    function setCompanyProfileStatus(type, message) {
+      const status = document.getElementById("companyProfileStatus");
+      if (!status) {
+        return;
+      }
+
+      status.className = "admin-status";
+      if (type) {
+        status.classList.add("is-" + type);
+      }
+      status.textContent = message;
+    }
+
+    function getCompanyProfileFiles() {
+      return companyProfileFiles && companyProfileFiles.files ? Array.from(companyProfileFiles.files) : [];
+    }
+
+    function getCompanyProfileFieldValue(id) {
+      const element = document.getElementById(id);
+      return element ? element.value.trim() : "";
+    }
+
+    function setCompanyProfileFieldValue(id, value, overwrite = true) {
+      const element = document.getElementById(id);
+      if (!element || value === undefined || value === null || value === "") {
+        return;
+      }
+
+      if (overwrite || !element.value.trim()) {
+        element.value = value;
+      }
+    }
+
+    function formatBytes(value) {
+      const bytes = Number(value || 0);
+      if (bytes >= 1024 * 1024) {
+        return (bytes / 1024 / 1024).toFixed(1) + "MB";
+      }
+      return Math.max(1, Math.ceil(bytes / 1024)) + "KB";
+    }
+
+    function renderCompanyProfileFiles() {
+      if (!companyProfileFileList) {
+        return;
+      }
+
+      const files = getCompanyProfileFiles();
+      if (!files.length) {
+        companyProfileFileList.innerHTML = "<span class=\"table-muted\">첨부된 파일이 없습니다.</span>";
+        return;
+      }
+
+      companyProfileFileList.innerHTML = files.map((file) => [
+        "<span class=\"profile-file-pill\">",
+        "<strong>" + escapeHtml(file.name) + "</strong>",
+        "<span>" + escapeHtml(formatBytes(file.size)) + "</span>",
+        "</span>"
+      ].join("")).join("");
+    }
+
+    function isReadableCompanyProfileFile(file) {
+      const name = String(file.name || "").toLowerCase();
+      return Boolean(
+        String(file.type || "").startsWith("text/") ||
+        [".txt", ".md", ".csv", ".json", ".xml"].some((extension) => name.endsWith(extension))
+      );
+    }
+
+    function readCompanyProfileFile(file) {
+      return new Promise((resolve) => {
+        if (!isReadableCompanyProfileFile(file) || file.size > 1024 * 1024 * 3) {
+          resolve("");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          resolve(String(reader.result || ""));
+        };
+        reader.onerror = () => {
+          resolve("");
+        };
+        reader.readAsText(file, "utf-8");
+      });
+    }
+
+    async function collectCompanyProfileSource(files) {
+      const chunks = files.map((file) => "파일명: " + file.name);
+      const textChunks = await Promise.all(files.map(readCompanyProfileFile));
+      textChunks.forEach((text, index) => {
+        if (text) {
+          chunks.push("파일 본문 " + files[index].name + "\n" + text.slice(0, 12000));
+        }
+      });
+      return chunks.join("\n\n");
+    }
+
+    function firstMatch(patterns, source, groupIndex = 1) {
+      for (const pattern of patterns) {
+        const match = source.match(pattern);
+        if (match && match[groupIndex]) {
+          return String(match[groupIndex]).trim();
+        }
+      }
+      return "";
+    }
+
+    function findKeywordList(source, keywords) {
+      return keywords.filter((keyword) => source.includes(keyword));
+    }
+
+    function inferIndustry(source) {
+      const rules = [
+        { label: "AI/SaaS/소프트웨어", keywords: ["AI", "SaaS", "소프트웨어", "플랫폼", "앱", "데이터"] },
+        { label: "제조/R&D", keywords: ["제조", "공장", "설비", "부품", "스마트공장", "양산"] },
+        { label: "바이오/헬스케어", keywords: ["바이오", "의료", "헬스케어", "임상", "진단"] },
+        { label: "식품/소비재", keywords: ["식품", "F&B", "화장품", "소비재", "브랜드"] },
+        { label: "수출/무역", keywords: ["수출", "무역", "해외", "KOTRA", "바이어"] }
+      ];
+      const matched = rules.find((rule) => rule.keywords.some((keyword) => source.includes(keyword)));
+      return matched ? matched.label : "";
+    }
+
+    function buildCompanyProfileAnalysis(source, files) {
+      const compact = source.replace(/\s+/g, " ");
+      const certifications = findKeywordList(compact, ["벤처기업", "이노비즈", "메인비즈", "기업부설연구소", "ISO", "KC", "CE", "NET", "NEP"]);
+      const fundingKeywords = findKeywordList(compact, ["R&D", "사업화", "수출", "고용", "시설", "운전자금", "정책자금", "투자", "스마트공장"]);
+      const riskKeywords = findKeywordList(compact, ["증빙", "누락", "미확인", "보완", "부채", "적자", "중복", "제외", "마감"]);
+      const techKeywords = findKeywordList(compact, ["특허", "알고리즘", "자동화", "플랫폼", "센서", "데이터", "AI", "R&D", "공정", "시제품"]);
+      const marketKeywords = findKeywordList(compact, ["B2B", "B2C", "공공", "대기업", "중소기업", "해외", "수출", "온라인", "오프라인"]);
+      const hasTextBody = files.some(isReadableCompanyProfileFile);
+
+      const revenueValue = firstMatch([
+        /(?:매출|매출액|연매출)[^0-9]{0,16}([0-9,.]+\s*(?:억|억원|만원|원)?)/i,
+        /([0-9,.]+\s*(?:억|억원))\s*(?:매출|매출액)/i
+      ], compact);
+      const employeeValue = firstMatch([
+        /(?:임직원|직원|고용인원|근로자|인력)[^0-9]{0,16}([0-9,]+\s*(?:명|인)?)/i
+      ], compact);
+      const foundedValue = firstMatch([
+        /(?:설립|창업)[^0-9]{0,16}([0-9]{4}[년.\-\/ ]{0,3}[0-9]{0,2}[월.\-\/ ]{0,3}[0-9]{0,2})/i,
+        /([0-9]{4})\s*년\s*(?:설립|창업)/i
+      ], compact);
+      const exportValue = firstMatch([
+        /(?:수출|해외\s*매출)[^0-9]{0,16}([0-9,.]+\s*(?:억|억원|만원|달러|USD|원)?)/i
+      ], compact);
+      const growthValue = firstMatch([
+        /(?:성장률|전년\s*대비|YoY)[^0-9]{0,16}([0-9,.]+\s*%)/i
+      ], compact);
+      const patentValue = firstMatch([
+        /(?:특허|IP|지식재산)[^0-9]{0,16}([0-9,]+\s*(?:건|개)?)/i
+      ], compact);
+      const regionValue = firstMatch([
+        /(서울|경기|인천|부산|대구|대전|광주|울산|세종|강원|충북|충남|전북|전남|경북|경남|제주)[^\s,)]{0,12}/
+      ], compact);
+
+      const nextActions = [
+        "컨시어지가 자동 채움 필드를 검토하고 사실관계를 확정합니다.",
+        "매출, 고용, 수출, 특허·인증 증빙 원본을 파일함에 정리합니다.",
+        "확정된 기업 프로필을 기준으로 공고 매칭과 월별 리포트 작성에 반영합니다."
+      ];
+
+      if (!revenueValue) {
+        nextActions.push("최근 3개년 재무제표 또는 부가세 신고 기준 매출 자료를 추가 요청합니다.");
+      }
+      if (!employeeValue) {
+        nextActions.push("4대보험 가입자 명부 또는 고용 증빙 자료를 추가 요청합니다.");
+      }
+
+      return {
+        industry: inferIndustry(compact),
+        region: regionValue,
+        founded: foundedValue,
+        employees: employeeValue,
+        revenue: revenueValue,
+        growth: growthValue,
+        export: exportValue || (compact.includes("수출") ? "수출 관련 언급 있음, 금액 확인 필요" : ""),
+        rnd: compact.includes("기업부설연구소") ? "기업부설연구소 보유" : (compact.includes("R&D") || compact.includes("연구") ? "R&D 활동 언급 있음" : ""),
+        patents: patentValue || (compact.includes("특허") ? "특허/IP 보유 언급 있음, 건수 확인 필요" : ""),
+        certifications: certifications.join(", "),
+        businessModel: marketKeywords.length ? "자료상 주요 고객/시장 키워드는 " + marketKeywords.join(", ") + "입니다. 매출 구조와 판매 채널을 컨시어지가 확인해 구체화해야 합니다." : "매출 구조와 고객군 확인이 필요합니다.",
+        coreTech: techKeywords.length ? "핵심 기술 키워드는 " + techKeywords.join(", ") + "입니다. 기술 구현 수준, 검증 실적, 보유 인력을 추가 확인합니다." : "핵심 기술/서비스 설명 자료가 부족합니다.",
+        market: marketKeywords.length ? "시장/고객 키워드: " + marketKeywords.join(", ") + ". 공고별 평가항목에 맞춰 시장 규모와 고객 검증 자료를 연결합니다." : "목표 시장, 고객군, 경쟁사 비교 자료를 추가 요청합니다.",
+        differentiation: techKeywords.length || certifications.length ? "기술·인증·실적 기반 차별성을 사업계획서 강점 항목으로 정리할 수 있습니다." : "차별성 근거가 부족합니다. 고객 성과, 인증, 지식재산, 레퍼런스를 보강해야 합니다.",
+        fundingPurpose: fundingKeywords.length ? fundingKeywords.join(", ") + " 목적의 공고 매칭 가능성을 우선 검토합니다." : "자금 목적이 명확하지 않습니다. R&D, 사업화, 고용, 수출, 시설 중 우선순위를 확인합니다.",
+        risks: riskKeywords.length ? "주의 키워드: " + riskKeywords.join(", ") + ". 조건 미충족, 증빙 누락, 중복지원 여부를 선검토합니다." : "현재 자료만으로 큰 리스크 키워드는 확인되지 않았으나 증빙 원본 검토가 필요합니다.",
+        dataGaps: [
+          revenueValue ? "" : "최근 3개년 매출 자료",
+          employeeValue ? "" : "고용 인원 증빙",
+          patentValue ? "" : "특허/인증 목록",
+          hasTextBody ? "" : "텍스트 추출 가능한 회사소개서 또는 사업계획서 원문"
+        ].filter(Boolean).join(", "),
+        llmSummary: "첨부 " + files.length + "건을 기준으로 기업 정량·정성 필드를 구조화했습니다. 실제 LLM/OCR 연결 후에는 PDF, HWP, XLSX 본문까지 추출해 동일 필드에 자동 반영하면 됩니다.",
+        nextActions: nextActions.join("\n")
+      };
+    }
+
+    function renderCompanyProfileAnalysisSummary(fileCount, filledQuant, filledQual) {
+      const summary = document.getElementById("companyProfileAnalysisSummary");
+      if (!summary) {
+        return;
+      }
+
+      summary.innerHTML = [
+        "<article class=\"profile-summary-card\"><span>자료 상태</span><strong>" + escapeHtml(fileCount + "건") + "</strong></article>",
+        "<article class=\"profile-summary-card\"><span>정량 필드</span><strong>" + escapeHtml(filledQuant + "개") + "</strong></article>",
+        "<article class=\"profile-summary-card\"><span>정성 필드</span><strong>" + escapeHtml(filledQual + "개") + "</strong></article>"
+      ].join("");
+    }
+
+    async function analyzeCompanyProfileFiles() {
+      const files = getCompanyProfileFiles();
+      if (!files.length) {
+        setCompanyProfileStatus("error", "분석할 정량·정성 자료를 먼저 첨부해주세요.");
+        return;
+      }
+
+      setCompanyProfileStatus("", "첨부 자료를 읽고 LLM 분석 필드 초안을 만드는 중입니다.");
+      const source = await collectCompanyProfileSource(files);
+      const analysis = buildCompanyProfileAnalysis(source, files);
+      const quantFields = ["industry", "region", "founded", "employees", "revenue", "growth", "export", "rnd", "patents", "certifications"];
+      const qualFields = ["businessModel", "coreTech", "market", "differentiation", "fundingPurpose", "risks", "dataGaps", "llmSummary", "nextActions"];
+      const fieldMap = {
+        industry: "companyProfileIndustry",
+        region: "companyProfileRegion",
+        founded: "companyProfileFounded",
+        employees: "companyProfileEmployees",
+        revenue: "companyProfileRevenue",
+        growth: "companyProfileGrowth",
+        export: "companyProfileExport",
+        rnd: "companyProfileRnd",
+        patents: "companyProfilePatents",
+        certifications: "companyProfileCertifications",
+        businessModel: "companyProfileBusinessModel",
+        coreTech: "companyProfileCoreTech",
+        market: "companyProfileMarket",
+        differentiation: "companyProfileDifferentiation",
+        fundingPurpose: "companyProfileFundingPurpose",
+        risks: "companyProfileRisks",
+        dataGaps: "companyProfileDataGaps",
+        llmSummary: "companyProfileLLMSummary",
+        nextActions: "companyProfileNextActions"
+      };
+
+      Object.keys(fieldMap).forEach((key) => {
+        setCompanyProfileFieldValue(fieldMap[key], analysis[key], true);
+      });
+
+      renderCompanyProfileAnalysisSummary(
+        files.length,
+        quantFields.filter((field) => analysis[field]).length,
+        qualFields.filter((field) => analysis[field]).length
+      );
+      setCompanyProfileStatus("success", "분석 초안을 필드에 채웠습니다. 컨시어지가 검토 후 임시 저장해주세요.");
+    }
+
+    function readSavedCompanyProfiles() {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(companyProfileStorageKey) || "[]");
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function renderSavedCompanyProfiles() {
+      if (!savedCompanyProfiles) {
+        return;
+      }
+
+      const profiles = readSavedCompanyProfiles();
+      if (!profiles.length) {
+        savedCompanyProfiles.innerHTML = [
+          "<article class=\"saved-profile-card\">",
+          "<strong>저장된 기업이 없습니다.</strong>",
+          "<span>분석 후 임시 저장하면 이곳에 표시됩니다.</span>",
+          "</article>"
+        ].join("");
+        return;
+      }
+
+      savedCompanyProfiles.innerHTML = profiles.slice(0, 6).map((profile) => [
+        "<article class=\"saved-profile-card\">",
+        "<strong>" + escapeHtml(profile.companyProfileName || "기업명 미입력") + "</strong>",
+        "<span>" + escapeHtml(profile.companyProfileIndustry || "업종 미입력") + " · " + escapeHtml(profile.fileCount || 0) + "개 자료</span>",
+        "<span>" + escapeHtml(profile.savedAt || "") + "</span>",
+        "</article>"
+      ].join("")).join("");
+    }
+
+    function collectCompanyProfileDraft() {
+      const draft = companyProfileFieldIds.reduce((acc, id) => {
+        acc[id] = getCompanyProfileFieldValue(id);
+        return acc;
+      }, {});
+      draft.id = "company-profile-" + Date.now();
+      draft.savedAt = new Intl.DateTimeFormat("ko-KR", {
+        dateStyle: "short",
+        timeStyle: "short"
+      }).format(new Date());
+      draft.fileCount = getCompanyProfileFiles().length;
+      draft.files = getCompanyProfileFiles().map((file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type
+      }));
+      return draft;
+    }
+
+    function saveCompanyProfileDraft() {
+      if (!getCompanyProfileFieldValue("companyProfileName")) {
+        setCompanyProfileStatus("error", "기업명은 기본 정보로 먼저 입력해주세요.");
+        return;
+      }
+
+      const profiles = readSavedCompanyProfiles();
+      profiles.unshift(collectCompanyProfileDraft());
+      localStorage.setItem(companyProfileStorageKey, JSON.stringify(profiles.slice(0, 30)));
+      renderSavedCompanyProfiles();
+      setCompanyProfileStatus("success", "기업 정보 입력 초안을 이 브라우저에 임시 저장했습니다. DB 구축 후 Supabase 기업 프로필 테이블로 이전하면 됩니다.");
+    }
+
+    function resetCompanyProfileForm() {
+      if (companyProfileForm) {
+        companyProfileForm.reset();
+      }
+      renderCompanyProfileFiles();
+      renderCompanyProfileAnalysisSummary(0, 0, 0);
+      setCompanyProfileStatus("", "기본 정보 입력 후 정량·정성 자료를 첨부해주세요.");
+    }
+
+    if (companyProfileFiles) {
+      companyProfileFiles.addEventListener("change", renderCompanyProfileFiles);
     }
 
     function getStatusLabel(value) {
@@ -2533,11 +3240,14 @@
     async function bootstrapAdminDashboard() {
       const initialView = window.location.hash ? window.location.hash.replace("#", "") : "dashboard";
       showAdminView(initialView, false);
+      const params = new URLSearchParams(window.location.search);
+      const isTemporaryAdminEntry = params.get("temporary-admin") === "1" || sessionStorage.getItem("fundingAdminPreviewMode") === "true";
 
       if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
-        if (sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
-          window.location.replace("./funding-smart-matching-login.html#admin");
-          return;
+        if (isTemporaryAdminEntry || sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
+          sessionStorage.setItem("fundingAdminPreviewMode", "true");
+          sessionStorage.setItem("fundingAdminLoggedIn", "true");
+          sessionStorage.setItem("fundingAdminRole", "관리자");
         }
 
         const role = sessionStorage.getItem("fundingAdminRole") || "관리자";
@@ -2591,11 +3301,15 @@
       sessionStorage.removeItem("fundingAdminLoggedIn");
       sessionStorage.removeItem("fundingAdminId");
       sessionStorage.removeItem("fundingAdminRole");
+      sessionStorage.removeItem("fundingAdminPreviewMode");
       window.location.href = "./funding-smart-matching-login.html#admin";
     }
 
     window.toggleQuickNav = toggleQuickNav;
     window.loadSupabaseInquiries = loadSupabaseInquiries;
+    window.analyzeCompanyProfileFiles = analyzeCompanyProfileFiles;
+    window.saveCompanyProfileDraft = saveCompanyProfileDraft;
+    window.resetCompanyProfileForm = resetCompanyProfileForm;
     window.loadAdminReports = loadAdminReports;
     window.selectReportCompany = selectReportCompany;
     window.resetReportForm = resetReportForm;
@@ -2603,10 +3317,12 @@
     window.printAdminReport = printAdminReport;
     window.clearAdminSession = clearAdminSession;
 
+    renderCompanyProfileFiles();
+    renderSavedCompanyProfiles();
     resetReportForm();
     bootstrapAdminDashboard();
   </script>
-  <script src="./assets/pwa-register.js"></script>
+  <script src="./assets/pwa-register.js?v=7"></script>
   <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>

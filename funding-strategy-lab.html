@@ -1311,7 +1311,7 @@
       <div class="utility-links">
         <a href="./funding-signup.html">회원가입</a>
         <a href="./funding-smart-matching-login.html">로그인</a>
-        <a href="./funding-admin-dashboard.html#dashboard">관리자 페이지</a>
+        <a href="./funding-admin-dashboard.html?temporary-admin=1&admin-entry=main-v7#dashboard" data-admin-dashboard-entry onclick="return window.openTemporaryAdminDashboard ? window.openTemporaryAdminDashboard(event, this) : true">관리자 페이지</a>
       </div>
     </div>
   </div>
@@ -1331,7 +1331,7 @@
         <span class="mobile-account-links" aria-label="계정 메뉴">
           <a href="./funding-signup.html">회원가입</a>
           <a href="./funding-smart-matching-login.html">로그인</a>
-          <a href="./funding-admin-dashboard.html#dashboard" class="mobile-account-admin">관리자 페이지</a>
+          <a href="./funding-admin-dashboard.html?temporary-admin=1&admin-entry=mobile-v7#dashboard" class="mobile-account-admin" data-admin-dashboard-entry onclick="return window.openTemporaryAdminDashboard ? window.openTemporaryAdminDashboard(event, this) : true">관리자 페이지</a>
         </span>
         <a href="#contact" class="mobile-nav-cta">상담 신청</a>
       </nav>
@@ -1727,6 +1727,33 @@
       });
     }
 
+    function openTemporaryAdminDashboard(event, link) {
+      if (event) {
+        event.preventDefault();
+      }
+
+      alert("DB 구축 전까지 관리자 페이지는 임시 안내 후 바로 접속됩니다.\n\n확인을 누르면 관리자 대시보드로 이동합니다.");
+      try {
+        sessionStorage.setItem("fundingAdminPreviewMode", "true");
+        sessionStorage.setItem("fundingAdminLoggedIn", "true");
+        sessionStorage.setItem("fundingAdminRole", "관리자");
+      } catch (error) {
+        console.warn("Temporary admin session storage failed", error);
+      }
+
+      const target = new URL(link.getAttribute("href"), window.location.href);
+      window.location.assign(target.href);
+      return false;
+    }
+
+    document.querySelectorAll("[data-admin-dashboard-entry]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        openTemporaryAdminDashboard(event, link);
+      });
+    });
+
+    window.openTemporaryAdminDashboard = openTemporaryAdminDashboard;
+
     function setRoadmapFormStatus(form, type, message) {
       const status = form.querySelector("#roadmapFormStatus");
       if (!status) {
@@ -1797,7 +1824,7 @@
 
     window.handleSubmit = handleSubmit;
   </script>
-  <script src="./assets/pwa-register.js"></script>
+  <script src="./assets/pwa-register.js?v=7"></script>
   <script src="./assets/disable-mobile-zoom.js"></script>
 </body>
 </html>

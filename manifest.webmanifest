@@ -5,7 +5,7 @@
   "description": "정부지원사업, R&D, 정책자금, 투자유치 로드맵과 공고 매칭을 관리하는 상담형 PWA입니다.",
   "lang": "ko-KR",
   "dir": "ltr",
-  "start_url": "./funding-strategy-lab.html",
+  "start_url": "./funding-strategy-lab.html?pwa=v7",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -43,8 +43,8 @@
     {
       "name": "관리자 대시보드",
       "short_name": "관리자",
-      "description": "통합 로그인에서 관리자 계정으로 접속합니다.",
-      "url": "./funding-smart-matching-login.html#admin",
+      "description": "관리자 대시보드로 바로 접속합니다.",
+      "url": "./funding-admin-dashboard.html?temporary-admin=1&admin-entry=pwa-shortcut-v7#dashboard",
       "icons": [
         {
           "src": "./assets/pwa-icon-192.png",
