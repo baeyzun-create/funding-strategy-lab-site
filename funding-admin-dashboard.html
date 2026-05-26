@@ -1146,7 +1146,9 @@
       }
 
       body.quick-nav-collapsed .quick-nav {
+        cursor: pointer;
         padding: 12px 14px;
+        touch-action: manipulation;
       }
 
       body.quick-nav-collapsed .quick-nav-head {
@@ -2192,6 +2194,7 @@
   <script src="./assets/supabase-config.js"></script>
   <script src="./assets/supabase-roadmap.js"></script>
   <script>
+    const quickNav = document.querySelector(".quick-nav");
     const quickNavToggle = document.querySelector(".quick-nav-toggle");
     const compactNavQuery = window.matchMedia("(max-width: 980px)");
 
@@ -2205,6 +2208,20 @@
 
     function toggleQuickNav() {
       setQuickNavCollapsed(!document.body.classList.contains("quick-nav-collapsed"));
+    }
+
+    if (quickNav) {
+      quickNav.addEventListener("click", (event) => {
+        if (!compactNavQuery.matches || !document.body.classList.contains("quick-nav-collapsed")) {
+          return;
+        }
+
+        if (event.target.closest(".quick-nav-toggle") || event.target.closest(".quick-nav-link")) {
+          return;
+        }
+
+        setQuickNavCollapsed(false);
+      });
     }
 
     function setHidden(id, hidden) {
