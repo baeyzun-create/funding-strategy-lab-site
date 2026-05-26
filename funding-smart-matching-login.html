@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>스마트 매칭 로그인 | 더이로운기업</title>
+  <title>통합 로그인 | 더이로운기업</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="더이로운기업" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="description" content="기업과 영업인을 위한 스마트 매칭 시스템 로그인 화면입니다." />
+  <meta name="description" content="기업회원, 관리자, 영업인 파트너를 위한 더이로운기업 통합 로그인 화면입니다." />
   <meta property="og:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -143,7 +143,7 @@
 
     .login-shell {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(360px, 0.72fr) minmax(0, 1fr);
       gap: 16px;
       padding: 16px;
       background: var(--dark);
@@ -154,16 +154,12 @@
     .login-card {
       display: flex;
       flex-direction: column;
-      min-height: 520px;
+      min-height: 500px;
       padding: 28px;
       background: var(--surface);
       border: 1px solid #2f323c;
       border-radius: 14px;
       color: #f7f8f8;
-    }
-
-    .login-card.sales {
-      background: linear-gradient(180deg, #1a1b22 0%, #111216 100%);
     }
 
     .card-top {
@@ -184,6 +180,56 @@
       border: 1px solid rgba(94, 106, 210, 0.34);
       border-radius: 999px;
       font-size: 12px;
+    }
+
+    .signup-card {
+      display: grid;
+      gap: 12px;
+      padding: 28px;
+      color: #f7f8f8;
+      background: #08172a;
+      border: 1px solid #1d3554;
+      border-radius: 14px;
+    }
+
+    .signup-card h2 {
+      font-size: 28px;
+      line-height: 1.18;
+    }
+
+    .account-type-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .account-type {
+      display: grid;
+      gap: 5px;
+      padding: 14px;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+
+    .account-type:hover,
+    .account-type:focus-visible {
+      background: rgba(15, 98, 254, 0.16);
+      border-color: rgba(147, 197, 253, 0.72);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .account-type strong {
+      font-size: 15px;
+    }
+
+    .account-type span {
+      color: #a8b4c6;
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     .status {
@@ -270,6 +316,33 @@
       background: var(--blue-hover);
     }
 
+    .login-button:disabled {
+      cursor: progress;
+      opacity: 0.72;
+    }
+
+    .login-message {
+      display: none;
+      margin: 0 0 14px;
+      padding: 11px 12px;
+      color: #fecaca;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(248, 113, 113, 0.32);
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .login-message.is-visible {
+      display: block;
+    }
+
+    .login-message.is-success {
+      color: #bbf7d0;
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(74, 222, 128, 0.32);
+    }
+
     .helper {
       margin-top: auto;
       padding-top: 26px;
@@ -282,6 +355,25 @@
       color: #d9ddff;
       font-size: 14px;
       font-weight: 600;
+    }
+
+    .signup-button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 12px 16px;
+      color: #ffffff;
+      background: var(--blue);
+      border-radius: 0;
+      font-weight: 700;
+    }
+
+    .signup-button:hover,
+    .signup-button:focus-visible {
+      background: var(--blue-hover);
+      outline: none;
     }
 
     .footer {
@@ -366,61 +458,61 @@
     <section class="login-hero">
       <div class="container">
         <div class="hero-head">
-          <span class="section-label">스마트 매칭 로그인</span>
+          <span class="section-label">통합 로그인</span>
           <div>
-            <h1>멤버십 기업과 협업 영업인을 위한 전용 로그인입니다.</h1>
-            <p class="lead">자금 로드맵, 공고 매칭 결과, 접수 관리 현황을 계정별로 확인할 수 있는 영역입니다.</p>
+            <h1>멤버십 기업과 운영자를 위한 통합 로그인입니다.</h1>
+            <p class="lead">기업, 영업인, 관리자가 자금 로드맵, 공고 매칭, 접수 관리, 월별 리포트 현황을 계정별로 확인합니다.</p>
           </div>
         </div>
 
         <div class="login-shell">
-          <form class="login-card" onsubmit="handleLogin(event, '기업')">
+          <form class="login-card" id="login" onsubmit="handleUnifiedLogin(event)">
             <div class="card-top">
-              <span class="role-badge">Company</span>
-              <span class="status">기업 계정</span>
+              <span class="role-badge">Unified</span>
+              <span class="status">통합 계정</span>
             </div>
-            <h2>기업 로그인</h2>
-            <p>기업 담당자가 자금 로드맵, 공고 매칭 결과, 준비자료 현황을 확인하는 영역입니다.</p>
+            <h2>통합 로그인</h2>
+            <p>가입 승인된 계정으로 로그인하면 권한에 따라 기업 포털 또는 관리자 대시보드로 이동합니다.</p>
             <div class="field">
-              <label for="company-id">기업 아이디</label>
-              <input id="company-id" type="text" placeholder="기업 이메일 또는 아이디" autocomplete="username" />
+              <label for="login-id">이메일</label>
+              <input id="login-id" name="loginId" type="email" placeholder="가입 이메일" autocomplete="username" data-lpignore="true" required />
             </div>
             <div class="field">
-              <label for="company-password">비밀번호</label>
-              <input id="company-password" type="password" placeholder="비밀번호" autocomplete="current-password" />
+              <label for="login-password">비밀번호</label>
+              <input id="login-password" name="loginPassword" type="password" placeholder="비밀번호" autocomplete="current-password" required />
             </div>
             <div class="form-row">
               <label><input type="checkbox" /> 로그인 유지</label>
-              <a href="#" onclick="showPending(event, '기업 비밀번호 찾기')">비밀번호 찾기</a>
+              <a href="#" onclick="showPending(event, '비밀번호 찾기')">비밀번호 찾기</a>
             </div>
-            <button class="login-button" type="submit">기업 로그인</button>
-            <a href="./funding-signup.html" class="signup-link">기업회원 가입하기</a>
-            <div class="helper">운영 계정 발급 후 기업별 로드맵 화면으로 연결됩니다.</div>
+            <div class="login-message" id="loginMessage" role="status" aria-live="polite"></div>
+            <button class="login-button" type="submit">로그인</button>
+            <a href="./funding-signup.html" class="signup-link">회원가입하기</a>
+            <div class="helper">회원가입 단계에서 기업회원, 관리자, 영업인 파트너 유형을 선택합니다.</div>
           </form>
 
-          <form class="login-card sales" onsubmit="handleLogin(event, '영업인')">
-            <div class="card-top">
-              <span class="role-badge">Partner</span>
-              <span class="status">영업인 계정</span>
+          <aside class="signup-card" aria-label="회원가입">
+            <div>
+              <span class="role-badge">Sign up</span>
+              <h2>회원가입</h2>
+              <p>가입 유형을 선택하면 회원가입 페이지에서 해당 유형에 맞는 정보를 입력합니다.</p>
             </div>
-            <h2>영업인 로그인</h2>
-            <p>영업인이 고객 기업의 매칭 진행, 상담 상태, 접수 관리 현황을 확인하는 영역입니다.</p>
-            <div class="field">
-              <label for="sales-id">영업인 아이디</label>
-              <input id="sales-id" type="text" placeholder="영업인 이메일 또는 아이디" autocomplete="username" />
+            <div class="account-type-list">
+              <a class="account-type" href="./funding-signup.html?role=company">
+                <strong>기업회원</strong>
+                <span>공개된 월별 리포트, 공고 매칭 결과, 준비자료 현황을 확인합니다.</span>
+              </a>
+              <a class="account-type" href="./funding-signup.html?role=admin">
+                <strong>관리자</strong>
+                <span>문의, 공고 매칭, 계약 현황, 월별 리포트 작성과 공개 상태를 관리합니다.</span>
+              </a>
+              <a class="account-type" href="./funding-signup.html?role=partner">
+                <strong>영업인 파트너</strong>
+                <span>담당 기업의 상담 상태와 접수 관리 현황을 확인합니다.</span>
+              </a>
             </div>
-            <div class="field">
-              <label for="sales-password">비밀번호</label>
-              <input id="sales-password" type="password" placeholder="비밀번호" autocomplete="current-password" />
-            </div>
-            <div class="form-row">
-              <label><input type="checkbox" /> 로그인 유지</label>
-              <a href="#" onclick="showPending(event, '영업인 비밀번호 찾기')">비밀번호 찾기</a>
-            </div>
-            <button class="login-button" type="submit">영업인 로그인</button>
-            <a href="./funding-signup.html" class="signup-link">영업인 파트너 가입하기</a>
-            <div class="helper">운영 계정 발급 후 담당 기업의 진행 현황으로 연결됩니다.</div>
-          </form>
+            <a href="./funding-signup.html" class="signup-button">회원가입 시작</a>
+          </aside>
         </div>
       </div>
     </section>
@@ -430,16 +522,80 @@
     <div class="container">© 2026 더이로운기업 · 스마트 매칭 로그인</div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./assets/supabase-config.js"></script>
+  <script src="./assets/supabase-roadmap.js"></script>
   <script>
-    function handleLogin(event, role) {
+    function setLoginMessage(type, message) {
+      const element = document.getElementById("loginMessage");
+      element.textContent = message || "";
+      element.className = "login-message is-visible" + (type === "success" ? " is-success" : "");
+    }
+
+    async function handleUnifiedLogin(event) {
       event.preventDefault();
-      alert(role + " 로그인은 추후 실제 시스템 링크로 연결됩니다.");
+      const form = event.target;
+      const fields = form.elements;
+      const button = form.querySelector(".login-button");
+      const originalText = button ? button.textContent : "";
+
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        setLoginMessage("error", "로그인 설정이 아직 완료되지 않았습니다. Supabase 설정 후 다시 시도해주세요.");
+        return;
+      }
+
+      try {
+        if (button) {
+          button.disabled = true;
+          button.textContent = "로그인 확인 중입니다";
+        }
+        setLoginMessage("success", "계정 권한을 확인하고 있습니다.");
+        const result = await window.FundingSupabase.signInUnified(fields.loginId.value, fields.loginPassword.value);
+        if (result.accountType === "admin") {
+          sessionStorage.setItem("fundingAdminLoggedIn", "true");
+          sessionStorage.setItem("fundingAdminId", result.profile.email || result.user.email || fields.loginId.value);
+          sessionStorage.setItem("fundingAdminRole", result.profile.role || "관리자");
+          window.location.href = "./funding-admin-dashboard.html#dashboard";
+          return;
+        }
+
+        sessionStorage.setItem("fundingCompanyLoggedIn", "true");
+        sessionStorage.setItem("fundingCompanyId", result.profile.company_id || "");
+        sessionStorage.setItem("fundingCompanyEmail", result.profile.email || result.user.email || fields.loginId.value);
+        window.location.href = "./funding-company-portal.html";
+      } catch (error) {
+        setLoginMessage("error", error && error.message ? error.message : "로그인에 실패했습니다.");
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
     }
 
     function showPending(event, label) {
       event.preventDefault();
       alert(label + " 기능은 추후 연결됩니다.");
     }
+
+    function focusHashTarget() {
+      if (window.location.hash !== "#admin") {
+        return;
+      }
+
+      const loginCard = document.getElementById("login");
+      const loginEmail = document.getElementById("login-id");
+      if (loginCard) {
+        loginCard.scrollIntoView({ block: "center" });
+      }
+      if (loginEmail) {
+        loginEmail.focus();
+      }
+    }
+
+    window.handleUnifiedLogin = handleUnifiedLogin;
+    window.showPending = showPending;
+    focusHashTarget();
   </script>
   <script src="./assets/pwa-register.js"></script>
   <script src="./assets/disable-mobile-zoom.js"></script>

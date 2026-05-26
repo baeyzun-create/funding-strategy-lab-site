@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>기업 리포트 포털 | 더이로운기업</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0f62fe" />
+  <meta name="description" content="더이로운기업 멤버십 기업이 월별 컨설팅 진행 리포트를 확인하고 출력하는 포털입니다." />
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --ink: #161616;
+      --muted: #525252;
+      --line: #d9d9d9;
+      --blue: #0f62fe;
+      --green: #16a34a;
+      --orange: #ff4f00;
+      --dark: #010102;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+      word-break: keep-all;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-logo {
+      width: 184px;
+      display: block;
+      height: auto;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      color: #3730a3;
+      background: #eef2ff;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .pill.green {
+      color: #166534;
+      background: #dcfce7;
+    }
+
+    .portal {
+      padding: 42px 0 86px;
+    }
+
+    .portal-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .label {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin-top: 8px;
+      font-size: 46px;
+      line-height: 1.12;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+
+    .portal-layout {
+      display: grid;
+      grid-template-columns: 330px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-head h2 {
+      font-size: 20px;
+    }
+
+    .status-box {
+      margin: 16px 20px 0;
+      padding: 12px 14px;
+      color: #374151;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .status-box.is-success {
+      color: #166534;
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .status-box.is-error {
+      color: #991b1b;
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+
+    .report-list {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+    }
+
+    .report-item {
+      display: grid;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .report-item:hover,
+    .report-item:focus-visible,
+    .report-item.is-active {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.1);
+      outline: none;
+    }
+
+    .report-item strong {
+      font-size: 15px;
+    }
+
+    .muted {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .report-view {
+      min-height: 640px;
+      padding: 26px;
+    }
+
+    .report-view-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #111827;
+    }
+
+    .report-view h2 {
+      font-size: 34px;
+      line-height: 1.18;
+      margin-top: 6px;
+    }
+
+    .report-section {
+      display: grid;
+      gap: 12px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .report-section h3 {
+      font-size: 20px;
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .report-card {
+      display: grid;
+      gap: 5px;
+      padding: 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+
+    .report-card strong {
+      font-size: 15px;
+    }
+
+    .report-card span,
+    .report-view p {
+      color: #4b5563;
+      font-size: 14px;
+      line-height: 1.68;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .button {
+      min-height: 34px;
+      padding: 7px 12px;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .button.primary {
+      color: #ffffff;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .empty {
+      padding: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .portal-head,
+      .portal-layout,
+      .report-view-head,
+      .report-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .brand-logo {
+        width: 142px;
+      }
+
+      .nav-actions {
+        flex-wrap: wrap;
+      }
+
+      .portal {
+        padding: 30px 0 68px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .report-view {
+        padding: 18px;
+      }
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      .printable-report,
+      .printable-report * {
+        visibility: visible;
+      }
+
+      .printable-report {
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .action-row {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="./funding-strategy-lab.html" aria-label="메인으로 이동">
+        <img class="brand-logo" src="./assets/the-eroun-logo.png" alt="더이로운기업 Road Map & Free Funds Consulting" />
+      </a>
+      <div class="nav-actions">
+        <span class="pill" id="companyBadge">기업 계정</span>
+        <a href="./funding-smart-matching-login.html" onclick="clearCompanySession(event)">로그아웃</a>
+        <a href="./funding-services-pricing.html">서비스 및 가격</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="portal">
+    <div class="container">
+      <div class="portal-head">
+        <div>
+          <span class="label">기업 리포트 포털</span>
+          <h1 id="companyTitle">월별 진행 리포트</h1>
+          <p class="lead">공개된 컨설팅 리포트와 첨부 파일을 확인하고 출력합니다.</p>
+        </div>
+        <button class="button primary" type="button" onclick="window.print()">인쇄/PDF 저장</button>
+      </div>
+
+      <div class="portal-layout">
+        <aside class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>공개 리포트</h2>
+              <span class="muted" id="reportCountText">0건</span>
+            </div>
+            <span class="pill green">Published</span>
+          </div>
+          <p class="status-box" id="portalStatus" role="status" aria-live="polite">기업 계정 권한을 확인하고 있습니다.</p>
+          <div class="report-list" id="companyReportList">
+            <div class="empty">공개 리포트를 불러오는 중입니다.</div>
+          </div>
+        </aside>
+
+        <section class="panel report-view printable-report" id="reportView" aria-label="월별 리포트 상세">
+          <div class="report-view-head">
+            <div>
+              <span class="label">Monthly Progress Report</span>
+              <h2>리포트를 선택해주세요.</h2>
+              <p>왼쪽 목록에서 공개된 월별 리포트를 선택하면 상세 내용이 표시됩니다.</p>
+            </div>
+            <span class="pill">Report</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 더이로운기업 · 기업 리포트 포털</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./assets/supabase-config.js"></script>
+  <script src="./assets/supabase-roadmap.js"></script>
+  <script>
+    const reportList = document.getElementById("companyReportList");
+    const reportView = document.getElementById("reportView");
+    let currentReportId = "";
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function textWithBreaks(value) {
+      return escapeHtml(value || "입력된 내용이 없습니다.").replace(/\n/g, "<br />");
+    }
+
+    function formatReportMonth(value) {
+      const text = String(value || "");
+      const parts = text.split("-");
+      return parts.length >= 2 ? parts[0] + "년 " + Number(parts[1]) + "월" : "월 미지정";
+    }
+
+    function formatFileSize(value) {
+      const bytes = Number(value || 0);
+      if (bytes >= 1024 * 1024) {
+        return Math.ceil(bytes / 1024 / 1024) + "MB";
+      }
+      return Math.ceil(bytes / 1024) + "KB";
+    }
+
+    function setPortalStatus(type, message) {
+      const status = document.getElementById("portalStatus");
+      status.className = "status-box" + (type ? " is-" + type : "");
+      status.textContent = message;
+    }
+
+    function renderReportList(reports) {
+      document.getElementById("reportCountText").textContent = reports.length + "건";
+      if (!reports.length) {
+        reportList.innerHTML = "<div class=\"empty\">아직 공개된 월별 리포트가 없습니다.</div>";
+        return;
+      }
+
+      reportList.innerHTML = reports.map((report, index) => {
+        return [
+          "<button class=\"report-item" + (index === 0 ? " is-active" : "") + "\" type=\"button\" data-report-id=\"" + escapeHtml(report.id) + "\">",
+          "<strong>" + escapeHtml(formatReportMonth(report.report_month)) + "</strong>",
+          "<span class=\"muted\">" + escapeHtml(report.title || "월별 진행 리포트") + "</span>",
+          "<span class=\"pill green\">공개</span>",
+          "</button>"
+        ].join("");
+      }).join("");
+    }
+
+    function renderReportDetail(bundle) {
+      const report = bundle.report;
+      const company = report.company || {};
+      currentReportId = report.id;
+      document.querySelectorAll(".report-item").forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.reportId === report.id);
+      });
+
+      const noticeHtml = (bundle.noticeItems || []).length
+        ? "<div class=\"report-grid\">" + bundle.noticeItems.map((item) => [
+          "<article class=\"report-card\">",
+          "<strong>" + escapeHtml(item.title || "맞춤 공고") + "</strong>",
+          "<span>" + escapeHtml(item.agency || "기관 미입력") + " · " + escapeHtml(item.application_status || "검토 중") + "</span>",
+          "<span>마감 " + escapeHtml(item.deadline || "미정") + " · 적합도 " + escapeHtml(item.fit_score || "-") + "</span>",
+          "<p>" + textWithBreaks(item.notes) + "</p>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 공고 항목이 없습니다.</p>";
+      const proposalHtml = (bundle.proposalItems || []).length
+        ? "<div class=\"report-grid\">" + bundle.proposalItems.map((item) => [
+          "<article class=\"report-card\">",
+          "<strong>" + escapeHtml(item.section_title || "사업계획서") + "</strong>",
+          "<span>작성 수준: " + escapeHtml(item.writing_level || "미입력") + "</span>",
+          "<p>" + textWithBreaks(item.consulting_content) + "</p>",
+          "<span>다음 보완: " + escapeHtml(item.next_revision || "미입력") + "</span>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 사업계획서 항목이 없습니다.</p>";
+      const meetingHtml = (bundle.meetings || []).length
+        ? "<div class=\"report-grid\">" + bundle.meetings.map((item) => [
+          "<article class=\"report-card\">",
+          "<strong>" + escapeHtml(item.title || "월간 컨설팅 미팅") + "</strong>",
+          "<span>" + escapeHtml(item.meeting_date || "일자 미입력") + " · " + escapeHtml(item.attendees || "참석자 미입력") + "</span>",
+          "<p>" + textWithBreaks(item.meeting_notes) + "</p>",
+          "<span>후속 과제: " + escapeHtml(item.follow_up || "미입력") + "</span>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 미팅 항목이 없습니다.</p>";
+      const fileHtml = (bundle.files || []).length
+        ? "<div class=\"report-grid\">" + bundle.files.map((file) => [
+          "<article class=\"report-card\">",
+          "<strong>" + escapeHtml(file.name || "첨부 파일") + "</strong>",
+          "<span>" + escapeHtml(file.file_role || "첨부 파일") + " · " + escapeHtml(formatFileSize(file.size)) + "</span>",
+          "<button class=\"button report-file-link\" type=\"button\" data-report-file-path=\"" + escapeHtml(file.storage_path) + "\">파일 열기</button>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 파일이 없습니다.</p>";
+
+      reportView.innerHTML = [
+        "<div class=\"report-view-head\">",
+        "<div>",
+        "<span class=\"label\">Monthly Progress Report</span>",
+        "<h2>" + escapeHtml(report.title || "월별 진행 리포트") + "</h2>",
+        "<p>" + escapeHtml(company.name || "기업") + " · " + escapeHtml(formatReportMonth(report.report_month)) + "</p>",
+        "</div>",
+        "<span class=\"pill green\">공개</span>",
+        "</div>",
+        "<section class=\"report-section\"><h3>기획 요약</h3><p>" + textWithBreaks(report.planning_summary) + "</p><p><strong>다음 액션</strong><br />" + textWithBreaks(report.next_actions) + "</p></section>",
+        "<section class=\"report-section\"><h3>공고 맞춤 리스트 및 접수 상황</h3><p>" + textWithBreaks(report.notice_summary) + "</p>" + noticeHtml + "</section>",
+        "<section class=\"report-section\"><h3>사업계획서 작성 수준 및 컨설팅 내용</h3><p>" + textWithBreaks(report.proposal_summary) + "</p>" + proposalHtml + "</section>",
+        "<section class=\"report-section\"><h3>미팅 관리</h3><p>" + textWithBreaks(report.meeting_summary) + "</p>" + meetingHtml + "</section>",
+        "<section class=\"report-section\"><h3>파일</h3>" + fileHtml + "</section>",
+        "<div class=\"action-row\"><button class=\"button primary\" type=\"button\" onclick=\"window.print()\">인쇄/PDF 저장</button></div>"
+      ].join("");
+    }
+
+    async function loadCompanyReport(reportId) {
+      try {
+        setPortalStatus("", "리포트 상세 내용을 불러오는 중입니다.");
+        const bundle = await window.FundingSupabase.fetchReportBundle(reportId);
+        renderReportDetail(bundle);
+        setPortalStatus("success", "공개 리포트를 표시하고 있습니다.");
+      } catch (error) {
+        setPortalStatus("error", error && error.message ? error.message : "리포트를 불러오지 못했습니다.");
+      }
+    }
+
+    async function bootstrapCompanyPortal() {
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        setPortalStatus("error", "Supabase 설정값이 비어 있어 기업 리포트 포털을 사용할 수 없습니다.");
+        return;
+      }
+
+      try {
+        const session = await window.FundingSupabase.getSession();
+        if (!session) {
+          window.location.replace("./funding-smart-matching-login.html");
+          return;
+        }
+
+        const result = await window.FundingSupabase.fetchCompanyMonthlyReports();
+        const company = result.profile.company || {};
+        document.getElementById("companyBadge").textContent = company.name || "기업 계정";
+        document.getElementById("companyTitle").textContent = (company.name || "기업") + " 월별 진행 리포트";
+        renderReportList(result.reports);
+        setPortalStatus("success", "기업 권한이 확인되었습니다.");
+        if (result.reports.length) {
+          await loadCompanyReport(result.reports[0].id);
+        }
+      } catch (error) {
+        setPortalStatus("error", error && error.message ? error.message : "기업 계정 권한을 확인하지 못했습니다.");
+      }
+    }
+
+    async function clearCompanySession(event) {
+      if (event) {
+        event.preventDefault();
+      }
+
+      if (window.FundingSupabase && window.FundingSupabase.isConfigured()) {
+        try {
+          await window.FundingSupabase.signOut();
+        } catch (error) {
+          console.warn("Company sign out failed", error);
+        }
+      }
+      sessionStorage.removeItem("fundingCompanyLoggedIn");
+      sessionStorage.removeItem("fundingCompanyId");
+      sessionStorage.removeItem("fundingCompanyEmail");
+      window.location.href = "./funding-smart-matching-login.html";
+    }
+
+    reportList.addEventListener("click", (event) => {
+      const button = event.target.closest(".report-item");
+      if (button) {
+        loadCompanyReport(button.dataset.reportId);
+      }
+    });
+
+    reportView.addEventListener("click", async (event) => {
+      const button = event.target.closest(".report-file-link");
+      if (!button) {
+        return;
+      }
+
+      const originalText = button.textContent;
+      try {
+        button.disabled = true;
+        button.textContent = "열람 준비";
+        const signedUrl = await window.FundingSupabase.createReportFileSignedUrl(button.dataset.reportFilePath, 600);
+        window.open(signedUrl, "_blank", "noopener");
+      } catch (error) {
+        setPortalStatus("error", error && error.message ? error.message : "파일을 열지 못했습니다.");
+        alert(error && error.message ? error.message : "파일을 열지 못했습니다.");
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    });
+
+    window.clearCompanySession = clearCompanySession;
+    bootstrapCompanyPortal();
+  </script>
+  <script src="./assets/pwa-register.js"></script>
+  <script src="./assets/disable-mobile-zoom.js"></script>
+</body>
+</html>

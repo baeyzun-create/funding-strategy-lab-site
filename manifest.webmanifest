@@ -43,8 +43,21 @@
     {
       "name": "관리자 대시보드",
       "short_name": "관리자",
-      "description": "문의 접수와 진행 상태를 확인합니다.",
-      "url": "./funding-admin-login.html",
+      "description": "통합 로그인에서 관리자 계정으로 접속합니다.",
+      "url": "./funding-smart-matching-login.html#admin",
+      "icons": [
+        {
+          "src": "./assets/pwa-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "기업 리포트 포털",
+      "short_name": "기업 리포트",
+      "description": "공개된 월별 진행 리포트를 확인합니다.",
+      "url": "./funding-company-portal.html",
       "icons": [
         {
           "src": "./assets/pwa-icon-192.png",

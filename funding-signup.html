@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="더이로운기업" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="description" content="더이로운기업 스마트 매칭 기업회원과 영업인 파트너 회원가입 화면입니다." />
+  <meta name="description" content="더이로운기업 기업회원, 관리자, 영업인 파트너 가입 유형을 선택하는 회원가입 화면입니다." />
   <meta property="og:image" content="https://baeyzun-create.github.io/funding-strategy-lab-site/assets/social-preview.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -220,7 +220,7 @@
 
     .role-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
     }
 
@@ -586,8 +586,8 @@
         <div class="hero-head">
           <span class="section-label">회원가입</span>
           <div>
-            <h1>자금 로드맵과 공고 알림을 받을 계정을 만듭니다.</h1>
-            <p class="lead">기업회원과 영업인 파트너가 공고 매칭, 사업계획서, 접수 관리 흐름을 안전하게 확인할 수 있도록 가입 정보를 받습니다.</p>
+            <h1>가입 유형을 먼저 선택하고 계정을 만듭니다.</h1>
+            <p class="lead">기업회원, 관리자, 영업인 파트너 유형별로 필요한 정보를 받아 승인 후 통합 로그인 계정으로 연결합니다.</p>
           </div>
         </div>
 
@@ -599,6 +599,12 @@
                   <input type="radio" name="role" value="기업회원" checked />
                   <span>
                     <strong>기업회원</strong>
+                  </span>
+                </label>
+                <label class="role-option">
+                  <input type="radio" name="role" value="관리자" />
+                  <span>
+                    <strong>관리자</strong>
                   </span>
                 </label>
                 <label class="role-option">
@@ -671,17 +677,18 @@
                   <input id="email" type="email" placeholder="company@example.com" autocomplete="email" required />
                 </div>
                 <div class="field">
-                  <label for="companyName">기업명</label>
+                  <label for="companyName">소속/기업명</label>
                   <input id="companyName" type="text" placeholder="더이로운기업" autocomplete="organization" required />
                 </div>
                 <div class="field">
-                  <label for="businessType">기업 유형</label>
+                  <label for="businessType">가입 세부 유형</label>
                   <select id="businessType" required>
                     <option value="">선택</option>
                     <option>예비창업</option>
                     <option>초기창업 1~3년</option>
                     <option>도약기업 3~7년</option>
                     <option>7년 이상 성장기업</option>
+                    <option>관리자</option>
                     <option>영업인 파트너</option>
                   </select>
                 </div>
@@ -763,6 +770,14 @@
       return selectedRole() === "영업인 파트너";
     }
 
+    function isAdminSignup() {
+      return selectedRole() === "관리자";
+    }
+
+    function requiresPhoneVerification() {
+      return isPartnerSignup() || isAdminSignup();
+    }
+
     function resetManualSignup() {
       const panel = document.getElementById("manualSignupPanel");
       const toggle = document.getElementById("manualSignupToggle");
@@ -772,19 +787,20 @@
     }
 
     function updateSignupFlow() {
-      const partner = isPartnerSignup();
+      const restricted = requiresPhoneVerification();
       const phoneSection = document.getElementById("phoneVerificationSection");
       const socialSection = document.getElementById("socialSignupSection");
       const manualEntry = document.getElementById("manualSignupEntry");
       const manualPanel = document.getElementById("manualSignupPanel");
+      const role = selectedRole();
 
-      if (partner) {
+      if (restricted) {
         phoneSection.hidden = false;
         socialSection.hidden = !phoneVerified;
         manualEntry.hidden = !phoneVerified;
         if (!phoneVerified) {
           resetManualSignup();
-          setVerificationStatus("영업인 파트너는 휴대폰 본인 인증 후 가입 방식을 선택할 수 있습니다.", "");
+          setVerificationStatus(role + "는 휴대폰 본인 인증 후 가입 방식을 선택할 수 있습니다.", "");
         }
         return;
       }
@@ -836,9 +852,9 @@
     }
 
     function connectSocial(provider) {
-      if (isPartnerSignup() && !phoneVerified) {
+      if (requiresPhoneVerification() && !phoneVerified) {
         document.getElementById("phoneVerificationSection").hidden = false;
-        setVerificationStatus("영업인 파트너는 휴대폰 본인 인증 후 소셜 로그인이 가능합니다.", "warning");
+        setVerificationStatus(selectedRole() + "는 휴대폰 본인 인증 후 소셜 가입이 가능합니다.", "warning");
         document.getElementById("phone").focus();
         return;
       }
@@ -851,9 +867,9 @@
       const toggle = document.getElementById("manualSignupToggle");
       const phoneSection = document.getElementById("phoneVerificationSection");
 
-      if (isPartnerSignup() && !phoneVerified) {
+      if (requiresPhoneVerification() && !phoneVerified) {
         phoneSection.hidden = false;
-        setVerificationStatus("영업인 파트너는 휴대폰 본인 인증 후 일반 회원가입을 진행할 수 있습니다.", "warning");
+        setVerificationStatus(selectedRole() + "는 휴대폰 본인 인증 후 일반 회원가입을 진행할 수 있습니다.", "warning");
         document.getElementById("phone").focus();
         return;
       }
@@ -907,6 +923,25 @@
       });
     });
 
+    function applyRoleFromUrl() {
+      const roleParam = new URLSearchParams(window.location.search).get("role");
+      const roleMap = {
+        company: "기업회원",
+        admin: "관리자",
+        partner: "영업인 파트너"
+      };
+      const nextRole = roleMap[roleParam];
+      if (!nextRole) {
+        return;
+      }
+
+      const target = document.querySelector("input[name='role'][value='" + nextRole + "']");
+      if (target) {
+        target.checked = true;
+      }
+    }
+
+    applyRoleFromUrl();
     updateSignupFlow();
   </script>
   <script src="./assets/pwa-register.js"></script>

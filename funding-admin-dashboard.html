@@ -262,6 +262,7 @@
     .dashboard-unit[hidden],
     #inquiryAndPipeline[hidden],
     #matchingWorkbench[hidden],
+    #reportWorkbench[hidden],
     .admin-managed-section[hidden] {
       display: none !important;
     }
@@ -681,6 +682,233 @@
       background: #fef2f2;
     }
 
+    .report-workbench {
+      margin-top: 18px;
+    }
+
+    .report-page-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .report-page-head h2 {
+      margin-top: 8px;
+      font-size: 44px;
+      line-height: 1.12;
+      font-weight: 400;
+    }
+
+    .report-page-head p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .report-reader-layout {
+      display: grid;
+      grid-template-columns: 330px minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .report-reader-panel {
+      align-self: stretch;
+    }
+
+    .report-reader-panel .admin-status {
+      margin: 16px 16px 0;
+    }
+
+    .report-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .report-form {
+      display: grid;
+      gap: 18px;
+      padding: 22px 24px 24px;
+    }
+
+    .form-block {
+      display: grid;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .form-block:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .form-block h3 {
+      font-size: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .field-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .field-group label {
+      color: #374151;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      min-height: 42px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .field-group textarea {
+      min-height: 98px;
+      resize: vertical;
+    }
+
+    .repeat-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .repeat-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      padding: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+    }
+
+    .repeat-row textarea {
+      min-height: 72px;
+    }
+
+    .report-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .report-list {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+    }
+
+    .report-list-item {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+
+    .report-list-item.is-active {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.1);
+    }
+
+    .report-list-item strong {
+      font-size: 15px;
+    }
+
+    .report-list-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .report-preview {
+      min-height: 520px;
+      padding: 24px;
+      background: #ffffff;
+      border: 1px solid #dbe3ee;
+      border-radius: 14px;
+    }
+
+    .report-preview-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      padding-bottom: 18px;
+      border-bottom: 2px solid #111827;
+    }
+
+    .report-preview h2 {
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .report-preview-section {
+      display: grid;
+      gap: 10px;
+      padding: 18px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .report-preview-section h3 {
+      font-size: 18px;
+    }
+
+    .report-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .report-preview-card {
+      display: grid;
+      gap: 4px;
+      padding: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+
+    .report-preview-card span,
+    .report-preview p {
+      color: #4b5563;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .print-only-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
     .footer {
       padding: 36px 0;
       border-top: 1px solid var(--hairline);
@@ -691,7 +919,10 @@
     @media (max-width: 980px) {
       .dashboard-head,
       .admin-grid,
-      .matching-layout {
+      .matching-layout,
+      .report-page-head,
+      .report-reader-layout,
+      .report-layout {
         grid-template-columns: 1fr;
       }
 
@@ -807,6 +1038,37 @@
       .pipeline-row span:last-child {
         grid-column: 2;
       }
+
+      .form-grid,
+      .repeat-row,
+      .report-preview-head,
+      .report-preview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      .printable-report,
+      .printable-report * {
+        visibility: visible;
+      }
+
+      .printable-report {
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .print-only-actions {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -818,7 +1080,7 @@
       </a>
       <div class="nav-actions">
         <span class="admin-role" id="adminRole">관리자</span>
-        <a href="./funding-admin-login.html" onclick="clearAdminSession(event)">로그아웃</a>
+        <a href="./funding-smart-matching-login.html#admin" onclick="clearAdminSession(event)">로그아웃</a>
         <a href="./funding-services-pricing.html">서비스 및 가격</a>
         <a href="./funding-strategy-lab.html">메인화면</a>
       </div>
@@ -849,24 +1111,28 @@
               <span class="quick-nav-index">03</span>
               <span class="quick-nav-label">업체 진행 사이클</span>
             </a>
-            <a class="quick-nav-link" href="#noticeCollection" data-view="noticeCollection">
+            <a class="quick-nav-link" href="#reports" data-view="reports">
               <span class="quick-nav-index">04</span>
+              <span class="quick-nav-label">월별 리포트</span>
+            </a>
+            <a class="quick-nav-link" href="#noticeCollection" data-view="noticeCollection">
+              <span class="quick-nav-index">05</span>
               <span class="quick-nav-label">공고 수집 현황</span>
             </a>
             <a class="quick-nav-link" href="#companyMatching" data-view="companyMatching">
-              <span class="quick-nav-index">05</span>
+              <span class="quick-nav-index">06</span>
               <span class="quick-nav-label">기업 공고 매칭</span>
             </a>
             <a class="quick-nav-link" href="#analysisQueue" data-view="analysisQueue">
-              <span class="quick-nav-index">06</span>
+              <span class="quick-nav-index">07</span>
               <span class="quick-nav-label">문서 분석 큐</span>
             </a>
             <a class="quick-nav-link" href="#marketingStatus" data-view="marketingStatus">
-              <span class="quick-nav-index">07</span>
+              <span class="quick-nav-index">08</span>
               <span class="quick-nav-label">마케팅 현황</span>
             </a>
             <a class="quick-nav-link" href="#contractStatus" data-view="contractStatus">
-              <span class="quick-nav-index">08</span>
+              <span class="quick-nav-index">09</span>
               <span class="quick-nav-label">계약 현황</span>
             </a>
           </nav>
@@ -994,6 +1260,278 @@
           </section>
         </aside>
       </div>
+
+      <section class="report-workbench dashboard-unit" id="reportWorkbench" hidden aria-label="기업 월별 리포트 관리">
+        <div class="report-page-head">
+          <div>
+            <span class="label">04. 월별 리포트</span>
+            <h2>월별 진행 리포트</h2>
+            <p>관리자가 기업별 월간 컨설팅 내용을 작성하고, 공개된 리포트를 같은 화면에서 확인·출력합니다.</p>
+          </div>
+          <div class="panel-head-actions">
+            <button class="action-button" type="button" onclick="resetReportForm()">새 리포트</button>
+            <button class="action-button approve" type="button" onclick="loadAdminReports()">새로고침</button>
+            <button class="action-button approve" type="button" onclick="printAdminReport()">인쇄/PDF 저장</button>
+          </div>
+        </div>
+
+        <div class="report-reader-layout">
+          <aside class="sub-panel report-reader-panel">
+            <div class="sub-panel-head">
+              <div>
+                <h3>공개/초안 리포트</h3>
+                <p>목록에서 선택하면 오른쪽에 기업용 리포트 화면이 표시됩니다.</p>
+              </div>
+              <span class="badge" id="reportCountBadge">0건</span>
+            </div>
+            <p class="admin-status" id="reportStatus" role="status" aria-live="polite">월별 리포트 DB 연결을 확인하고 있습니다.</p>
+            <div class="report-list" id="reportList">
+              <article class="report-list-item">
+                <strong>리포트 연결 대기</strong>
+                <span class="table-muted">Supabase 설정 후 목록이 표시됩니다.</span>
+              </article>
+            </div>
+          </aside>
+
+          <section class="report-preview printable-report" id="adminReportPreview" aria-label="리포트 인쇄 미리보기">
+            <div class="report-preview-head">
+              <div>
+                <span class="label">Monthly Progress Report</span>
+                <h2>리포트를 선택해주세요.</h2>
+                <p>왼쪽 목록에서 월별 리포트를 선택하면 상세 내용이 표시됩니다.</p>
+              </div>
+              <span class="badge">Report</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="report-layout">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>월별 리포트 작성</h2>
+                <p>기업별 컨설팅 진행 상황을 초안으로 저장하거나 기업에게 공개합니다.</p>
+              </div>
+              <div class="panel-head-actions">
+                <button class="action-button" type="button" onclick="resetReportForm()">새 리포트</button>
+                <button class="action-button approve" type="button" onclick="loadAdminReports()">새로고침</button>
+              </div>
+            </div>
+            <form class="report-form" id="reportForm" onsubmit="saveAdminReport(event)">
+              <input type="hidden" id="reportId" name="reportId" />
+              <section class="form-block">
+                <h3>기업 및 리포트 기본 정보</h3>
+                <div class="form-grid">
+                  <div class="field-group full">
+                    <label for="reportCompanySelect">기존 기업 선택</label>
+                    <select id="reportCompanySelect" name="companySelect" onchange="selectReportCompany()">
+                      <option value="">새 기업으로 작성</option>
+                    </select>
+                  </div>
+                  <div class="field-group">
+                    <label for="reportCompanyName">기업명</label>
+                    <input id="reportCompanyName" name="companyName" type="text" placeholder="예: 주식회사 OOO" required />
+                  </div>
+                  <div class="field-group">
+                    <label for="reportBusinessType">기업 유형</label>
+                    <input id="reportBusinessType" name="businessType" type="text" placeholder="예: 제조 · R&D" />
+                  </div>
+                  <div class="field-group">
+                    <label for="reportContactName">기업 담당자</label>
+                    <input id="reportContactName" name="contactName" type="text" placeholder="홍길동" />
+                  </div>
+                  <div class="field-group">
+                    <label for="reportContactEmail">기업 담당자 이메일</label>
+                    <input id="reportContactEmail" name="contactEmail" type="email" placeholder="company@example.com" />
+                  </div>
+                  <div class="field-group">
+                    <label for="reportMonth">리포트 월</label>
+                    <input id="reportMonth" name="reportMonth" type="month" required />
+                  </div>
+                  <div class="field-group">
+                    <label for="reportConsultantName">담당 컨설턴트</label>
+                    <input id="reportConsultantName" name="consultantName" type="text" placeholder="김 컨시어지" />
+                  </div>
+                  <div class="field-group full">
+                    <label for="reportTitle">리포트 제목</label>
+                    <input id="reportTitle" name="title" type="text" placeholder="5월 월별 컨설팅 진행 리포트" />
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <h3>기획 요약</h3>
+                <div class="form-grid">
+                  <div class="field-group full">
+                    <label for="planningSummary">이번 달 기획 요약</label>
+                    <textarea id="planningSummary" name="planningSummary" placeholder="기업 진단, 이번 달 목표, 핵심 의사결정 내용을 정리합니다."></textarea>
+                  </div>
+                  <div class="field-group full">
+                    <label for="nextActions">다음 액션</label>
+                    <textarea id="nextActions" name="nextActions" placeholder="다음 달 준비 항목, 기업 요청 자료, 내부 처리 일정을 정리합니다."></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <h3>공고 맞춤 리스트 및 접수 상황</h3>
+                <div class="field-group">
+                  <label for="noticeSummary">공고 컨설팅 요약</label>
+                  <textarea id="noticeSummary" name="noticeSummary" placeholder="이번 달 공고 탐색, 추천 기준, 접수 상황을 요약합니다."></textarea>
+                </div>
+                <div class="repeat-grid" id="noticeItems">
+                  <div class="repeat-row notice-item">
+                    <input data-field="title" type="text" placeholder="공고명" />
+                    <input data-field="agency" type="text" placeholder="기관" />
+                    <input data-field="deadline" type="date" aria-label="마감일" />
+                    <input data-field="fitScore" type="number" min="0" max="100" placeholder="적합도" />
+                    <input data-field="applicationStatus" type="text" placeholder="접수 상황" />
+                    <textarea data-field="notes" placeholder="매칭 근거 및 보완 사항"></textarea>
+                  </div>
+                  <div class="repeat-row notice-item">
+                    <input data-field="title" type="text" placeholder="공고명" />
+                    <input data-field="agency" type="text" placeholder="기관" />
+                    <input data-field="deadline" type="date" aria-label="마감일" />
+                    <input data-field="fitScore" type="number" min="0" max="100" placeholder="적합도" />
+                    <input data-field="applicationStatus" type="text" placeholder="접수 상황" />
+                    <textarea data-field="notes" placeholder="매칭 근거 및 보완 사항"></textarea>
+                  </div>
+                  <div class="repeat-row notice-item">
+                    <input data-field="title" type="text" placeholder="공고명" />
+                    <input data-field="agency" type="text" placeholder="기관" />
+                    <input data-field="deadline" type="date" aria-label="마감일" />
+                    <input data-field="fitScore" type="number" min="0" max="100" placeholder="적합도" />
+                    <input data-field="applicationStatus" type="text" placeholder="접수 상황" />
+                    <textarea data-field="notes" placeholder="매칭 근거 및 보완 사항"></textarea>
+                  </div>
+                  <div class="repeat-row notice-item">
+                    <input data-field="title" type="text" placeholder="공고명" />
+                    <input data-field="agency" type="text" placeholder="기관" />
+                    <input data-field="deadline" type="date" aria-label="마감일" />
+                    <input data-field="fitScore" type="number" min="0" max="100" placeholder="적합도" />
+                    <input data-field="applicationStatus" type="text" placeholder="접수 상황" />
+                    <textarea data-field="notes" placeholder="매칭 근거 및 보완 사항"></textarea>
+                  </div>
+                  <div class="repeat-row notice-item">
+                    <input data-field="title" type="text" placeholder="공고명" />
+                    <input data-field="agency" type="text" placeholder="기관" />
+                    <input data-field="deadline" type="date" aria-label="마감일" />
+                    <input data-field="fitScore" type="number" min="0" max="100" placeholder="적합도" />
+                    <input data-field="applicationStatus" type="text" placeholder="접수 상황" />
+                    <textarea data-field="notes" placeholder="매칭 근거 및 보완 사항"></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <h3>사업계획서 작성 수준 및 컨설팅 내용</h3>
+                <div class="field-group">
+                  <label for="proposalSummary">사업계획서 컨설팅 요약</label>
+                  <textarea id="proposalSummary" name="proposalSummary" placeholder="작성 수준, 보완 방향, 평가 기준 대응 상황을 요약합니다."></textarea>
+                </div>
+                <div class="repeat-grid" id="proposalItems">
+                  <div class="repeat-row proposal-item">
+                    <input data-field="sectionTitle" type="text" placeholder="항목" />
+                    <input data-field="writingLevel" type="text" placeholder="작성 수준" />
+                    <textarea data-field="consultingContent" placeholder="컨설팅 내용"></textarea>
+                    <textarea data-field="nextRevision" placeholder="다음 보완 항목"></textarea>
+                  </div>
+                  <div class="repeat-row proposal-item">
+                    <input data-field="sectionTitle" type="text" placeholder="항목" />
+                    <input data-field="writingLevel" type="text" placeholder="작성 수준" />
+                    <textarea data-field="consultingContent" placeholder="컨설팅 내용"></textarea>
+                    <textarea data-field="nextRevision" placeholder="다음 보완 항목"></textarea>
+                  </div>
+                  <div class="repeat-row proposal-item">
+                    <input data-field="sectionTitle" type="text" placeholder="항목" />
+                    <input data-field="writingLevel" type="text" placeholder="작성 수준" />
+                    <textarea data-field="consultingContent" placeholder="컨설팅 내용"></textarea>
+                    <textarea data-field="nextRevision" placeholder="다음 보완 항목"></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <h3>미팅 관리 및 파일</h3>
+                <div class="field-group">
+                  <label for="meetingSummary">미팅 요약</label>
+                  <textarea id="meetingSummary" name="meetingSummary" placeholder="이번 달 미팅 흐름과 주요 합의 사항을 요약합니다."></textarea>
+                </div>
+                <div class="repeat-grid" id="meetingItems">
+                  <div class="repeat-row meeting-item">
+                    <input data-field="meetingDate" type="date" aria-label="미팅일" />
+                    <input data-field="title" type="text" placeholder="미팅 제목" />
+                    <input data-field="attendees" type="text" placeholder="참석자" />
+                    <textarea data-field="meetingNotes" placeholder="미팅 내용"></textarea>
+                    <textarea data-field="followUp" placeholder="후속 과제"></textarea>
+                  </div>
+                  <div class="repeat-row meeting-item">
+                    <input data-field="meetingDate" type="date" aria-label="미팅일" />
+                    <input data-field="title" type="text" placeholder="미팅 제목" />
+                    <input data-field="attendees" type="text" placeholder="참석자" />
+                    <textarea data-field="meetingNotes" placeholder="미팅 내용"></textarea>
+                    <textarea data-field="followUp" placeholder="후속 과제"></textarea>
+                  </div>
+                  <div class="repeat-row meeting-item">
+                    <input data-field="meetingDate" type="date" aria-label="미팅일" />
+                    <input data-field="title" type="text" placeholder="미팅 제목" />
+                    <input data-field="attendees" type="text" placeholder="참석자" />
+                    <textarea data-field="meetingNotes" placeholder="미팅 내용"></textarea>
+                    <textarea data-field="followUp" placeholder="후속 과제"></textarea>
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <div class="field-group">
+                    <label for="reportFileRole">파일 구분</label>
+                    <select id="reportFileRole" name="fileRole">
+                      <option>미팅 녹음</option>
+                      <option>첨부 파일</option>
+                      <option>사업계획서</option>
+                      <option>공고 자료</option>
+                    </select>
+                  </div>
+                  <div class="field-group">
+                    <label for="reportFiles">파일 업로드</label>
+                    <input id="reportFiles" name="reportFiles" type="file" multiple />
+                  </div>
+                </div>
+              </section>
+
+              <div class="report-actions">
+                <button class="action-button hold" type="submit" name="status" value="draft">초안 저장</button>
+                <button class="action-button approve" type="submit" name="status" value="published">기업 공개</button>
+                <button class="action-button" type="button" onclick="printAdminReport()">리포트 인쇄</button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="dark-panel">
+            <h2>운영 흐름</h2>
+            <div class="pipeline">
+              <div class="pipeline-row">
+                <span class="pipeline-index">1</span>
+                <strong>작성</strong>
+                <span>기획·공고·사업계획서·미팅</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">2</span>
+                <strong>초안 저장</strong>
+                <span>내부 검토</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">3</span>
+                <strong>기업 공개</strong>
+                <span>기업 포털 반영</span>
+              </div>
+              <div class="pipeline-row">
+                <span class="pipeline-index">4</span>
+                <strong>출력</strong>
+                <span>PDF 저장/인쇄</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
 
       <section class="matching-workbench" id="matchingWorkbench" aria-label="공고와 기업 매칭 관리">
         <div class="workbench-body">
@@ -1296,6 +1834,7 @@
         "dashboard",
         "inquiries",
         "pipeline",
+        "reports",
         "noticeCollection",
         "companyMatching",
         "analysisQueue",
@@ -1308,6 +1847,7 @@
       setHidden("inquiryAndPipeline", !["inquiries", "pipeline"].includes(view));
       setHidden("inquiryBoard", view !== "inquiries");
       setHidden("pipelineSide", view !== "pipeline");
+      setHidden("reportWorkbench", view !== "reports");
       setHidden("matchingWorkbench", !["noticeCollection", "companyMatching", "analysisQueue", "marketingStatus", "contractStatus"].includes(view));
       document.getElementById("inquiryAndPipeline")?.classList.toggle("is-single-view", ["inquiries", "pipeline"].includes(view));
 
@@ -1567,26 +2107,450 @@
       });
     }
 
+    const reportForm = document.getElementById("reportForm");
+    const reportList = document.getElementById("reportList");
+    const reportCompanySelect = document.getElementById("reportCompanySelect");
+    const adminReportPreview = document.getElementById("adminReportPreview");
+    let reportCompanyCache = [];
+    let reportCache = [];
+
+    function setReportStatusMessage(type, message) {
+      const status = document.getElementById("reportStatus");
+      if (!status) {
+        return;
+      }
+
+      status.className = "admin-status";
+      if (type) {
+        status.classList.add("is-" + type);
+      }
+      status.textContent = message;
+    }
+
+    function formatReportMonth(value) {
+      const text = String(value || "");
+      if (!text) {
+        return "월 미지정";
+      }
+
+      const parts = text.split("-");
+      if (parts.length >= 2) {
+        return parts[0] + "년 " + Number(parts[1]) + "월";
+      }
+
+      return text;
+    }
+
+    function toMonthInput(value) {
+      return String(value || "").slice(0, 7);
+    }
+
+    function textWithBreaks(value) {
+      return escapeHtml(value || "입력된 내용이 없습니다.").replace(/\n/g, "<br />");
+    }
+
+    function setFieldValue(id, value) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.value = value || "";
+      }
+    }
+
+    function getFieldValue(id) {
+      const element = document.getElementById(id);
+      return element ? element.value : "";
+    }
+
+    function readRepeatRows(selector, fields) {
+      return Array.from(document.querySelectorAll(selector)).map((row) => {
+        return fields.reduce((acc, field) => {
+          const input = row.querySelector("[data-field='" + field + "']");
+          acc[field] = input ? input.value : "";
+          return acc;
+        }, {});
+      });
+    }
+
+    function writeRepeatRows(selector, items, mapper) {
+      const rows = Array.from(document.querySelectorAll(selector));
+      rows.forEach((row, index) => {
+        const item = items[index] || {};
+        Object.keys(mapper).forEach((field) => {
+          const input = row.querySelector("[data-field='" + field + "']");
+          if (input) {
+            input.value = mapper[field](item) || "";
+          }
+        });
+      });
+    }
+
+    function renderCompanyOptions(companies) {
+      if (!reportCompanySelect) {
+        return;
+      }
+
+      reportCompanySelect.innerHTML = "<option value=\"\">새 기업으로 작성</option>" + companies.map((company) => {
+        return "<option value=\"" + escapeHtml(company.id) + "\">" + escapeHtml(company.name) + "</option>";
+      }).join("");
+    }
+
+    function selectReportCompany() {
+      const selected = reportCompanyCache.find((company) => company.id === reportCompanySelect.value);
+      if (!selected) {
+        return;
+      }
+
+      setFieldValue("reportCompanyName", selected.name);
+      setFieldValue("reportBusinessType", selected.business_type);
+      setFieldValue("reportContactName", selected.contact_name);
+      setFieldValue("reportContactEmail", selected.contact_email);
+    }
+
+    function renderAdminReportList(reports) {
+      setText("reportCountBadge", reports.length + "건");
+      if (!reportList) {
+        return;
+      }
+
+      if (!reports.length) {
+        reportList.innerHTML = [
+          "<article class=\"report-list-item\">",
+          "<strong>저장된 리포트가 없습니다.</strong>",
+          "<span class=\"table-muted\">첫 월별 리포트를 작성해 초안으로 저장하세요.</span>",
+          "</article>"
+        ].join("");
+        return;
+      }
+
+      reportList.innerHTML = reports.map((report) => {
+        const companyName = report.company && report.company.name ? report.company.name : "기업 미지정";
+        const badgeClass = report.status === "published" ? "green" : "orange";
+        const badgeLabel = report.status === "published" ? "공개" : "초안";
+        const activeId = adminReportPreview ? adminReportPreview.getAttribute("data-report-id") : "";
+        const activeClass = activeId === report.id ? " is-active" : "";
+        return [
+          "<article class=\"report-list-item" + activeClass + "\" data-report-id=\"" + escapeHtml(report.id) + "\">",
+          "<strong>" + escapeHtml(companyName) + "</strong>",
+          "<span class=\"table-muted\">" + escapeHtml(formatReportMonth(report.report_month)) + " · " + escapeHtml(report.title || "월별 리포트") + "</span>",
+          "<span class=\"badge " + badgeClass + "\">" + badgeLabel + "</span>",
+          "<div class=\"report-list-actions\">",
+          "<button class=\"action-button report-edit-button\" type=\"button\" data-report-id=\"" + escapeHtml(report.id) + "\">보기/수정</button>",
+          "<button class=\"action-button report-print-button\" type=\"button\" data-report-id=\"" + escapeHtml(report.id) + "\">인쇄</button>",
+          "</div>",
+          "</article>"
+        ].join("");
+      }).join("");
+    }
+
+    function markActiveReport(reportId) {
+      if (!reportList) {
+        return;
+      }
+
+      reportList.querySelectorAll(".report-list-item").forEach((item) => {
+        item.classList.toggle("is-active", item.dataset.reportId === reportId);
+      });
+    }
+
+    function renderAdminReportPreview(bundle) {
+      if (!adminReportPreview) {
+        return;
+      }
+
+      if (!bundle || !bundle.report) {
+        adminReportPreview.removeAttribute("data-report-id");
+        markActiveReport("");
+        adminReportPreview.innerHTML = [
+          "<div class=\"report-preview-head\">",
+          "<div>",
+          "<span class=\"label\">Monthly Progress Report</span>",
+          "<h2>리포트를 선택해주세요.</h2>",
+          "<p>왼쪽 목록에서 월별 리포트를 선택하면 상세 내용이 표시됩니다.</p>",
+          "</div>",
+          "<span class=\"badge\">Report</span>",
+          "</div>"
+        ].join("");
+        return;
+      }
+
+      const report = bundle.report;
+      const company = report.company || {};
+      const statusLabel = report.status === "published" ? "기업 공개" : "초안";
+      const noticeHtml = (bundle.noticeItems || []).length
+        ? "<div class=\"report-preview-grid\">" + bundle.noticeItems.map((item) => [
+          "<article class=\"report-preview-card\">",
+          "<strong>" + escapeHtml(item.title || "맞춤 공고") + "</strong>",
+          "<span>" + escapeHtml(item.agency || "기관 미입력") + " · " + escapeHtml(item.application_status || "검토 중") + "</span>",
+          "<span>마감 " + escapeHtml(item.deadline || "미정") + " · 적합도 " + escapeHtml(item.fit_score || "-") + "</span>",
+          "<p>" + textWithBreaks(item.notes) + "</p>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 공고 항목이 없습니다.</p>";
+      const proposalHtml = (bundle.proposalItems || []).length
+        ? "<div class=\"report-preview-grid\">" + bundle.proposalItems.map((item) => [
+          "<article class=\"report-preview-card\">",
+          "<strong>" + escapeHtml(item.section_title || "사업계획서") + "</strong>",
+          "<span>작성 수준: " + escapeHtml(item.writing_level || "미입력") + "</span>",
+          "<p>" + textWithBreaks(item.consulting_content) + "</p>",
+          "<span>다음 보완: " + escapeHtml(item.next_revision || "미입력") + "</span>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 사업계획서 항목이 없습니다.</p>";
+      const meetingHtml = (bundle.meetings || []).length
+        ? "<div class=\"report-preview-grid\">" + bundle.meetings.map((item) => [
+          "<article class=\"report-preview-card\">",
+          "<strong>" + escapeHtml(item.title || "월간 컨설팅 미팅") + "</strong>",
+          "<span>" + escapeHtml(item.meeting_date || "일자 미입력") + " · " + escapeHtml(item.attendees || "참석자 미입력") + "</span>",
+          "<p>" + textWithBreaks(item.meeting_notes) + "</p>",
+          "<span>후속 과제: " + escapeHtml(item.follow_up || "미입력") + "</span>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 미팅 항목이 없습니다.</p>";
+      const fileHtml = (bundle.files || []).length
+        ? "<div class=\"report-preview-grid\">" + bundle.files.map((file) => [
+          "<article class=\"report-preview-card\">",
+          "<strong>" + escapeHtml(file.name || "첨부 파일") + "</strong>",
+          "<span>" + escapeHtml(file.file_role || "첨부 파일") + " · " + escapeHtml(Math.ceil(Number(file.size || 0) / 1024)) + "KB</span>",
+          "<button class=\"action-button report-file-link\" type=\"button\" data-report-file-path=\"" + escapeHtml(file.storage_path) + "\">파일 열기</button>",
+          "</article>"
+        ].join("")).join("") + "</div>"
+        : "<p>등록된 파일이 없습니다.</p>";
+
+      adminReportPreview.setAttribute("data-report-id", report.id);
+      markActiveReport(report.id);
+      adminReportPreview.innerHTML = [
+        "<div class=\"report-preview-head\">",
+        "<div>",
+        "<span class=\"label\">Monthly Progress Report</span>",
+        "<h2>" + escapeHtml(report.title || "월별 진행 리포트") + "</h2>",
+        "<p>" + escapeHtml(company.name || "기업 미입력") + " · " + escapeHtml(formatReportMonth(report.report_month)) + " · " + escapeHtml(statusLabel) + "</p>",
+        "</div>",
+        "<span class=\"badge " + (report.status === "published" ? "green" : "orange") + "\">" + escapeHtml(statusLabel) + "</span>",
+        "</div>",
+        "<section class=\"report-preview-section\"><h3>기획 요약</h3><p>" + textWithBreaks(report.planning_summary) + "</p><p><strong>다음 액션</strong><br />" + textWithBreaks(report.next_actions) + "</p></section>",
+        "<section class=\"report-preview-section\"><h3>공고 맞춤 리스트 및 접수 상황</h3><p>" + textWithBreaks(report.notice_summary) + "</p>" + noticeHtml + "</section>",
+        "<section class=\"report-preview-section\"><h3>사업계획서 작성 수준 및 컨설팅 내용</h3><p>" + textWithBreaks(report.proposal_summary) + "</p>" + proposalHtml + "</section>",
+        "<section class=\"report-preview-section\"><h3>미팅 관리</h3><p>" + textWithBreaks(report.meeting_summary) + "</p>" + meetingHtml + "</section>",
+        "<section class=\"report-preview-section\"><h3>파일</h3>" + fileHtml + "</section>",
+        "<div class=\"print-only-actions\"><button class=\"action-button\" type=\"button\" onclick=\"window.print()\">인쇄</button></div>"
+      ].join("");
+    }
+
+    function resetReportForm() {
+      if (!reportForm) {
+        return;
+      }
+
+      reportForm.reset();
+      setFieldValue("reportId", "");
+      setFieldValue("reportMonth", new Date().toISOString().slice(0, 7));
+      if (reportCompanySelect) {
+        reportCompanySelect.value = "";
+      }
+      renderAdminReportPreview(null);
+      setReportStatusMessage("", "새 월별 리포트를 작성할 수 있습니다.");
+    }
+
+    async function loadAdminReports() {
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        setReportStatusMessage("error", "Supabase 설정값이 비어 있습니다. 리포트 기능은 설정 후 사용할 수 있습니다.");
+        return;
+      }
+
+      try {
+        setReportStatusMessage("", "월별 리포트와 기업 목록을 불러오는 중입니다.");
+        const [companies, reports] = await Promise.all([
+          window.FundingSupabase.fetchCompanies({ limit: 200 }),
+          window.FundingSupabase.fetchAdminMonthlyReports({ limit: 100 })
+        ]);
+        reportCompanyCache = companies;
+        reportCache = reports;
+        renderCompanyOptions(companies);
+        renderAdminReportList(reports);
+        setReportStatusMessage("success", "월별 리포트 DB와 연결되었습니다.");
+      } catch (error) {
+        setReportStatusMessage("error", error && error.message ? error.message : "월별 리포트를 불러오지 못했습니다.");
+      }
+    }
+
+    async function loadReportIntoEditor(reportId, shouldPrint) {
+      try {
+        setReportStatusMessage("", "리포트 상세 내용을 불러오는 중입니다.");
+        const bundle = await window.FundingSupabase.fetchReportBundle(reportId);
+        const report = bundle.report;
+        const company = report.company || {};
+        setFieldValue("reportId", report.id);
+        if (reportCompanySelect) {
+          reportCompanySelect.value = report.company_id || "";
+        }
+        setFieldValue("reportCompanyName", company.name);
+        setFieldValue("reportBusinessType", company.business_type);
+        setFieldValue("reportContactName", company.contact_name);
+        setFieldValue("reportContactEmail", company.contact_email);
+        setFieldValue("reportMonth", toMonthInput(report.report_month));
+        setFieldValue("reportConsultantName", report.consultant_name);
+        setFieldValue("reportTitle", report.title);
+        setFieldValue("planningSummary", report.planning_summary);
+        setFieldValue("noticeSummary", report.notice_summary);
+        setFieldValue("proposalSummary", report.proposal_summary);
+        setFieldValue("meetingSummary", report.meeting_summary);
+        setFieldValue("nextActions", report.next_actions);
+        writeRepeatRows(".notice-item", bundle.noticeItems || [], {
+          title: (item) => item.title,
+          agency: (item) => item.agency,
+          deadline: (item) => item.deadline,
+          fitScore: (item) => item.fit_score,
+          applicationStatus: (item) => item.application_status,
+          notes: (item) => item.notes
+        });
+        writeRepeatRows(".proposal-item", bundle.proposalItems || [], {
+          sectionTitle: (item) => item.section_title,
+          writingLevel: (item) => item.writing_level,
+          consultingContent: (item) => item.consulting_content,
+          nextRevision: (item) => item.next_revision
+        });
+        writeRepeatRows(".meeting-item", bundle.meetings || [], {
+          meetingDate: (item) => item.meeting_date,
+          title: (item) => item.title,
+          attendees: (item) => item.attendees,
+          meetingNotes: (item) => item.meeting_notes,
+          followUp: (item) => item.follow_up
+        });
+        renderAdminReportPreview(bundle);
+        setReportStatusMessage("success", "리포트를 편집 화면에 불러왔습니다.");
+        if (shouldPrint) {
+          window.print();
+        }
+      } catch (error) {
+        setReportStatusMessage("error", error && error.message ? error.message : "리포트를 불러오지 못했습니다.");
+      }
+    }
+
+    async function saveAdminReport(event) {
+      event.preventDefault();
+      if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
+        setReportStatusMessage("error", "Supabase 설정값이 비어 있어 리포트를 저장할 수 없습니다.");
+        return;
+      }
+
+      const submitButton = event.submitter;
+      const buttons = Array.from(reportForm.querySelectorAll("button"));
+      const status = submitButton && submitButton.value === "published" ? "published" : "draft";
+
+      try {
+        buttons.forEach((button) => {
+          button.disabled = true;
+        });
+        setReportStatusMessage("", status === "published" ? "리포트를 저장하고 기업에게 공개하는 중입니다." : "리포트 초안을 저장하는 중입니다.");
+        const selectedCompanyId = reportCompanySelect ? reportCompanySelect.value : "";
+        const bundle = await window.FundingSupabase.saveMonthlyReportBundle({
+          reportId: getFieldValue("reportId"),
+          status,
+          company: {
+            id: selectedCompanyId,
+            name: getFieldValue("reportCompanyName"),
+            businessType: getFieldValue("reportBusinessType"),
+            contactName: getFieldValue("reportContactName"),
+            contactEmail: getFieldValue("reportContactEmail")
+          },
+          reportMonth: getFieldValue("reportMonth"),
+          title: getFieldValue("reportTitle"),
+          consultantName: getFieldValue("reportConsultantName"),
+          planningSummary: getFieldValue("planningSummary"),
+          noticeSummary: getFieldValue("noticeSummary"),
+          proposalSummary: getFieldValue("proposalSummary"),
+          meetingSummary: getFieldValue("meetingSummary"),
+          nextActions: getFieldValue("nextActions"),
+          noticeItems: readRepeatRows(".notice-item", ["title", "agency", "deadline", "fitScore", "applicationStatus", "notes"]),
+          proposalItems: readRepeatRows(".proposal-item", ["sectionTitle", "writingLevel", "consultingContent", "nextRevision"]),
+          meetings: readRepeatRows(".meeting-item", ["meetingDate", "title", "attendees", "meetingNotes", "followUp"])
+        });
+        const fileInput = document.getElementById("reportFiles");
+        if (fileInput && fileInput.files && fileInput.files.length) {
+          await window.FundingSupabase.uploadReportFiles(bundle.report.id, fileInput.files, getFieldValue("reportFileRole"));
+          fileInput.value = "";
+        }
+        await loadAdminReports();
+        await loadReportIntoEditor(bundle.report.id, false);
+        setReportStatusMessage("success", status === "published" ? "리포트가 저장되고 기업에게 공개되었습니다." : "리포트 초안이 저장되었습니다.");
+      } catch (error) {
+        setReportStatusMessage("error", error && error.message ? error.message : "리포트를 저장하지 못했습니다.");
+        alert(error && error.message ? error.message : "리포트를 저장하지 못했습니다.");
+      } finally {
+        buttons.forEach((button) => {
+          button.disabled = false;
+        });
+      }
+    }
+
+    function printAdminReport() {
+      if (!adminReportPreview || !adminReportPreview.getAttribute("data-report-id")) {
+        alert("인쇄할 리포트를 먼저 저장하거나 목록에서 선택해주세요.");
+        return;
+      }
+      window.print();
+    }
+
+    if (reportList) {
+      reportList.addEventListener("click", (event) => {
+        const editButton = event.target.closest(".report-edit-button");
+        const printButton = event.target.closest(".report-print-button");
+        const reportItem = event.target.closest(".report-list-item");
+        if (editButton) {
+          loadReportIntoEditor(editButton.dataset.reportId, false);
+        } else if (printButton) {
+          loadReportIntoEditor(printButton.dataset.reportId, true);
+        } else if (reportItem && reportItem.dataset.reportId) {
+          loadReportIntoEditor(reportItem.dataset.reportId, false);
+        }
+      });
+    }
+
+    if (adminReportPreview) {
+      adminReportPreview.addEventListener("click", async (event) => {
+        const button = event.target.closest(".report-file-link");
+        if (!button) {
+          return;
+        }
+
+        const originalText = button.textContent;
+        try {
+          button.disabled = true;
+          button.textContent = "열람 준비";
+          const signedUrl = await window.FundingSupabase.createReportFileSignedUrl(button.dataset.reportFilePath, 600);
+          window.open(signedUrl, "_blank", "noopener");
+          setReportStatusMessage("success", "리포트 파일 열람 링크를 10분 유효 signed URL로 열었습니다.");
+        } catch (error) {
+          setReportStatusMessage("error", error && error.message ? error.message : "리포트 파일을 열지 못했습니다.");
+          alert(error && error.message ? error.message : "리포트 파일을 열지 못했습니다.");
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      });
+    }
+
     async function bootstrapAdminDashboard() {
       const initialView = window.location.hash ? window.location.hash.replace("#", "") : "dashboard";
       showAdminView(initialView, false);
 
       if (!window.FundingSupabase || !window.FundingSupabase.isConfigured()) {
         if (sessionStorage.getItem("fundingAdminLoggedIn") !== "true") {
-          window.location.replace("./funding-admin-login.html");
+          window.location.replace("./funding-smart-matching-login.html#admin");
           return;
         }
 
         const role = sessionStorage.getItem("fundingAdminRole") || "관리자";
         document.getElementById("adminRole").textContent = role === "총괄 관리자" ? "관리자" : role;
         setInquiryStatusMessage("error", "Supabase 설정 전이라 기존 예시 목록만 표시됩니다. assets/supabase-config.js 설정과 SQL 적용 후 관리자 DB가 연결됩니다.");
+        setReportStatusMessage("error", "Supabase 설정 전이라 월별 리포트 기능은 비활성화되어 있습니다.");
         return;
       }
 
       try {
         const session = await window.FundingSupabase.getSession();
         if (!session) {
-          window.location.replace("./funding-admin-login.html");
+          window.location.replace("./funding-smart-matching-login.html#admin");
           return;
         }
 
@@ -1596,7 +2560,7 @@
           sessionStorage.removeItem("fundingAdminLoggedIn");
           sessionStorage.removeItem("fundingAdminId");
           sessionStorage.removeItem("fundingAdminRole");
-          window.location.replace("./funding-admin-login.html");
+          window.location.replace("./funding-smart-matching-login.html#admin");
           return;
         }
 
@@ -1605,8 +2569,10 @@
         sessionStorage.setItem("fundingAdminId", profile.email || session.user.email || "");
         sessionStorage.setItem("fundingAdminRole", profile.role || "관리자");
         await loadSupabaseInquiries();
+        await loadAdminReports();
       } catch (error) {
         setInquiryStatusMessage("error", error && error.message ? error.message : "관리자 세션을 확인하지 못했습니다.");
+        setReportStatusMessage("error", error && error.message ? error.message : "관리자 세션을 확인하지 못했습니다.");
       }
     }
 
@@ -1625,13 +2591,19 @@
       sessionStorage.removeItem("fundingAdminLoggedIn");
       sessionStorage.removeItem("fundingAdminId");
       sessionStorage.removeItem("fundingAdminRole");
-      window.location.href = "./funding-admin-login.html";
+      window.location.href = "./funding-smart-matching-login.html#admin";
     }
 
     window.toggleQuickNav = toggleQuickNav;
     window.loadSupabaseInquiries = loadSupabaseInquiries;
+    window.loadAdminReports = loadAdminReports;
+    window.selectReportCompany = selectReportCompany;
+    window.resetReportForm = resetReportForm;
+    window.saveAdminReport = saveAdminReport;
+    window.printAdminReport = printAdminReport;
     window.clearAdminSession = clearAdminSession;
 
+    resetReportForm();
     bootstrapAdminDashboard();
   </script>
   <script src="./assets/pwa-register.js"></script>
