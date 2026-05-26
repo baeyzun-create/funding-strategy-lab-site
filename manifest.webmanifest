@@ -1,0 +1,57 @@
+{
+  "id": "./funding-strategy-lab.html",
+  "name": "더이로운기업 성장자금 컨설팅",
+  "short_name": "더이로운기업",
+  "description": "정부지원사업, R&D, 정책자금, 투자유치 로드맵과 공고 매칭을 관리하는 상담형 PWA입니다.",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "start_url": "./funding-strategy-lab.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f4f4",
+  "theme_color": "#0f62fe",
+  "categories": ["business", "productivity", "finance"],
+  "icons": [
+    {
+      "src": "./assets/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "로드맵 상담",
+      "short_name": "상담",
+      "description": "로드맵·견적 문의 폼으로 이동합니다.",
+      "url": "./funding-strategy-lab.html#contact",
+      "icons": [
+        {
+          "src": "./assets/pwa-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "관리자 대시보드",
+      "short_name": "관리자",
+      "description": "문의 접수와 진행 상태를 확인합니다.",
+      "url": "./funding-admin-login.html",
+      "icons": [
+        {
+          "src": "./assets/pwa-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
